@@ -1,0 +1,55 @@
+SNAKE REVIVAL PROJECT
+
+Snake è un gioco semplice in cui un serpente (raffigurato con una sequenza di quadrati in fila tra loro) si muove sullo schermo proseguendo nella sua direzione,
+a meno che la sua direzione non viene cambiata da un comando.
+
+Per implementare Snake abbiamo bisogno di un tipo di dato che ci dica istante per istante lo stato del serpente.
+
+STATO DEL SERPENTE
+- lunghezza
+- posizioni delle unità che lo compongono (è necessario sapere larghezza e lunghezza del display e suddividerlo in una griglia di celle quadrate di larghezza e lunghezza predefinite)
+- posizione ultima cella "svuotata" della coda (o anche di più di una, per esempio delle ultime 3)
+
+STATO DEL SERPENTE:
+
+deve essere aggiornato periodicamente nel ciclo di Update()
+
+Come aggiornare lo stato del serpente:
+- è necessario controllare se l'utente ha immesso un input (una delle DUE direzioni che l'utente può decidere di dare al serpente, dopo averne DISATTIVATE DUE -  
+  quella da cui viene il serpente e quella opposta in cui sta proseguendo, cioè l'ultima fornita (o quella di avanzamento iniziale)
+- se l'utente ha immesso una posizione diversa da quella da cui viene il serpente, si sottrae un quadrato dalla coda e lo si dispone davanti lungo la direzione specificata dal player, 
+  altrimenti si fa la stessa identica cosa, usando la direzione opposta a quella di provenienza.
+
+Stato iniziale: il serpente è lungo una (oppure due unità) e prosegue da sinistra a destra o dal basso verso l'alto.
+
+CICLO DI UPDATE
+
+SE giocatore immette nuova direzione
+  SE la direzione è diversa da quella verso cui il serpente si muove E da quella opposta
+     CAMBIA direzione di moto del serpente
+
+CONTROLLA la cella successiva nella direzione del moto
+
+SE la cella successiva è un ostacolo/muro
+ il giocatore PERDE (si mostra a schermo il nome del giocatore, il punteggio, il tempo trascorso in una finestra pop - up)
+ esci dal ciclo di update
+
+SE la cella successiva contiene un item (immagine di un gettone, di un insetto o di un frutto)
+ il serpente cresce di una unità  - va bene farlo crescere di una unità PRIMA DI traslare tutte le unità di una cella? Ok, va bene qui.
+ - generazione RANDOM di un nuovo item (per il momento mettiamola qui, sembra il posto più opportuno, perchè tutto questo è l'aggiornamento del back buffer, quindi sullo schermo 
+   appare tutto contemporanemanete)
+ [......]
+    QUI E' NECESSARIO PRENDERE UNA DECISIONE SUL DESIGN DEL CODICE: 
+    con quale modalità avviene l'aumento di una nuova unità? Io ho individuato la metodica dello "storage delle celle svuotate". Quando vengono riattivate?
+ [......]
+--fine CONTROLLO
+AVANZAMENTO DI UNA UNITA' (in questo punto del codice una delle celle precedentemente svuotate è già stata reinserita in coda e quindi verrà considerata)
+
+
+
+
+LA GENERAZIONE RANDOM DI UN NUOVO OGGETTO, O BOCCONCINO DI CIBO va progettata a parte. 
+Ci possono essere più tipologie di cibo. A esempio, uno che fa crescere di una unità, l'altro di due, l'altro di tre.
+   
+
+ 
