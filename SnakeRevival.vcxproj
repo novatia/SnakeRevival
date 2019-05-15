@@ -151,16 +151,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ALetter.h" />
+    <ClInclude Include="Draw.h" />
+    <ClInclude Include="ELetter.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="GameMode.h" />
+    <ClInclude Include="HorizontalLayout.h" />
+    <ClInclude Include="KLetter.h" />
+    <ClInclude Include="Letter.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="NLetter.h" />
+    <ClInclude Include="Page.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SLetter.h" />
+    <ClInclude Include="SnakeRevival.h" />
+    <ClInclude Include="VerticalLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ALetter.cpp" />
+    <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="ELetter.cpp" />
+    <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="GameMode.cpp" />
+    <ClCompile Include="HorizontalLayout.cpp" />
+    <ClCompile Include="KLetter.cpp" />
+    <ClCompile Include="Letter.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="NLetter.cpp" />
+    <ClCompile Include="Page.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SLetter.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="SnakeRevival.cpp" />
+    <ClCompile Include="VerticalLayout.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
