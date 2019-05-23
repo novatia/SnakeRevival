@@ -50,6 +50,23 @@ AVANZAMENTO DI UNA UNITA' (in questo punto del codice una delle celle precedente
 
 LA GENERAZIONE RANDOM DI UN NUOVO OGGETTO, O BOCCONCINO DI CIBO va progettata a parte. 
 Ci possono essere più tipologie di cibo. A esempio, uno che fa crescere di una unità, l'altro di due, l'altro di tre.
+
+------------------------------
+
+
+namespace gameproj
+
+all'interno del namespace gameproj definiamo varie classi, ciascuna che deriva da una classe Entity (con metodo virtuale Update)
+
+classi da definire:
+-MainMenu
+-Game
+-PausePanel
+-EndPanel
+Ogni classe è una entità e deve avere un suo metodo Update
+
+
+
    
 
  

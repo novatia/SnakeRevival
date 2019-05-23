@@ -1,6 +1,5 @@
 #pragma once
 #include <list>
-using namespace std;
 
 namespace gameproj {
 	enum class Direction 
