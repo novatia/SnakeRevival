@@ -6,7 +6,6 @@ class Letter :
 public:
 	Letter();
 	virtual ~Letter();
-	virtual int GetWidth();
-	virtual int GetHeight();
+
 };
 

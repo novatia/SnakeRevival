@@ -20,10 +20,20 @@ string ALetter::GetRow(int num)
 	switch (num) {
 		case 0: return "          ";
 		case 1: return " ______   ";
-		case 2: return "/\  __ \  ";
-		case 3: return "\ \  __ \ ";
-		case 4: return " \ \_\ \_\\";
-		case 5: return "  \/_/\/_/";
+		case 2: return "/\\  __ \\  ";
+		case 3: return "\\ \\  __ \\ ";
+		case 4: return " \\ \\_\\ \\_\\";
+		case 5: return "  \\/_/\\/_/";
 		case 6: return "          ";
 	}
+}
+
+int ALetter::GetWidth()
+{
+	return 10;
+}
+
+int ALetter::GetHeight()
+{
+	return 7;
 }

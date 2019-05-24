@@ -159,7 +159,7 @@
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="KLetter.h" />
-    <ClInclude Include="Letter.h" />
+    <ClInclude Include="LayerLayout.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="NLetter.h" />
     <ClInclude Include="Page.h" />
@@ -176,7 +176,7 @@
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="HorizontalLayout.cpp" />
     <ClCompile Include="KLetter.cpp" />
-    <ClCompile Include="Letter.cpp" />
+    <ClCompile Include="LayerLayout.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="NLetter.cpp" />
     <ClCompile Include="Page.cpp" />

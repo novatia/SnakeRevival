@@ -1,12 +1,15 @@
 #pragma once
-#include "Letter.h"
+#include "Draw.h"
 #include <string>
 
 class ELetter :
-	public Letter
+	public Draw
 {
 public:
 	ELetter();
 	~ELetter();
-	std::string GetRow(int num);
+
+	virtual int GetWidth();
+	virtual int GetHeight();
+	virtual std::string GetRow(int num);
 };

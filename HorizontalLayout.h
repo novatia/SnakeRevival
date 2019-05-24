@@ -1,6 +1,7 @@
 #pragma once
 #include "Draw.h"
 #include <vector>
+#include <memory>
 
 class HorizontalLayout :
 	public Draw
@@ -8,7 +9,7 @@ class HorizontalLayout :
 public:
 	HorizontalLayout();
 	~HorizontalLayout();
-	void Add( Draw* element);
+	void Add( Draw *element);
 
 	virtual int GetWidth();
 	virtual int GetHeight();
@@ -28,7 +29,6 @@ public:
 	}
 
 private:
-	std::vector<Draw> elements;
-
+	std::vector< Draw* > elements;
 };
 

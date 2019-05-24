@@ -1,12 +1,21 @@
 #include "pch.h"
 #include "Draw.h"
+#include <string>
 
+using namespace std;
 
-Draw::Draw()
+/*
+string Draw::GetRow(int num)
 {
+	return "";
 }
 
-
-Draw::~Draw()
+int Draw::GetWidth()
 {
+	return 0;
 }
+
+int Draw::GetHeight()
+{
+	return 0;
+}*/

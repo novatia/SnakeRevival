@@ -1,5 +1,6 @@
 #pragma once
 #include "VerticalLayout.h"
+#include "HorizontalLayout.h"
 #include <memory.h>
 
 class Page 
@@ -10,5 +11,5 @@ public:
 	virtual ~Page();
 
 protected:
-	std::unique_ptr<VerticalLayout> root_object;
+	std::unique_ptr<HorizontalLayout> root_object;
 };

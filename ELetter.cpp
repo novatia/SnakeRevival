@@ -17,11 +17,21 @@ string ELetter::GetRow(int num)
 {
 	switch (num) {
 		case 0: return "          ";
-		case 1: return " ______  ";
-		case 2: return "/\  ___\  ";
-		case 3: return "\ \  __\  ";
-		case 4: return " \ \_____\\";
-		case 5: return "  \/_____/";
+		case 1: return " ______   ";
+		case 2: return "/\\  ___\\  ";
+		case 3: return "\\ \\  __\\  ";
+		case 4: return " \\ \\_____\\";
+		case 5: return "  \\/_____/";
 		case 6: return "          ";
 	}
+}
+
+int ELetter::GetWidth()
+{
+	return 10;
+}
+
+int ELetter::GetHeight()
+{
+	return 7;
 }

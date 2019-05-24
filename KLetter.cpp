@@ -18,10 +18,20 @@ string KLetter::GetRow(int num)
 	switch (num) {
 		case 0: return "          ";
 		case 1: return " __  __   ";
-		case 2: return "/\ \/ /  ";
-		case 3: return "\ \  _\" - . ";
-		case 4: return " \ \_\ \_\\";
-		case 5: return "  \/_/\/_/";
+		case 2: return "/\\ \\/ /   ";
+		case 3: return "\\ \\  _\"-. ";
+		case 4: return " \\ \\_\\ \\_\\";
+		case 5: return "  \\/_/\\/_/";
 		case 6: return "          ";
 	}
+}
+
+int KLetter::GetWidth()
+{
+	return 10;
+}
+
+int KLetter::GetHeight()
+{
+	return 7;
 }

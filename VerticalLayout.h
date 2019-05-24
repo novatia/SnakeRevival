@@ -28,6 +28,6 @@ public:
 	}
 
 private:
-	std::vector<Draw> elements;
+	std::vector<Draw*> elements;
 };
 

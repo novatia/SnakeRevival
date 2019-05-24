@@ -1,13 +1,14 @@
 #pragma once
 #include "Page.h"
 class Frame :
-	public Page
+	public Draw
 {
 public:
 	Frame();
 	virtual ~Frame();
 
-private: 
-	Draw *composite;
+	virtual int GetWidth();
+	virtual int GetHeight();
+	virtual std::string GetRow(int num);
 };
 

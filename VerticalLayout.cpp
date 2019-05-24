@@ -16,7 +16,7 @@ VerticalLayout::~VerticalLayout()
 
 void VerticalLayout::Add(Draw* element)
 {
-	elements.push_back(*element);
+	elements.push_back(element);
 }
 
 int VerticalLayout::GetWidth()
@@ -25,8 +25,8 @@ int VerticalLayout::GetWidth()
 	int max_width = 0;
 
 	for (auto it = elements.begin(); it < elements.end(); it++)
-		if (max_width < it->GetWidth())
-			max_width = it->GetWidth();
+		if (max_width < (*it)->GetWidth())
+			max_width = (*it)->GetWidth();
 
 	return max_width;
 }
@@ -36,7 +36,7 @@ int VerticalLayout::GetHeight()
 	int height = 0;
 
 	for (auto it = elements.begin(); it < elements.end(); it++)
-		height += it->GetHeight();
+		height += (*it)->GetHeight();
 
 	return height;
 }
@@ -44,14 +44,16 @@ int VerticalLayout::GetHeight()
 
 std::string VerticalLayout::GetRow(int num)
 {
-	std::string row = 0;
+	std::string row ;
 	int current_row = 0;
 	for (auto it = elements.begin(); it < elements.end(); it++) {
-		for (int r = 0; r < it->GetHeight(); r++) {
-			if (num >= r + current_row)
-				return it->GetRow(r);
-			current_row++;
+		for (int r = 0; r < (*it)->GetHeight(); r++) {
+			if (num == r + current_row) {
+				
+				return (*it)->GetRow(r);
+			}
 		}
+		current_row += elements.back()->GetHeight();
 	}
 
 	return std::string();

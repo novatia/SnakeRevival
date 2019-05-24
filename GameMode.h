@@ -13,8 +13,6 @@ private :
 	//speed
 	//time elapsed
 	
-
-
 public:
 	MainMenu menu;
 	static GameMode* GetInstance();

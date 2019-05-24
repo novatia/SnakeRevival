@@ -8,14 +8,13 @@ HorizontalLayout::HorizontalLayout()
 {
 }
 
-
 HorizontalLayout::~HorizontalLayout()
 {
 }
 
 void HorizontalLayout::Add(Draw* element)
 {
-	elements.push_back(*element);
+	elements.push_back(element);
 }
 
 int HorizontalLayout::GetWidth()
@@ -23,8 +22,8 @@ int HorizontalLayout::GetWidth()
 	int width = 0;
 
 	for (auto it = elements.begin(); it < elements.end(); it++)
-		width += it->GetWidth();
-
+		width += (*it)->GetHeight();
+	 
 	return width;
 }
 
@@ -34,8 +33,8 @@ int HorizontalLayout::GetHeight()
 	int max_height = 0;
 
 	for (auto it = elements.begin(); it < elements.end(); it++)
-		if (max_height < it->GetHeight())
-			max_height = it->GetHeight();
+		if (max_height < (*it)->GetHeight())
+			max_height = (*it)->GetHeight();
 
 	return max_height;
 
@@ -43,9 +42,9 @@ int HorizontalLayout::GetHeight()
 
 std::string HorizontalLayout::GetRow(int num)
 {
-	std::string row = 0;
+	std::string row;
 	for (auto it = elements.begin(); it < elements.end(); it++)
-		row += it->GetRow(num);
+		row += (*it)->GetRow(num);
 
-	return std::string();
+	return row;
 }

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainMenu.h"
 #include "VerticalLayout.h"
+#include "HorizontalLayout.h"
 #include "SLetter.h"
 #include "NLetter.h"
 #include "ALetter.h"
@@ -10,7 +11,7 @@
 
 MainMenu::MainMenu()
 {
-	root_object = std::make_unique<VerticalLayout>();
+	root_object = std::make_unique<HorizontalLayout>();
 
 	root_object->Add(new SLetter());
 	root_object->Add(new NLetter());

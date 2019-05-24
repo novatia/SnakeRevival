@@ -18,6 +18,6 @@ SnakeRevival::~SnakeRevival()
 
 void SnakeRevival::Start()
 {
-	string view =  gm->menu.GetView();
-	cout << view;
+	string buffer =  gm->menu.GetView();
+	cout << buffer;
 }
