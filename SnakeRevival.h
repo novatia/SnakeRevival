@@ -7,8 +7,7 @@ class SnakeRevival
 
 private:
 	GameMode* gm;
-	Draw *menu;
-
+	
 public:
 	SnakeRevival();
 	~SnakeRevival();

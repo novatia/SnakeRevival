@@ -6,11 +6,13 @@ using namespace std;
 
 ALetter::ALetter()
 {
+
 }
 
 
 ALetter::~ALetter()
 {
+
 }
 
 string ALetter::GetRow(int num)

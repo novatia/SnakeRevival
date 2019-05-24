@@ -17,3 +17,35 @@ void HorizontalLayout::Add(Draw* element)
 {
 	elements.push_back(*element);
 }
+
+int HorizontalLayout::GetWidth()
+{
+	int width = 0;
+
+	for (auto it = elements.begin(); it < elements.end(); it++)
+		width += it->GetWidth();
+
+	return width;
+}
+
+int HorizontalLayout::GetHeight()
+{
+	//return max height;
+	int max_height = 0;
+
+	for (auto it = elements.begin(); it < elements.end(); it++)
+		if (max_height < it->GetHeight())
+			max_height = it->GetHeight();
+
+	return max_height;
+
+}
+
+std::string HorizontalLayout::GetRow(int num)
+{
+	std::string row = 0;
+	for (auto it = elements.begin(); it < elements.end(); it++)
+		row += it->GetRow(num);
+
+	return std::string();
+}

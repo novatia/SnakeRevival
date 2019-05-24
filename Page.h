@@ -1,11 +1,14 @@
 #pragma once
-#include "Draw.h"
-class Page :
-	public Draw
+#include "VerticalLayout.h"
+#include <memory.h>
+
+class Page 
+	
 {
 public:
 	Page();
 	virtual ~Page();
-	virtual int GetWidth();
-	virtual int GetHeight();
+
+protected:
+	std::unique_ptr<VerticalLayout> root_object;
 };

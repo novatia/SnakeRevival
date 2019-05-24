@@ -1,12 +1,13 @@
 #pragma once
 #include <memory>
+#include "MainMenu.h"
 
 class GameMode
 {
 private :
 	GameMode();
-	static std::unique_ptr<GameMode>* instance;
-
+	static GameMode* instance;
+	
 	//Current scores
 	//current lenght
 	//speed
@@ -15,6 +16,7 @@ private :
 
 
 public:
+	MainMenu menu;
 	static GameMode* GetInstance();
 	~GameMode();
 	//update methods if needed

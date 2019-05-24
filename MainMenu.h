@@ -6,5 +6,7 @@ class MainMenu :
 public:
 	MainMenu();
 	~MainMenu();
+
+	std::string GetView();
 };
 

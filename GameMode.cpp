@@ -5,22 +5,26 @@
 
 using namespace std;
 
+GameMode* GameMode::instance;
+
+/**
+ * A singleton class used to manage unique game objects
+ */
 GameMode::GameMode()
 {
 }
 
-
-GameMode* GameMode::GetInstance()
+ GameMode* GameMode::GetInstance()
 {
 	if (instance == nullptr) 
 	{
-		instance = new unique_ptr <GameMode>( new GameMode() );
+		instance = new GameMode();
 	}
 
-	return instance->get();
+	return instance;
 }
 
 GameMode::~GameMode()
 {
-	instance->release();
+	delete instance;
 }

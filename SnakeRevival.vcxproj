@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ALetter.h" />
+    <ClInclude Include="constants.h" />
     <ClInclude Include="Draw.h" />
     <ClInclude Include="ELetter.h" />
     <ClInclude Include="Frame.h" />
