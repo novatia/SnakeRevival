@@ -15,7 +15,7 @@ Display::~Display()
 I need to give this method a bunch of data which gives:
 the coordinates of the upper left corner and the width and the height of the object to draw
 */
-void Display::WriteNextDisplay(std::string& input) {
+void Display::WriteNextDisplay(const std::string& input) {
 	nextView_->writeBuffer(input);
 }
 void Display::PresentDisplay() {

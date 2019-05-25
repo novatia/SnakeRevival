@@ -156,6 +156,7 @@
     <ClInclude Include="DisplayBuffer.h" />
     <ClInclude Include="gameproj.h" />
     <ClInclude Include="ICommand.h" />
+    <ClInclude Include="gameloop.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

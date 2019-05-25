@@ -4,7 +4,7 @@ class DisplayBuffer
 {
 public:
 	void printBuffer();
-	void writeBuffer(std::string&);
+	void writeBuffer(const std::string&);
 	void clearBuffer();
 
 	DisplayBuffer();
