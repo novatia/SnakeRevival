@@ -13,4 +13,6 @@
 #include <string>
 #include <conio.h>
 #include <iostream>
+#include <ctime>
+
 #endif //PCH_H

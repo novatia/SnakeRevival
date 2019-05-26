@@ -2,11 +2,11 @@
 #include "ICommand.h"
 
 
-gameproj::commands::ICommand::ICommand()
+gamestructure::commands::ICommand::ICommand()
 {
 }
 
 
-gameproj::commands::ICommand::~ICommand()
+gamestructure::commands::ICommand::~ICommand()
 {
 }
