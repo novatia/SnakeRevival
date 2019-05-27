@@ -2,13 +2,15 @@
 class IEntity
 {
 public:
-	IEntity();
-	virtual ~IEntity();
+	IEntity() {
+	};
+	virtual ~IEntity() {
+	};
 
 	virtual void Update() = 0;
 };
 
-
+/*
 
 IEntity::IEntity()
 {
@@ -18,3 +20,4 @@ IEntity::IEntity()
 IEntity::~IEntity()
 {
 }
+*/

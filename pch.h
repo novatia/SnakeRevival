@@ -14,6 +14,7 @@
 #include <conio.h>
 #include <iostream>
 #include <ctime>
+#include <list>
 #include <vector>
 #include<chrono>
 #include<thread>

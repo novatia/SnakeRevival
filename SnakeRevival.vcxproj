@@ -158,6 +158,8 @@
     <ClInclude Include="gameelements.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="gameloop.h" />
+    <ClInclude Include="IObservable.h" />
+    <ClInclude Include="IObserver.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
