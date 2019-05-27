@@ -1,5 +1,5 @@
 #pragma once
-#include "gameelements.h";
+#include "gameelements.h"
 
 namespace gamestructure {
 	namespace commands

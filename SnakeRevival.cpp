@@ -10,7 +10,33 @@ int main()
 {
 
     std::cout << "Hello World!\n"; 
+	while (true) {
+		if (_kbhit()) {
+			unsigned char input = _getch();
+			std::cout << input;
+			std::cout << std::endl;
 
+			std::cout << clock() << std::endl;
+			std::cout << CLOCKS_PER_SEC << std::endl;
+			//std::cout << (unsigned int)input;
+			if (input == 'K')
+				std::cout << "left" << std::endl;
+			if (input == 'M')
+				std::cout << "right" << std::endl;
+			if (input == 'H')
+				std::cout << "up" << std::endl;
+			if (input == 'P')
+				std::cout << "down" << std::endl;
+			if (input == 'x') {
+				std::cout << "exiting at time: " << std::endl;
+				std::cout << clock() << std::endl;
+
+				std::cout << input;
+				break;
+			}
+		}
+
+	}
 }
 
 

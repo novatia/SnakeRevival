@@ -22,13 +22,22 @@ namespace gamestructure
 		MoveDownCommand* downCommand = new MoveDownCommand(&snake);
 
 
-		//ticks_per_frame deve essere corrispondente a un tempo sempre minore di quello necessario a renderizzare
-		//lag_ticks aumenta a ogni ciclo di un tempo uguale a quello necessario a renderizzare
-		void Loop(clock_t ticks_per_frame)
+		//ticks_per_frame deve essere corrispondente a un tempo sempre 
+		//maggiore di quello necessario a un ciclo di update e minore di quello necessario a renderizzare
+		//lag_ticks aumenta a ogni ciclo di un tempo uguale a quello necessario a tutto il ciclo
+		//questo schema di game loop, per quanto complesso, va abbandonato, perchè il giocatore
+		//deve avere la possibilità di controllare il serpente a ogni ciclo di update
+		//inoltre non è necessario passare il float lag_ticks/ ticks_per_frame al ciclo di Render()
+		/*
+		void GameLoop(clock_t ticks_per_frame)
 		{
+			bool gameOver = false;
+			bool pause = false;
+			
+
 			clock_t elapsed_ticks;
 			clock_t lag_ticks;
-			while (true)
+			while (!gameOver && !pause)
 			{
 				clock_t start_tick = clock();
 
@@ -51,16 +60,55 @@ namespace gamestructure
 				elapsed_ticks = clock() - start_tick;
 			}
 		}
+		*/
+
+		void GameLoop(clock_t ticks_per_frame)
+		{
+			bool gameOver = false;
+			bool pause = false;
+
+
+			clock_t elapsed_ticks;
+			while (!gameOver && !pause)
+			{
+				clock_t start_tick = clock();
+
+				Input();
+				Update();
+				Render();
+
+				elapsed_ticks = clock() - start_tick;
+				
+				std::this_thread::sleep_for(std::chrono::milliseconds(ticks_per_frame - elapsed_ticks));
+			}
+		}
+
+		//il game loop deve essere molto semplice perché sarebbe fuori luogo dover gestire il lag nel render
+		//si assume che il nostro update sia abbastanza veloce
 
 		void Input() {
-
+			if (_kbhit()) {
+				unsigned char inputKey = _getch();
+				if (inputKey == 'K') {
+					leftCommand->execute();
+				}
+				if (inputKey == 'M') {
+					rightCommand->execute();
+				}
+				if (inputKey == 'H') {
+					upCommand->execute();
+				}
+				if (inputKey == 'P') {
+					downCommand->execute();
+				}
+			}
 		}
 
 		void Update() {
 			gameView->WriteNextDisplay(updatedDisplay);
 		}
 
-		void Render(float ratio_mismatch_ticks)
+		void Render()
 		{
 			//posso aggiustare il nextDisplay passando anche il valore "ratio_mismatch_ticks" e rendendo più fluido il 
 			//gioco

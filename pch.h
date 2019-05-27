@@ -14,5 +14,7 @@
 #include <conio.h>
 #include <iostream>
 #include <ctime>
-
+#include <vector>
+#include<chrono>
+#include<thread>
 #endif //PCH_H

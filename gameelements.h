@@ -1,5 +1,5 @@
 #pragma once
-#include <list>
+#include "IEntity.h"
 
 namespace gamestructure {
 	enum class Direction 
@@ -13,32 +13,25 @@ namespace gamestructure {
 	};
 	struct position 
 	{
-		int x;
-		int y;
+		int x;  //column index : positivo andando verso destra
+		int y;  // row index : positivo andando verso il basso
 	};
-	struct Player 
+	class Player : public IEntity
 	{
 	public:
-		void SetCurrentDirection(Direction newDirection) {
-			if (currentDirection == Direction::Right || currentDirection == Direction::Left) {
-				if (newDirection == Direction::Down || newDirection == Direction::Up) {
-					currentDirection = newDirection;
-				}
-			}
-			else {
-				if (newDirection == Direction::Right || newDirection == Direction::Left) {
-					currentDirection = newDirection;
-				}
-			}
-		}
+		Player();
+		virtual ~Player();
+		void SetCurrentDirection(Direction newDirection);
+		void Update();
 	private:
 		Direction currentDirection;
+		std::vector<position>* snake= new std::vector<position>();
+		void MoveSnake();
+
+		//questo metodo dovrebbe essere chiamato in risposta alla cattura di un oggetto
+		void ExtendSnake();
+
 	};
-	class Game
-	{
-	public:
-		Game();
-		~Game();
-	};
+	
 }
 
