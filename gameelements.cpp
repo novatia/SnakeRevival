@@ -19,10 +19,13 @@ void gamestructure::Player::MoveSnake() {
 		break;
 	}
 	position tempPosition;
-	for (unsigned index = 0; index < snake->size(); index++) {
-		tempPosition = snake->at(index);
-		snake->emplace(index,nextPosition);
-		nextPosition = tempPosition;
+	std::vector<position>::iterator it;
+	for (it = snake->begin(); it!= snake->end(); it++) {
+		tempPosition.x = it->x;
+		tempPosition.y = it->y;
+		snake->emplace(it,nextPosition);
+		nextPosition.x = tempPosition.x;
+		nextPosition.y = tempPosition.y;
 
 	}
 }
