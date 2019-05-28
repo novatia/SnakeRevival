@@ -11,17 +11,41 @@ namespace gamestructure
 
 
 	{
+		std::list<IEntity> gameEntities;
 
-		Display*  gameView = new Display();
-		std::string updatedDisplay;
-		Player snake;
+		Display*  gameView;
+		std::string* updatedDisplay;
+		Player* snake;
+		ScoreSystem* scoreSystem;
+		FruitSpawnerSystem* fruitSpawnerSystem;
 
-		MoveRightCommand* rightCommand = new MoveRightCommand(&snake);
-		MoveLeftCommand* leftCommand = new MoveLeftCommand(&snake);
-		MoveUpCommand* upCommand = new MoveUpCommand(&snake);
-		MoveDownCommand* downCommand = new MoveDownCommand(&snake);
+		MoveRightCommand* rightCommand;
+		MoveLeftCommand* leftCommand;
+		MoveUpCommand* upCommand;
+		MoveDownCommand* downCommand;
 
 
+		void SetGameElements() {
+			gameView = new Display();
+			updatedDisplay = new std::string();
+
+			snake = new Player();
+			scoreSystem = new ScoreSystem();
+			fruitSpawnerSystem = new FruitSpawnerSystem();
+			snake->RegisterObserver(scoreSystem);
+			snake->RegisterObserver(fruitSpawnerSystem);
+
+			gameEntities.emplace_back(static_cast<IEntity*>(snake));
+			gameEntities.emplace_back(static_cast<IEntity*>(scoreSystem));
+			gameEntities.emplace_back(static_cast<IEntity*>(fruitSpawnerSystem));
+
+			rightCommand = new MoveRightCommand(snake);
+			leftCommand = new MoveLeftCommand(snake);
+			upCommand = new MoveUpCommand(snake);
+			downCommand = new MoveDownCommand(snake);
+
+
+		}
 		//ticks_per_frame deve essere corrispondente a un tempo sempre 
 		//maggiore di quello necessario a un ciclo di update e minore di quello necessario a renderizzare
 		//lag_ticks aumenta a ogni ciclo di un tempo uguale a quello necessario a tutto il ciclo
@@ -105,7 +129,10 @@ namespace gamestructure
 		}
 
 		void Update() {
-			gameView->WriteNextDisplay(updatedDisplay);
+			std::list<IEntity>::iterator it;
+			for (it = gameEntities.begin(); it != gameEntities.end(); it++) {
+				it->Update();
+			}
 		}
 
 		void Render()
@@ -113,6 +140,7 @@ namespace gamestructure
 			//posso aggiustare il nextDisplay passando anche il valore "ratio_mismatch_ticks" e rendendo più fluido il 
 			//gioco
 
+			gameView->WriteNextDisplay(*updatedDisplay);
 			gameView->PresentDisplay();
 		}
 	}

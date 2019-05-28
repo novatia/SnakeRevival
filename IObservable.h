@@ -7,9 +7,9 @@ namespace gamestructure {
 
 		HitAWall = 0,
 		HitMyTail = 1,
-		AteFruitItem = 2,
-		AteSuperFruitItem = 3,
-		AtePoisonItem = 4,
+		EatenFruitItem = 2,
+		EatenSuperFruitItem = 3,
+		EatenPoisonItem = 4,
 
 	};
 	class IObservable
@@ -35,7 +35,7 @@ namespace gamestructure {
 				std::list<IObserver*>::iterator it;
 
 				for (it = observers->begin(); it != observers->end(); it++) {
-					(*it)->AnswerToObservable(occurredEvent);
+					(*it)->AnswerToObservable(this,occurredEvent);
 				}
 			}
 		};

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "gameelements.h"
+//#include "IObservable.h"
 using namespace std;
+//using namespace gamestructure;
 
 void gamestructure::Player::MoveSnake() {
 	position nextPosition= snake->front();
@@ -55,3 +57,69 @@ gamestructure::Player::Player() : currentDirection(Direction::Right), snake() {
 }
 gamestructure::Player::~Player(){
 }
+
+gamestructure::ScoreSystem::ScoreSystem() : score(0), scoreIsChanged(false), scoreIncrement(0)
+{
+}
+gamestructure::ScoreSystem::~ScoreSystem() {
+}
+void gamestructure::ScoreSystem::Update() {
+	if (scoreIsChanged) {
+		score += scoreIncrement;
+		scoreIsChanged = false;
+	}
+}
+void gamestructure::ScoreSystem::SetScoreIncrement(int scoreIncrementValue) {
+	scoreIncrement = scoreIncrementValue;
+}
+void gamestructure::ScoreSystem::SetScoreIsChangedTrue() {
+	if (!scoreIsChanged) {
+		scoreIsChanged = true;
+	}
+}
+void gamestructure::ScoreSystem::AnswerToObservable(IObservable* observable, Event occurredEvent) {
+	if (occurredEvent ==Event::EatenFruitItem) {
+		SetScoreIsChangedTrue();
+		SetScoreIncrement(10);
+	}
+	if (occurredEvent == Event::EatenSuperFruitItem) {
+		SetScoreIsChangedTrue();
+		SetScoreIncrement(30);
+
+	}
+	if (occurredEvent == Event::EatenPoisonItem) {
+		if (score >= 20) {
+			SetScoreIsChangedTrue();
+			SetScoreIncrement(-20);
+		}
+		else if (score >= 10) {
+			SetScoreIsChangedTrue();
+			SetScoreIncrement(-10);
+		}
+	}
+}
+gamestructure::FruitSpawnerSystem::FruitSpawnerSystem() {}
+gamestructure::FruitSpawnerSystem::~FruitSpawnerSystem(){}
+void gamestructure::FruitSpawnerSystem::Update() {
+
+}
+
+void gamestructure::FruitSpawnerSystem::AnswerToObservable(IObservable* observable, Event occurredEvent) {
+	if (occurredEvent == Event::EatenFruitItem || occurredEvent == Event::EatenSuperFruitItem || occurredEvent == Event::EatenPoisonItem) {
+		SetGenerateItemBoolValuesToTrue(observable);
+	}
+}
+
+
+void gamestructure::FruitSpawnerSystem::SetGenerateItemBoolValuesToTrue(IObservable* observable) {
+	Player* observableAsPlayer= static_cast<Player*>(observable);
+
+	//adjust these rows..... oh yeah!!
+	int headPos_x = observableAsPlayer->GetHeadPosition()->x;
+	int headPos_y = observableAsPlayer->GetHeadPosition()->y;
+
+	if(headPos_x==firstItem.itemPosition.x && headPos_x == firstItem.itemPosition.y)
+
+
+}
+

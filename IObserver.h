@@ -10,7 +10,7 @@ namespace gamestructure {
 		};
 		~IObserver() {
 		};
-		virtual void AnswerToObservable(Event occurredEvent) {
+		virtual void AnswerToObservable(IObservable* observable, Event occurredEvent) {
 			//qui si inserisce la logica del gioco: è necessario fare un override per ogni osservatore
 			// l'evento va generato dentro il metodo update del player
 			// è necessario decidere se ScoreSystem e FruitSpawnerSystemObserver devono ereditare da
