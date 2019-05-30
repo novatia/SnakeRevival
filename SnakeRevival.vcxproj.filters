@@ -18,13 +18,31 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gameproj.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ICommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Commands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameloop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameelements.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IObservable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,13 +53,19 @@
     <ClCompile Include="SnakeRevival.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gameproj.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ICommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Commands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gameelements.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

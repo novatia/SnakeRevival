@@ -1,7 +1,7 @@
 #pragma once
-#include "gameproj.h";
+#include "gameelements.h"
 
-namespace gameproj {
+namespace gamestructure {
 	namespace commands
 	{
 
@@ -12,7 +12,7 @@ namespace gameproj {
 			ICommand();
 			virtual ~ICommand();
 
-			virtual void execute(Player snakePl) = 0;
+			virtual void execute() = 0;
 		};
 
 	}

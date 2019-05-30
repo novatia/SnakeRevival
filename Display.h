@@ -10,7 +10,7 @@ public:
 	~Display();
 
 	void PresentDisplay();
-	void WriteNextDisplay(std::string& input);
+	void WriteNextDisplay(const std::string& input);
 	
 private:
 	void Swap();
