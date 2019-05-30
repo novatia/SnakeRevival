@@ -28,17 +28,22 @@ Level1::Level1()
 
 	LevelFrame *f = new LevelFrame();
 	f->SetColor(Green);
-
-	Fruit *f1 = new Fruit();
-	f1->SetPosition(10, 10);
-
 	root_object->Add(*f, 0);
-	root_object->Add(*f1, 0);
-
+	
 	Text *score = new Text(L"SCORE: ");
 	score->SetColor(Yellow);
-
+	score->SetAlignment(Center, Center);
 	root_object->Add(*score, 1);
+
+	Fruit *f1 = new Fruit();
+	f1->SetPosition(18, 2);
+	f1->SetAlignment(Left, Left);
+	root_object->Add(*f1, 1);
+
+	Fruit *f2 = new Fruit();
+	f2->SetPosition(40, 6);
+	f2->SetAlignment(Left, Left);
+	root_object->Add(*f2, 1);
 }
 
 std::wstring  Level1::GetView()

@@ -15,7 +15,7 @@ int GetSizeNoColours(wstring string) {
 	return noc_size;
 }
 
-wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, Alignments alignment, int W)
+wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, Alignments alignment, int W,Colors parent_color)
 {
 	wstring first_string = str;
 	wstring second_string = current_row;
@@ -26,16 +26,35 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 		second_string = str;
 	}
 
-	if (second_string.size() == 0)
+	if (second_string.size() == 0) {
+		if (alignment == Right)
+			first_string.insert(0, (W-first_string.size() + position.first),' ');
+
+		if (alignment == Left) {
+			int left_index = (W - first_string.size() + position.first);
+
+			if (left_index < 0)
+				left_index = 0;
+
+			first_string.append(left_index, ' ');
+		}
+		if (alignment == Center) {
+			int left_index = (W - first_string.size()) / 2 + position.first;
+			if (left_index < 0)
+				left_index = 0;
+
+			first_string.insert(0, left_index, ' ');
+		}
 		return first_string;
+	}
 
 	//need to count colours
-	int ct1 = count(first_string.begin(), first_string.end(), '\x1B')/2*COLOR_HEADER;
-	int ct2 = count(second_string.begin(), second_string.end(), '\x1B')/2*COLOR_HEADER;
+	int ct1 = count(first_string.begin() ,  first_string.end(), '\x1B') / 2 * COLOR_HEADER;
+	int ct2 = count(second_string.begin(), second_string.end(), '\x1B') / 2 * COLOR_HEADER;
 
 	//adding pad for color tags
-	if (ct1 != 0 || ct2 != 0)
-		first_string.insert(first_string.size() / 2, ct1+ ct2,' ');
+	if ( ct2 != 0 )
+		first_string.insert(first_string.size() / 2, ct2,' ');
 
 	//center alignment
 	int start_index = 0;
@@ -44,6 +63,7 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 		start_index = W;
 		start_index -= position.first;
 	}
+
 	else {
 		if (alignment == Center)
 			start_index += first_string.size() / 2 - second_string.size() / 2;
@@ -119,12 +139,12 @@ int LayerLayout::GetHeight()
 wstring  LayerLayout::GetRow(int num)
 {
 	wstring current_row = L"";
-	map<int, vector<Draw*>>::reverse_iterator rit;
-	for (rit = elements.rbegin(); rit != elements.rend(); ++rit)
-	for (vector<Draw*>::reverse_iterator i = rit->second.rbegin(); i != rit->second.rend(); ++i) {
-		wstring str = (*i)->GetRow(num);
-		current_row = MergeStrings(current_row,str, (*i)->GetPosition() , (*i)->GetAlignment().first ,GetWidth());
-	}
+	map<int, vector<Draw*>>::iterator rit;
+	for (rit = elements.begin(); rit != elements.end(); ++rit)
+		for (vector<Draw*>::reverse_iterator i = rit->second.rbegin(); i != rit->second.rend(); ++i) {
+			wstring str = (*i)->GetRow(num);
+			current_row = MergeStrings(current_row, str, (*i)->GetPosition(), (*i)->GetAlignment().first, GetWidth(),None);
+		}
 
 	return current_row;
 }

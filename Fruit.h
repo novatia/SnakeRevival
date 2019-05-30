@@ -14,6 +14,9 @@ namespace gamestructure {
 			virtual int GetWidth();
 			virtual int GetHeight();
 			virtual std::wstring GetRow(int num);
+			int GetValue();
+		private:
+			int value;
 		};
 	}
 }
