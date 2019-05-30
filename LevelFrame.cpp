@@ -1,29 +1,27 @@
 ﻿#include "pch.h"
-#include "Frame.h"
+#include "LevelFrame.h"
 #include <string>
 
-using namespace std; 
+using namespace std;
 using namespace gamestructure;
 using namespace composite;
 
-
-Frame::Frame()
+LevelFrame::LevelFrame()
 {
 }
 
-Frame::~Frame()
+LevelFrame::~LevelFrame()
 {
 }
 
-
-wstring Frame::GetRow(int num)
+wstring LevelFrame::GetRow(int num)
 {
 	wstring color = GetColor();
 	wstring endcolor = GetEndColor();
 
 	switch (num) {
-	case 0: return  color + L"╔═════════════════════════════════════════════════════════════════════════════╗" + endcolor;
-	case 1: return  color + L"║                                                                             ║" + endcolor;
+	case 0: return  color + L"                                                                               " + endcolor;
+	case 1: return  color + L"╔═════════════════════════════════════════════════════════════════════════════╗" + endcolor;
 	case 2: return  color + L"║                                                                             ║" + endcolor;
 	case 3: return  color + L"║                                                                             ║" + endcolor;
 	case 4: return  color + L"║                                                                             ║" + endcolor;
@@ -52,12 +50,12 @@ wstring Frame::GetRow(int num)
 	return L"";
 }
 
-int Frame::GetWidth()
+int LevelFrame::GetWidth()
 {
 	return 80;
 }
 
-int Frame::GetHeight()
+int LevelFrame::GetHeight()
 {
 	return 25;
 }

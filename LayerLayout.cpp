@@ -6,11 +6,21 @@ using namespace std;
 using namespace gamestructure;
 using namespace composite;
 
-wstring MergeStrings(wstring current_row, wstring str) {
+int GetSizeNoColours(wstring string) {
+	int real_size = string.size();
+	int noc_size = 0;
+	int ct = count(string.begin(), string.end(), '\x1B');
+	ct /= 2;
+	noc_size = real_size - COLOR_HEADER * ct;
+	return noc_size;
+}
+
+wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, Alignments alignment, int W)
+{
 	wstring first_string = str;
 	wstring second_string = current_row;
 
-	if (current_row.size() > str.size())
+	if (GetSizeNoColours(current_row) > GetSizeNoColours(str))
 	{
 		first_string = current_row;
 		second_string = str;
@@ -19,7 +29,27 @@ wstring MergeStrings(wstring current_row, wstring str) {
 	if (second_string.size() == 0)
 		return first_string;
 
-	int start_index = first_string.size() / 2 - second_string.size() / 2;
+	//need to count colours
+	int ct1 = count(first_string.begin(), first_string.end(), '\x1B')/2*COLOR_HEADER;
+	int ct2 = count(second_string.begin(), second_string.end(), '\x1B')/2*COLOR_HEADER;
+
+	//adding pad for color tags
+	if (ct1 != 0 || ct2 != 0)
+		first_string.insert(first_string.size() / 2, ct1+ ct2,' ');
+
+	//center alignment
+	int start_index = 0;
+
+	if (alignment == Right) {
+		start_index = W;
+		start_index -= position.first;
+	}
+	else {
+		if (alignment == Center)
+			start_index += first_string.size() / 2 - second_string.size() / 2;
+
+		start_index += position.first;
+	}
 
 	first_string.replace(start_index, second_string.size(), second_string);
 	return first_string;
@@ -93,7 +123,7 @@ wstring  LayerLayout::GetRow(int num)
 	for (rit = elements.rbegin(); rit != elements.rend(); ++rit)
 	for (vector<Draw*>::reverse_iterator i = rit->second.rbegin(); i != rit->second.rend(); ++i) {
 		wstring str = (*i)->GetRow(num);
-		current_row = MergeStrings(current_row,str);
+		current_row = MergeStrings(current_row,str, (*i)->GetPosition() , (*i)->GetAlignment().first ,GetWidth());
 	}
 
 	return current_row;

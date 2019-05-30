@@ -24,7 +24,7 @@ int HorizontalLayout::GetWidth()
 	int width = 0;
 
 	for (auto it = elements.begin(); it < elements.end(); it++)
-		width += (*it)->GetHeight();
+		width += (*it)->GetWidth();
 	 
 	return width;
 }

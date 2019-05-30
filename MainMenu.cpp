@@ -23,7 +23,8 @@ MainMenu::MainMenu()
 	root_object = std::make_unique<LayerLayout>();
 
 	VerticalLayout* vl = new VerticalLayout();
-	vl->top = 1;
+	vl->SetPosition(0,1);
+
 	HorizontalLayout* dos = new HorizontalLayout();
 	dos->Add(new DLetter());
 	dos->Add(new OLetter());
@@ -32,11 +33,26 @@ MainMenu::MainMenu()
 	HorizontalLayout* snake = new HorizontalLayout();
 	Frame *f = new Frame();
 
-	snake->Add(new SLetter());
-	snake->Add(new NLetter());
-	snake->Add(new ALetter());
-	snake->Add(new KLetter());
-	snake->Add(new ELetter());
+	SLetter *s = new SLetter();
+	s->SetColor(Blue);
+
+	NLetter *n = new NLetter();
+	n->SetColor(Red);
+
+	ALetter *a = new ALetter();
+	a->SetColor(Yellow);
+	
+	KLetter *k = new KLetter();
+	k->SetColor(Blue);
+	
+	ELetter *e = new ELetter();
+	e->SetColor(Green);
+
+	snake->Add(s);
+	snake->Add(n);
+	snake->Add(a);
+	snake->Add(k);
+	snake->Add(e);
 
 	vl->Add(dos);
 	vl->Add(snake);

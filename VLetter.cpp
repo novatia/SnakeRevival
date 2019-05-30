@@ -19,14 +19,18 @@ VLetter::~VLetter()
 
 wstring VLetter::GetRow(int num)
 {
+
+	wstring color = GetColor();
+	wstring endcolor = GetEndColor();
+
 	switch (num) {
-	case 0: return L"        ";
-	case 1: return L" __   __";
-	case 2: return L"/\\ \\ / /";
-	case 3: return L"\\ \\ \\'/ ";
-	case 4: return L" \\ \\__| ";
-	case 5: return L"  \\/_/  ";
-	case 6: return L"        ";
+	case 0: return color + L"        " + endcolor;
+	case 1: return color + L" __   __" + endcolor;
+	case 2: return color + L"/\\ \\ / /" + endcolor;
+	case 3: return color + L"\\ \\ \\'/ " + endcolor;
+	case 4: return color + L" \\ \\__| " + endcolor;
+	case 5: return color + L"  \\/_/  " + endcolor;
+	case 6: return color + L"        " + endcolor;
 	}
 
 	return L"";

@@ -8,7 +8,6 @@ namespace gamestructure {
 			public Draw
 		{
 		public:
-			int top=0;
 			VerticalLayout();
 			virtual ~VerticalLayout();
 			void Add(Draw* element);

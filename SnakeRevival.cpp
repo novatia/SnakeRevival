@@ -24,8 +24,8 @@ void ResetCursor() {
 	SetConsoleCursorInfo(out, &cursorInfo);
 }
 
-void SnakeRevival::Start()
-{
+void PrintColorSheet() {
+
 	printf("\n");
 	printf("\x1B[31mTexting\033[0m\t\t");
 	printf("\x1B[32mTexting\033[0m\t\t");
@@ -50,6 +50,12 @@ void SnakeRevival::Start()
 	printf("\033[1;47;35mTexting\033[0m\t\t");
 	printf("\t\t");
 	printf("\n");
+}
+
+void SnakeRevival::Start()
+{
+
+
 	while (true) {
 		ResetCursor();
 
@@ -58,7 +64,7 @@ void SnakeRevival::Start()
 		coord.Y = 0;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 
-		wstring buffer = gm->menu.GetView();
+		wstring buffer = gm->level1.GetView();
 		wcout << buffer;
 		Sleep(10);
 	}

@@ -44,9 +44,11 @@ int VerticalLayout::GetHeight()
 }
 
 
-wstring VerticalLayout::GetRow(int num)
+wstring VerticalLayout::GetRow(int row_num)
 {
-	if (num < top) {
+	int num = row_num - top;
+
+	if (num < 0) {
 		return L"";
 	}
 

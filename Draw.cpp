@@ -6,18 +6,51 @@ using namespace std;
 using namespace gamestructure;
 using namespace composite;
 
-/*
-string Draw::GetRow(int num)
+void gamestructure::composite::Draw::SetColor(Colors new_color)
 {
-	return "";
+	color = new_color;
 }
 
-int Draw::GetWidth()
+void gamestructure::composite::Draw::SetPosition(int l,int t)
 {
-	return 0;
+	top = t;
+	left = l;
 }
 
-int Draw::GetHeight()
+std::pair<int, int> gamestructure::composite::Draw::GetPosition()
 {
-	return 0;
-}*/
+	return std::pair<int, int>(left,top);
+}
+
+void gamestructure::composite::Draw::SetAlignment(Alignments horizontal, Alignments vertical)
+{
+	horizontal_alignment = horizontal;
+	vertical_alignment = vertical;
+}
+
+pair<Alignments, Alignments> gamestructure::composite::Draw::GetAlignment()
+{
+	return pair<Alignments, Alignments>(horizontal_alignment,vertical_alignment);
+}
+
+wstring gamestructure::composite::Draw::GetColor()
+{
+	switch (color) {
+	case Blue:return L"\x1B[34m";
+	case Red:return L"\x1B[31m";
+	case Green:return L"\x1B[32m";
+	case Yellow:return L"\x1B[93m";
+	case White:return L"\x1B[37m";
+	case Purple:return L"\x1B[35m";
+	}
+
+	return L"";
+}
+
+wstring gamestructure::composite::Draw::GetEndColor()
+{
+	if (color != None)
+		return L"\033[0m";
+
+	return L"";
+}

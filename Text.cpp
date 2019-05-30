@@ -26,15 +26,19 @@ int Text::GetHeight()
 
 wstring Text::GetRow(int num)
 {
+
+	wstring color = GetColor();
+	wstring endcolor = GetEndColor();
+
 	if (num < top)
 		return L"";
 
 	if (num == top) 
 	{
 		if (selected)
-			return L"> "+txt+L" <";
+			return color + L"> "+txt+L" <"+ endcolor;
 		else
-			return txt;
+			return color + txt+ endcolor;
 	}
 
 	return L"";
