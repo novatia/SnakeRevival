@@ -1,12 +1,13 @@
 #include "pch.h"
 #include "ICommand.h"
 
+using namespace SnakeRevival;
+using namespace commands;
 
-gamestructure::commands::ICommand::ICommand()
+ICommand::ICommand()
 {
 }
 
-
-gamestructure::commands::ICommand::~ICommand()
+ICommand::~ICommand()
 {
 }

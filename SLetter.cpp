@@ -3,7 +3,7 @@
 #include <string>
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 SLetter::SLetter()
@@ -38,10 +38,7 @@ wstring SLetter::GetRow(int num)
 
 int SLetter::GetWidth()
 {
-	if (color == None)
-		return 10;
-	else
-		return 10 + 9;
+	return 10;
 }
 
 int SLetter::GetHeight()

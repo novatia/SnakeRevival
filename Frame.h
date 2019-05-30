@@ -1,7 +1,7 @@
 #pragma once
 #include "Page.h"
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class Frame :
 			public Draw

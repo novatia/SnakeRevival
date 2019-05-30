@@ -1,14 +1,12 @@
 #pragma once
 #include "Page.h"
 
-namespace gamestructure {
+namespace SnakeRevival {
 	class GameOver :
 		public composite::Page
 	{
 	public:
 		GameOver();
 		~GameOver();
-
-		std::wstring GetView();
 	};
 }

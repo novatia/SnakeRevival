@@ -2,7 +2,7 @@
 #include "Worm.h"
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 Worm::Worm()
@@ -29,7 +29,7 @@ wstring Worm::GetRow(int num)
 	return L"";
 }
 
-void gamestructure::composite::Worm::AddElement(int left, int top)
+void Worm::AddElement(int left, int top)
 {
 	elements.push_back( pair<int, int>(left, top) );
 }

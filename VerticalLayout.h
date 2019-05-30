@@ -2,7 +2,7 @@
 #include "Draw.h"
 #include <vector>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class VerticalLayout :
 			public Draw
@@ -30,7 +30,7 @@ namespace gamestructure {
 			}
 
 		private:
-			std::vector<Draw*> elements;
+			std::vector<Draw*> m_Elements;
 		};
 	}
 }

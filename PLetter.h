@@ -1,8 +1,7 @@
 #pragma once
 #include "Draw.h"
-#include <string>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class PLetter :
 			public Draw

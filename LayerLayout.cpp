@@ -3,7 +3,7 @@
 #include <vector>
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 int GetSizeNoColours(wstring string) {
@@ -87,11 +87,11 @@ LayerLayout::~LayerLayout()
 
 void LayerLayout::Add(Draw& element, int layer)
 {
-	vector<Draw*>* current_layer = &elements[layer];
+	vector<Draw*>* current_layer = &m_Elements[layer];
 
 	if (current_layer == nullptr) {
 		current_layer = new vector< Draw*>();
-		elements.insert(pair<int, vector<Draw*>>(layer, *current_layer));
+		m_Elements.insert(pair<int, vector<Draw*>>(layer, *current_layer));
 	}
 
 	current_layer->push_back(&element);
@@ -102,7 +102,7 @@ int LayerLayout::GetWidth()
 	int max_width = 0;
 	map<int, vector<Draw*>>::iterator it;
 
-	for (it = elements.begin(); it != elements.end(); ++it)
+	for (it = m_Elements.begin(); it != m_Elements.end(); ++it)
 	{
 		for (vector<Draw*>::iterator vit = it->second.begin(); vit != it->second.end(); ++vit) 
 		{
@@ -122,7 +122,7 @@ int LayerLayout::GetHeight()
 	int max_height = 0;
 	map<int, vector<Draw*>>::iterator it;
 
-	for (it = elements.begin(); it != elements.end(); ++it)
+	for (it = m_Elements.begin(); it != m_Elements.end(); ++it)
 	{
 		for (vector<Draw*>::iterator vit = it->second.begin(); vit != it->second.end(); ++vit)
 		{
@@ -140,7 +140,7 @@ wstring  LayerLayout::GetRow(int num)
 {
 	wstring current_row = L"";
 	map<int, vector<Draw*>>::iterator rit;
-	for (rit = elements.begin(); rit != elements.end(); ++rit)
+	for (rit = m_Elements.begin(); rit != m_Elements.end(); ++rit)
 		for (vector<Draw*>::reverse_iterator i = rit->second.rbegin(); i != rit->second.rend(); ++i) {
 			wstring str = (*i)->GetRow(num);
 			current_row = MergeStrings(current_row, str, (*i)->GetPosition(), (*i)->GetAlignment().first, GetWidth(),None);

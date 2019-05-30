@@ -1,9 +1,11 @@
 #pragma once
+#include <vector>
+
 #include "IEntity.h"
 #include "IObservable.h"
 #include "IObserver.h"
 
-namespace gamestructure {
+namespace SnakeRevival {
 	enum class Direction 
 	{
 		

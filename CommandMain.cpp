@@ -1,15 +1,13 @@
 // SnakeRevival.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
 #include "pch.h"
 
 
 
 
-int main()
+int main_()
 {
 
-    std::cout << "Hello World!\n"; 
 	while (true) {
 		if (_kbhit()) {
 			unsigned char input = _getch();
@@ -37,6 +35,8 @@ int main()
 		}
 
 	}
+
+	return 0;
 }
 
 

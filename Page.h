@@ -4,7 +4,7 @@
 #include "LayerLayout.h"
 #include <memory.h>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class Page
 
@@ -12,9 +12,9 @@ namespace gamestructure {
 		public:
 			Page();
 			virtual ~Page();
-
+			virtual std::wstring GetView();
 		protected:
-			std::unique_ptr<LayerLayout> root_object;
+			std::unique_ptr<LayerLayout> m_RootObject;
 		};
 	}
 }

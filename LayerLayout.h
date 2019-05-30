@@ -4,7 +4,7 @@
 #include <map>
 #include <memory>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class LayerLayout :
 			public Draw
@@ -19,7 +19,7 @@ namespace gamestructure {
 			virtual std::wstring GetRow(int num);
 
 		private:
-			std::map<int, std::vector< Draw* >> elements;
+			std::map<int, std::vector< Draw* >> m_Elements;
 		};
 	}
 }

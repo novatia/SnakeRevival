@@ -2,9 +2,9 @@
 #include "gameelements.h"
 //#include "IObservable.h"
 using namespace std;
-//using namespace gamestructure;
+using namespace SnakeRevival;
 
-void gamestructure::Player::MoveSnake() {
+void Player::MoveSnake() {
 	position nextPosition= snake->front();
 	switch (currentDirection) {
 	case Direction::Right:
@@ -32,7 +32,7 @@ void gamestructure::Player::MoveSnake() {
 	}
 }
 
-void  gamestructure::Player::SetCurrentDirection(Direction newDirection) {
+void  Player::SetCurrentDirection(Direction newDirection) {
 	if (currentDirection == Direction::Right || currentDirection == Direction::Left) {
 		if (newDirection == Direction::Down || newDirection == Direction::Up) {
 			currentDirection = newDirection;
@@ -45,37 +45,37 @@ void  gamestructure::Player::SetCurrentDirection(Direction newDirection) {
 	}
 }
 
-void gamestructure::Player::Update(){
+void Player::Update(){
 	MoveSnake();
 }
-void gamestructure::Player::ExtendSnake() {
+void Player::ExtendSnake() {
 
 }
-gamestructure::position& gamestructure::Player::GetHeadPosition() {
+position& Player::GetHeadPosition() {
 	return snake->at(0);
 }
 
-gamestructure::Player::Player() : currentDirection(Direction::Right), snake() {
+Player::Player() : currentDirection(Direction::Right), snake() {
 
 }
-gamestructure::Player::~Player(){
+Player::~Player(){
 }
 
-gamestructure::ScoreSystem::ScoreSystem() : score(0), scoreIsChanged(false), scoreIncrement(0)
+ScoreSystem::ScoreSystem() : score(0), scoreIsChanged(false), scoreIncrement(0)
 {
 }
-gamestructure::ScoreSystem::~ScoreSystem() {
+ScoreSystem::~ScoreSystem() {
 }
-void gamestructure::ScoreSystem::Update() {
+void ScoreSystem::Update() {
 	if (scoreIsChanged) {
 		score += scoreIncrement;
 		scoreIsChanged = false;
 	}
 }
-void gamestructure::ScoreSystem::SetScoreIncrement(int scoreIncrementValue) {
+void ScoreSystem::SetScoreIncrement(int scoreIncrementValue) {
 	scoreIncrement = scoreIncrementValue;
 }
-void gamestructure::ScoreSystem::SetScoreIsChangedTrue() {
+void ScoreSystem::SetScoreIsChangedTrue() {
 	if (!scoreIsChanged) {
 		scoreIsChanged = true;
 	}
@@ -103,9 +103,9 @@ void gamestructure::ScoreSystem::AnswerToObservable( Event occurredEvent) {
 	}
 }
 */
-gamestructure::FruitSpawnerSystem::FruitSpawnerSystem() {}
-gamestructure::FruitSpawnerSystem::~FruitSpawnerSystem(){}
-void gamestructure::FruitSpawnerSystem::Update() {
+FruitSpawnerSystem::FruitSpawnerSystem() {}
+FruitSpawnerSystem::~FruitSpawnerSystem(){}
+void FruitSpawnerSystem::Update() {
 
 }
 
@@ -117,7 +117,7 @@ void gamestructure::FruitSpawnerSystem::AnswerToObservable( Event occurredEvent)
 }*/
 
 
-void gamestructure::FruitSpawnerSystem::SetGenerateItemBoolValuesToTrue(IObservable* observable) {
+void FruitSpawnerSystem::SetGenerateItemBoolValuesToTrue(IObservable* observable) {
 	Player* observableAsPlayer= static_cast<Player*>(observable);
 
 	//adjust these rows..... oh yeah!!

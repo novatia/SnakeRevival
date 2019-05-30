@@ -151,30 +151,116 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ALetter.h" />
+    <ClInclude Include="BLetter.h" />
+    <ClInclude Include="CLetter.h" />
     <ClInclude Include="Commands.h" />
+    <ClInclude Include="constants.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="DisplayBuffer.h" />
+    <ClInclude Include="DLetter.h" />
+    <ClInclude Include="Draw.h" />
+    <ClInclude Include="ELetter.h" />
+    <ClInclude Include="FLetter.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="Fruit.h" />
+    <ClInclude Include="GameMode.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GLetter.h" />
+    <ClInclude Include="HLetter.h" />
+    <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="IEntity.h" />
     <ClInclude Include="gameelements.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="gameloop.h" />
+    <ClInclude Include="ILetter.h" />
     <ClInclude Include="IObservable.h" />
     <ClInclude Include="IObserver.h" />
+    <ClInclude Include="JLetter.h" />
+    <ClInclude Include="KLetter.h" />
+    <ClInclude Include="LayerLayout.h" />
+    <ClInclude Include="Level1.h" />
+    <ClInclude Include="LevelFrame.h" />
+    <ClInclude Include="LLetter.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MLetter.h" />
+    <ClInclude Include="NLetter.h" />
+    <ClInclude Include="OLetter.h" />
+    <ClInclude Include="Page.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PLetter.h" />
+    <ClInclude Include="QLetter.h" />
+    <ClInclude Include="RLetter.h" />
+    <ClInclude Include="SLetter.h" />
+    <ClInclude Include="SnakeRevivalGameLoop.h" />
+    <ClInclude Include="SPACELetter.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TLetter.h" />
+    <ClInclude Include="ULetter.h" />
+    <ClInclude Include="VerticalLayout.h" />
+    <ClInclude Include="VLetter.h" />
+    <ClInclude Include="WLetter.h" />
+    <ClInclude Include="Worm.h" />
+    <ClInclude Include="XLetter.h" />
+    <ClInclude Include="YLetter.h" />
+    <ClInclude Include="ZLetter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ALetter.cpp" />
+    <ClCompile Include="BLetter.cpp" />
+    <ClCompile Include="CLetter.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="DisplayBuffer.cpp" />
+    <ClCompile Include="DLetter.cpp" />
+    <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="ELetter.cpp" />
+    <ClCompile Include="FLetter.cpp" />
+    <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Fruit.cpp" />
     <ClCompile Include="gameelements.cpp" />
+    <ClCompile Include="GameMode.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GLetter.cpp" />
+    <ClCompile Include="HLetter.cpp" />
+    <ClCompile Include="HorizontalLayout.cpp" />
     <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="ILetter.cpp" />
+    <ClCompile Include="JLetter.cpp" />
+    <ClCompile Include="KLetter.cpp" />
+    <ClCompile Include="LayerLayout.cpp" />
+    <ClCompile Include="Level1.cpp" />
+    <ClCompile Include="LevelFrame.cpp" />
+    <ClCompile Include="LLetter.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MLetter.cpp" />
+    <ClCompile Include="NLetter.cpp" />
+    <ClCompile Include="OLetter.cpp" />
+    <ClCompile Include="Page.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SnakeRevival.cpp" />
+    <ClCompile Include="PLetter.cpp" />
+    <ClCompile Include="QLetter.cpp" />
+    <ClCompile Include="RLetter.cpp" />
+    <ClCompile Include="SLetter.cpp" />
+    <ClCompile Include="CommandMain.cpp" />
+    <ClCompile Include="SnakeRevivalGameLoop.cpp" />
+    <ClCompile Include="SPACELetter.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TLetter.cpp" />
+    <ClCompile Include="ULetter.cpp" />
+    <ClCompile Include="VerticalLayout.cpp" />
+    <ClCompile Include="VLetter.cpp" />
+    <ClCompile Include="WLetter.cpp" />
+    <ClCompile Include="Worm.cpp" />
+    <ClCompile Include="XLetter.cpp" />
+    <ClCompile Include="YLetter.cpp" />
+    <ClCompile Include="ZLetter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

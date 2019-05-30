@@ -1,40 +1,65 @@
 #include "pch.h"
 #include "Commands.h"
 
-void gamestructure::commands::MoveRightCommand::execute() {
+using namespace SnakeRevival;
+using namespace commands;
+
+void MoveRightCommand::execute() 
+{
 	snake->SetCurrentDirection(Direction::Right);
 }
 
-void gamestructure::commands::MoveLeftCommand::execute() {
+void MoveLeftCommand::execute() 
+{
 	snake->SetCurrentDirection(Direction::Left);
-
 }
 
-void gamestructure::commands::MoveUpCommand::execute() {
+void MoveUpCommand::execute()
+{
 	snake->SetCurrentDirection(Direction::Up);
 }
 
-void gamestructure::commands::MoveDownCommand::execute() {
+void MoveDownCommand::execute() 
+{
 	snake->SetCurrentDirection(Direction::Down);
-
 }
 
-gamestructure::commands::MoveRightCommand::MoveRightCommand(Player* initSnake): snake(initSnake) {
+MoveRightCommand::MoveRightCommand(Player* initSnake): snake(initSnake) 
+{
 	
 }
-gamestructure::commands::MoveRightCommand::~MoveRightCommand(){}
 
-gamestructure::commands::MoveLeftCommand::MoveLeftCommand(Player* initSnake) : snake(initSnake) {
-
-}
-gamestructure::commands::MoveLeftCommand::~MoveLeftCommand() {}
-
-gamestructure::commands::MoveUpCommand::MoveUpCommand(Player* initSnake) : snake(initSnake) {
+MoveRightCommand::~MoveRightCommand()
+{
 
 }
-gamestructure::commands::MoveUpCommand::~MoveUpCommand() {}
 
-gamestructure::commands::MoveDownCommand::MoveDownCommand(Player* initSnake) : snake(initSnake) {
+MoveLeftCommand::MoveLeftCommand(Player* initSnake) : snake(initSnake) 
+{
 
 }
-gamestructure::commands::MoveDownCommand::~MoveDownCommand() {}
+
+MoveLeftCommand::~MoveLeftCommand() 
+{
+
+}
+
+MoveUpCommand::MoveUpCommand(Player* initSnake) : snake(initSnake) 
+{
+
+}
+
+MoveUpCommand::~MoveUpCommand() 
+{
+
+}
+
+MoveDownCommand::MoveDownCommand(Player* initSnake) : snake(initSnake) 
+{
+
+}
+
+MoveDownCommand::~MoveDownCommand() 
+{
+
+}

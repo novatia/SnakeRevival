@@ -3,7 +3,7 @@
 #include <vector>
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 VerticalLayout::VerticalLayout()
@@ -18,7 +18,7 @@ VerticalLayout::~VerticalLayout()
 
 void VerticalLayout::Add(Draw* element)
 {
-	elements.push_back(element);
+	m_Elements.push_back(element);
 }
 
 int VerticalLayout::GetWidth()
@@ -26,7 +26,7 @@ int VerticalLayout::GetWidth()
 	//return sum of width;
 	int max_width = 0;
 
-	for (auto it = elements.begin(); it < elements.end(); it++)
+	for (auto it = m_Elements.begin(); it < m_Elements.end(); it++)
 		if (max_width < (*it)->GetWidth())
 			max_width = (*it)->GetWidth();
 
@@ -37,7 +37,7 @@ int VerticalLayout::GetHeight()
 {
 	int height = 0;
 
-	for (auto it = elements.begin(); it < elements.end(); it++)
+	for (auto it = m_Elements.begin(); it < m_Elements.end(); it++)
 		height += (*it)->GetHeight();
 
 	return height;
@@ -46,7 +46,7 @@ int VerticalLayout::GetHeight()
 
 wstring VerticalLayout::GetRow(int row_num)
 {
-	int num = row_num - top;
+	int num = row_num - m_Top;
 
 	if (num < 0) {
 		return L"";
@@ -54,7 +54,7 @@ wstring VerticalLayout::GetRow(int row_num)
 
 	std::wstring row ;
 	int current_row = 0;
-	for (auto it = elements.begin(); it < elements.end(); it++) {
+	for (auto it = m_Elements.begin(); it < m_Elements.end(); it++) {
 	
 
 		for (int r = 0; r < (*it)->GetHeight(); r++) {
@@ -63,7 +63,7 @@ wstring VerticalLayout::GetRow(int row_num)
 				return (*it)->GetRow(r);
 			}
 		}
-		current_row += elements.back()->GetHeight();
+		current_row += m_Elements.back()->GetHeight();
 	}
 
 	return row;

@@ -10,12 +10,19 @@
 #define PCH_H
 
 // TODO: add headers that you want to pre-compile here
+
 #include <string>
 #include <conio.h>
 #include <iostream>
 #include <ctime>
 #include <list>
 #include <vector>
-#include<chrono>
-#include<thread>
+#include <chrono>
+#include <thread>
+#include <memory>
+#include <io.h>
+#include <fcntl.h>
+#include <Windows.h>
+
+#include "constants.h"
 #endif //PCH_H

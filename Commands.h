@@ -1,7 +1,8 @@
 #pragma once
-#include"ICommand.h"
+#include "gameelements.h"
+#include "ICommand.h"
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace commands
 	{
 

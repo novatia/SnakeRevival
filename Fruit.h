@@ -2,7 +2,7 @@
 #include "Draw.h"
 #include <string>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class Fruit :
 			public Draw
@@ -16,7 +16,7 @@ namespace gamestructure {
 			virtual std::wstring GetRow(int num);
 			int GetValue();
 		private:
-			int value;
+			int m_Value;
 		};
 	}
 }

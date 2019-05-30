@@ -2,12 +2,12 @@
 #include "Text.h"
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 Text::Text(wstring text)
 {
-	txt = text;
+	m_Text = text;
 }
 
 Text::~Text()
@@ -16,7 +16,7 @@ Text::~Text()
 
 int Text::GetWidth()
 {
-	return txt.size();
+	return m_Text.size();
 }
 
 int Text::GetHeight()
@@ -30,15 +30,15 @@ wstring Text::GetRow(int num)
 	wstring color = GetColor();
 	wstring endcolor = GetEndColor();
 
-	if (num < top)
+	if (num < m_Top)
 		return L"";
 
-	if (num == top) 
+	if (num == m_Top)
 	{
-		if (selected)
-			return color + L"> "+txt+L" <"+ endcolor;
+		if (m_Selected)
+			return color + L"> "+ m_Text +L" <"+ endcolor;
 		else
-			return color + txt+ endcolor;
+			return color + m_Text + endcolor;
 	}
 
 	return L"";

@@ -4,7 +4,7 @@
 #include <memory>
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 
 GameMode* GameMode::instance;
 
@@ -13,6 +13,9 @@ GameMode* GameMode::instance;
  */
 GameMode::GameMode()
 {
+	m_CurrentView = &m_Menu;
+	//m_CurrentView = &m_GameOver;
+	//m_CurrentView = &m_Level1;
 }
 
  GameMode* GameMode::GetInstance()
@@ -28,4 +31,12 @@ GameMode::GameMode()
 GameMode::~GameMode()
 {
 	delete instance;
+}
+
+wstring GameMode::GetCurrentView()
+{
+	if (m_CurrentView==NULL)
+		return L"null view";
+
+	return m_CurrentView->GetView();
 }

@@ -1,10 +1,13 @@
 #pragma once
 #include <memory>
+
 #include "MainMenu.h"
 #include "GameOver.h"
 #include "Level1.h"
+#include "Page.h"
 
-namespace gamestructure {
+/* GAME MODE IS SINGLETON!!!!*/
+namespace SnakeRevival {
 	class GameMode
 	{
 	private:
@@ -17,12 +20,14 @@ namespace gamestructure {
 		//time elapsed
 
 	public:
-		MainMenu menu;
-		GameOver gameover;
-		Level1 level1;
+		MainMenu m_Menu;
+		GameOver m_GameOver;
+		Level1 m_Level1;
+		composite::Page *m_CurrentView;
 
 		static GameMode* GetInstance();
 		~GameMode();
+		std::wstring GetCurrentView();
 		//update methods if needed
 
 	};

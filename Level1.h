@@ -1,15 +1,12 @@
 #pragma once
-#pragma once
 #include "Page.h"
 
-namespace gamestructure {
+namespace SnakeRevival {
 	class Level1 :
 		public composite::Page
 	{
 	public:
 		Level1();
 		~Level1();
-
-		std::wstring GetView();
 	};
 }

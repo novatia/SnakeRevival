@@ -15,22 +15,27 @@
 
 #include "Frame.h"
 
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 MainMenu::MainMenu()
 {
-	root_object = std::make_unique<LayerLayout>();
+	m_RootObject = std::make_unique<LayerLayout>();
 
 	VerticalLayout* vl = new VerticalLayout();
 	vl->SetPosition(0,1);
+	vl->SetAlignment(Center, Center);
 
-	HorizontalLayout* dos = new HorizontalLayout();
+	HorizontalLayout* dos  = new HorizontalLayout();
+	dos->SetAlignment(Center, Center);
+
 	dos->Add(new DLetter());
 	dos->Add(new OLetter());
 	dos->Add(new SLetter());
 
 	HorizontalLayout* snake = new HorizontalLayout();
+	snake->SetAlignment(Center, Center);
+
 	Frame *f = new Frame();
 
 	SLetter *s = new SLetter();
@@ -57,32 +62,21 @@ MainMenu::MainMenu()
 	vl->Add(dos);
 	vl->Add(snake);
 
-	root_object->Add(*f, 0);
-	root_object->Add(*vl,1);
+	m_RootObject->Add(*f, 0);
+	m_RootObject->Add(*vl,1);
 
 	Text *play = new Text(L"PLAY");
-	play->top = 15;
-	play->selected = true;
+	play->SetAlignment(Center, Center);
+	play->SetPosition(0,15);
+	play->m_Selected = true;
 
 	Text *quit = new Text(L"QUIT");
-	quit->top = 17;
+	quit->SetAlignment(Center, Center);
+	quit->SetPosition(0, 17);
 
-	root_object->Add(*play, 1);
-	root_object->Add(*quit, 1);
+	m_RootObject->Add(*play, 1);
+	m_RootObject->Add(*quit, 1);
 
-}
-
-std::wstring  MainMenu::GetView() {
-	std::wstring draw;
-
-	int height = root_object->GetHeight();
-
-	for (int row = 0; row < height; row++) {
-		draw += root_object->GetRow(row);
-		draw += L"\n";
-	}
-
-	return draw;
 }
 
 MainMenu::~MainMenu()

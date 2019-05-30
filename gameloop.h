@@ -1,20 +1,22 @@
 #pragma once
-#include "pch.h"
+#include <list>
+#include <thread>
+#include <conio.h>
+
 #include "Display.h"
 #include "Commands.h";
 
-using namespace std;
-using namespace gamestructure::commands;
-namespace gamestructure 
+using namespace std; ////NON SI FA!!! NAME SPACE POLLUTION!!!
+using namespace SnakeRevival::commands;////NON SI FA!!! NAME SPACE POLLUTION!!!
+
+namespace SnakeRevival 
 {
 	namespace gameloop
-
-
 	{
 		std::list<IEntity> gameEntities;
 
 		Display*  gameView;
-		std::string* updatedDisplay;
+		std::wstring* updatedDisplay;
 		Player* snake;
 		ScoreSystem* scoreSystem;
 		FruitSpawnerSystem* fruitSpawnerSystem;
@@ -27,7 +29,7 @@ namespace gamestructure
 
 		void SetGameElements() {
 			gameView = new Display();
-			updatedDisplay = new std::string();
+			updatedDisplay = new std::wstring();
 
 			snake = new Player();
 			scoreSystem = new ScoreSystem();

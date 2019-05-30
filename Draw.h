@@ -1,9 +1,7 @@
 #pragma once
 #include <string>
 
-
-
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class Draw
 		{
@@ -15,17 +13,21 @@ namespace gamestructure {
 			void SetColor(Colors new_color);
 			std::wstring GetColor();
 			std::wstring GetEndColor();
+
 			void SetPosition(int left,int top);
 			std::pair<int, int> GetPosition();
+
 			void SetAlignment(Alignments horizontal, Alignments vertical);
 			std::pair<Alignments, Alignments> GetAlignment();
 		protected:
-			Colors color = None;
-			Alignments horizontal_alignment = Left;
-			Alignments vertical_alignment = Top;
+			Colors m_Color = None;
+			Alignments m_HorizontalAlignment = Left;
+			Alignments m_VerticalAlignment = Top;
 
-			int top  = 0;
-			int left = 0;
+			int m_Top  = 0;
+			int m_Left = 0;
+
+			std::string m_Name;
 		};
 	}
 }

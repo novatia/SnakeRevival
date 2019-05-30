@@ -1,15 +1,13 @@
 #pragma once
 #include "Draw.h"
-#include <string>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class Text :
 			public Draw
 		{
 		public:
-			int top=0;
-			bool selected = false;
+			bool m_Selected = false;
 			Text(std::wstring text);
 			~Text();
 
@@ -17,7 +15,7 @@ namespace gamestructure {
 			virtual int GetHeight();
 			virtual std::wstring GetRow(int num);
 		private:
-			std::wstring txt;
+			std::wstring m_Text;
 		};
 	}
 }

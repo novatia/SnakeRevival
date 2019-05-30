@@ -3,39 +3,39 @@
 #include <string>
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
-void gamestructure::composite::Draw::SetColor(Colors new_color)
+void Draw::SetColor(Colors new_color)
 {
-	color = new_color;
+	m_Color = new_color;
 }
 
-void gamestructure::composite::Draw::SetPosition(int l,int t)
+void Draw::SetPosition(int l,int t)
 {
-	top = t;
-	left = l;
+	m_Top = t;
+	m_Left = l;
 }
 
-std::pair<int, int> gamestructure::composite::Draw::GetPosition()
+std::pair<int, int> Draw::GetPosition()
 {
-	return std::pair<int, int>(left,top);
+	return std::pair<int, int>(m_Left,m_Top);
 }
 
-void gamestructure::composite::Draw::SetAlignment(Alignments horizontal, Alignments vertical)
+void Draw::SetAlignment(Alignments horizontal, Alignments vertical)
 {
-	horizontal_alignment = horizontal;
-	vertical_alignment = vertical;
+	m_HorizontalAlignment = horizontal;
+	m_VerticalAlignment = vertical;
 }
 
-pair<Alignments, Alignments> gamestructure::composite::Draw::GetAlignment()
+pair<Alignments, Alignments> Draw::GetAlignment()
 {
-	return pair<Alignments, Alignments>(horizontal_alignment,vertical_alignment);
+	return pair<Alignments, Alignments>(m_HorizontalAlignment,m_VerticalAlignment);
 }
 
-wstring gamestructure::composite::Draw::GetColor()
+wstring Draw::GetColor()
 {
-	switch (color) {
+	switch (m_Color) {
 	case Blue:return L"\x1B[34m";
 	case Red:return L"\x1B[31m";
 	case Green:return L"\x1B[32m";
@@ -47,9 +47,9 @@ wstring gamestructure::composite::Draw::GetColor()
 	return L"";
 }
 
-wstring gamestructure::composite::Draw::GetEndColor()
+wstring Draw::GetEndColor()
 {
-	if (color != None)
+	if (m_Color != None)
 		return L"\033[0m";
 
 	return L"";

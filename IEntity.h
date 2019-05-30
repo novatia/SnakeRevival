@@ -1,23 +1,15 @@
 #pragma once
-class IEntity
-{
-public:
-	IEntity() {
+
+namespace SnakeRevival {
+	class IEntity
+	{
+	public:
+		IEntity() {
+		};
+		virtual ~IEntity() {
+		};
+
+		virtual void Update();
 	};
-	virtual ~IEntity() {
-	};
 
-	virtual void Update() = 0;
-};
-
-/*
-
-IEntity::IEntity()
-{
 }
-
-
-IEntity::~IEntity()
-{
-}
-*/

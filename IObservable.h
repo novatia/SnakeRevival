@@ -1,7 +1,7 @@
 #pragma once
 #include "IObserver.h"
 
-namespace gamestructure {
+namespace SnakeRevival {
 
 	enum class Event {
 

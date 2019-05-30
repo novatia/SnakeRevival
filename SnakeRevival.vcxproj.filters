@@ -13,60 +13,351 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\composite">
+      <UniqueIdentifier>{382c48eb-73f8-4b37-8ad7-ae6ccff56940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\command">
+      <UniqueIdentifier>{b6c31343-b1b7-48c9-a495-42888cc3972d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\zbuffer">
+      <UniqueIdentifier>{b5d1ea05-6548-4900-898b-b2c8a193bc7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\observer">
+      <UniqueIdentifier>{ee797954-a18f-4d20-a66f-ea81d02b26e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gameloop">
+      <UniqueIdentifier>{2f4f10c6-b10c-413e-b3ee-0c627014e6aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EMS">
+      <UniqueIdentifier>{3d90b3c4-eb26-4f3f-8a44-917c43098556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\composite">
+      <UniqueIdentifier>{8e1e8b80-9e14-4cb6-906f-014512e7ecd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\command">
+      <UniqueIdentifier>{1aaa8d95-043e-4a9c-9773-51245d5272f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameloop">
+      <UniqueIdentifier>{5a960899-e738-4e49-a53a-ebeb47dcba5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\zbuffer">
+      <UniqueIdentifier>{d430714b-6ed7-40af-9bfa-62ddce04f9b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EMS">
+      <UniqueIdentifier>{94bc2adc-a1c0-4d4f-845c-0ca8c6346bf2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ICommand.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ALetter.h">
+      <Filter>Header Files\composite</Filter>
     </ClInclude>
     <ClInclude Include="Commands.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\command</Filter>
     </ClInclude>
     <ClInclude Include="Display.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\zbuffer</Filter>
     </ClInclude>
     <ClInclude Include="DisplayBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gameloop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gameelements.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IEntity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IObserver.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\zbuffer</Filter>
     </ClInclude>
     <ClInclude Include="IObservable.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>Header Files\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="gameloop.h">
+      <Filter>Header Files\gameloop</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Header Files\command</Filter>
+    </ClInclude>
+    <ClInclude Include="gameelements.h">
+      <Filter>Header Files\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="IEntity.h">
+      <Filter>Header Files\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="BLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="CLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="DLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="ELetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="FLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Fruit.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <Filter>Header Files\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="GLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="HLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="HorizontalLayout.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="ILetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="JLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="KLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerLayout.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFrame.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="LLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="MLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="NLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="OLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Page.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="PLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="QLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="RLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="SLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="SPACELetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="TLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="ULetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="VerticalLayout.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="VLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="WLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="Worm.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="XLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="YLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="ZLetter.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeRevivalGameLoop.h">
+      <Filter>Header Files\gameloop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SnakeRevival.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ICommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Commands.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\command</Filter>
     </ClCompile>
     <ClCompile Include="Display.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\zbuffer</Filter>
     </ClCompile>
     <ClCompile Include="DisplayBuffer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\zbuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="DLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="ELetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="FLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Fruit.cpp">
+      <Filter>Source Files\composite</Filter>
     </ClCompile>
     <ClCompile Include="gameelements.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>Source Files\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="GLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="HLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="HorizontalLayout.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommand.cpp">
+      <Filter>Source Files\command</Filter>
+    </ClCompile>
+    <ClCompile Include="ILetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="JLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="KLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerLayout.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelFrame.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="LLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="MLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="NLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="OLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Page.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="PLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="QLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="RLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="SLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="SPACELetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="TLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="ULetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="VerticalLayout.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="VLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="WLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="Worm.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="XLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="YLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="ZLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="CLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="BLetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="ALetter.cpp">
+      <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandMain.cpp">
+      <Filter>Source Files\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeRevivalGameLoop.cpp">
+      <Filter>Source Files\gameloop</Filter>
+    </ClCompile>
+    <ClCompile Include="IEntity.cpp">
+      <Filter>Source Files\EMS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

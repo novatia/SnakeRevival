@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 
-namespace gamestructure {
+namespace SnakeRevival {
 	namespace composite {
 		class HorizontalLayout :
 			public Draw
@@ -31,7 +31,7 @@ namespace gamestructure {
 			}
 
 		private:
-			std::vector< Draw* > elements;
+			std::vector< Draw* > m_Elements;
 		};
 	}
 }

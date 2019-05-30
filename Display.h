@@ -1,22 +1,21 @@
 #pragma once
 #include "DisplayBuffer.h"
 
-using namespace std;
+namespace SnakeRevival {
+	class Display
+	{
+	public:
+		Display();
+		~Display();
 
-class Display
-{
-public:
-	Display();
-	~Display();
+		void PresentDisplay();
+		void WriteNextDisplay(const std::wstring& input);
 
-	void PresentDisplay();
-	void WriteNextDisplay(const std::string& input);
-	
-private:
-	void Swap();
+	private:
+		void Swap();
 
-	DisplayBuffer views[2];
-	DisplayBuffer* currentView_;
-	DisplayBuffer* nextView_;
-};
-
+		DisplayBuffer views[2];
+		DisplayBuffer* currentView_;
+		DisplayBuffer* nextView_;
+	};
+}

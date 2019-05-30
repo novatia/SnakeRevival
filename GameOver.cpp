@@ -16,25 +16,30 @@
 
 #include "Frame.h"
 
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 GameOver::GameOver()
 {
-	root_object = std::make_unique<LayerLayout>();
+	m_RootObject = std::make_unique<LayerLayout>();
 
 	Frame *f = new Frame();
 
 	VerticalLayout* vl = new VerticalLayout();
 	vl->SetPosition(0, 1);
-
+	vl->SetAlignment(Center, Center);
 	HorizontalLayout* game = new HorizontalLayout();
+	game->SetColor(Blue);
+	game->SetAlignment(Center, Center);
 	game->Add(new GLetter());
 	game->Add(new ALetter());
 	game->Add(new MLetter());
 	game->Add(new ELetter());
 
 	HorizontalLayout* over = new HorizontalLayout();
+	over->SetColor(Blue);
+	over->SetAlignment(Center, Center);
+
 	over->Add(new OLetter());
 	over->Add(new VLetter());
 	over->Add(new ELetter());
@@ -43,28 +48,15 @@ GameOver::GameOver()
 	vl->Add(game);
 	vl->Add(over);
 
-	root_object->Add(*f, 0);
-	root_object->Add(*vl, 1);
+	m_RootObject->Add(*f, 0);
+	m_RootObject->Add(*vl, 1);
 
 	Text *gotomenu = new Text(L"PRESS ANY BUTTON");
-	gotomenu->top = 15;
-	gotomenu->selected = true;
+	gotomenu->SetAlignment(Center, Center);
+	gotomenu->SetPosition(0, 15);
+	gotomenu->m_Selected = true;
 
-	root_object->Add(*gotomenu, 1);
-}
-
-std::wstring  GameOver::GetView()
-{
-	std::wstring draw;
-
-	int height = root_object->GetHeight();
-
-	for (int row = 0; row < height; row++) {
-		draw += root_object->GetRow(row);
-		draw += L"\n";
-	}
-
-	return draw;
+	m_RootObject->Add(*gotomenu, 1);
 }
 
 GameOver::~GameOver()

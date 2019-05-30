@@ -1,9 +1,7 @@
 #pragma once
 #include "IObservable.h"
 #include "gameelements.h"
-namespace gamestructure {
-
-
+namespace SnakeRevival {
 	class IObserver
 	{
 	public:

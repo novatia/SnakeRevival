@@ -3,7 +3,7 @@
 #include <string>
 
 using namespace std;
-using namespace gamestructure;
+using namespace SnakeRevival;
 using namespace composite;
 
 NLetter::NLetter()
