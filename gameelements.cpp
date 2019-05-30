@@ -51,6 +51,9 @@ void gamestructure::Player::Update(){
 void gamestructure::Player::ExtendSnake() {
 
 }
+gamestructure::position& gamestructure::Player::GetHeadPosition() {
+	return snake->at(0);
+}
 
 gamestructure::Player::Player() : currentDirection(Direction::Right), snake() {
 
@@ -77,7 +80,8 @@ void gamestructure::ScoreSystem::SetScoreIsChangedTrue() {
 		scoreIsChanged = true;
 	}
 }
-void gamestructure::ScoreSystem::AnswerToObservable(IObservable* observable, Event occurredEvent) {
+/*
+void gamestructure::ScoreSystem::AnswerToObservable( Event occurredEvent) {
 	if (occurredEvent ==Event::EatenFruitItem) {
 		SetScoreIsChangedTrue();
 		SetScoreIncrement(10);
@@ -98,28 +102,32 @@ void gamestructure::ScoreSystem::AnswerToObservable(IObservable* observable, Eve
 		}
 	}
 }
+*/
 gamestructure::FruitSpawnerSystem::FruitSpawnerSystem() {}
 gamestructure::FruitSpawnerSystem::~FruitSpawnerSystem(){}
 void gamestructure::FruitSpawnerSystem::Update() {
 
 }
 
-void gamestructure::FruitSpawnerSystem::AnswerToObservable(IObservable* observable, Event occurredEvent) {
+/*
+void gamestructure::FruitSpawnerSystem::AnswerToObservable( Event occurredEvent) {
 	if (occurredEvent == Event::EatenFruitItem || occurredEvent == Event::EatenSuperFruitItem || occurredEvent == Event::EatenPoisonItem) {
 		SetGenerateItemBoolValuesToTrue(observable);
 	}
-}
+}*/
 
 
 void gamestructure::FruitSpawnerSystem::SetGenerateItemBoolValuesToTrue(IObservable* observable) {
 	Player* observableAsPlayer= static_cast<Player*>(observable);
 
 	//adjust these rows..... oh yeah!!
-	int headPos_x = observableAsPlayer->GetHeadPosition()->x;
-	int headPos_y = observableAsPlayer->GetHeadPosition()->y;
+	int headPos_x = observableAsPlayer->GetHeadPosition().x;
+	int headPos_y = observableAsPlayer->GetHeadPosition().y;
 
-	if(headPos_x==firstItem.itemPosition.x && headPos_x == firstItem.itemPosition.y)
+	if (headPos_x == firstItem.itemPosition.x && headPos_x == firstItem.itemPosition.y)
+	{
 
+	}
 
 }
 

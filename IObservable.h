@@ -35,7 +35,7 @@ namespace gamestructure {
 				std::list<IObserver*>::iterator it;
 
 				for (it = observers->begin(); it != observers->end(); it++) {
-					(*it)->AnswerToObservable(this,occurredEvent);
+					//(*it)->AnswerToObservable(occurredEvent);
 				}
 			}
 		};

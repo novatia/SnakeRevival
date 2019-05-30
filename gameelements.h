@@ -13,6 +13,11 @@ namespace gamestructure {
 		Up =3,
 
 	};
+	enum class ItemType {
+		SuperFruit=1,
+		Fruit=2,
+		Poison=3,
+	};
 
 	
 	struct position 
@@ -24,9 +29,7 @@ namespace gamestructure {
 	struct item
 	{
 		position itemPosition;
-		bool isSuperFruit;
-		bool isFruit;
-		bool isPoison;
+		ItemType itemType;
 
 	};
 	class Player : public IEntity, public IObservable
@@ -36,7 +39,7 @@ namespace gamestructure {
 		virtual ~Player();
 		void SetCurrentDirection(Direction newDirection);
 		void Update();
-		position* GetHeadPosition();
+		position& GetHeadPosition();
 	private:
 		Direction currentDirection;
 		std::vector<position>* snake= new std::vector<position>();
@@ -47,7 +50,7 @@ namespace gamestructure {
 
 	};
 
-	class ScoreSystem : public IEntity, public IObserver
+	class ScoreSystem : public IEntity  //, public IObserver
 	{
 	public:
 		ScoreSystem();
@@ -55,7 +58,7 @@ namespace gamestructure {
 
 		void Update();
 		void SetScoreIsChangedTrue();
-		void AnswerToObservable(IObservable* observable, Event occurredEvent);
+		//void AnswerToObservable(Event occurredEvent);
 		void SetScoreIncrement(int scoreIncrementValue);
 	private:
 		bool scoreIsChanged;
@@ -65,13 +68,13 @@ namespace gamestructure {
 
 	};
 	
-	class FruitSpawnerSystem : public IEntity, public IObserver
+	class FruitSpawnerSystem : public IEntity//, public IObserver
 	{
 	public:
 		FruitSpawnerSystem();
 		virtual ~FruitSpawnerSystem();
 		void Update();
-		void AnswerToObservable(IObservable* observable, Event occurredEvent);
+		//void AnswerToObservable(Event occurredEvent);
 		void SetGenerateItemBoolValuesToTrue(IObservable* observable);
 	private:
 		item firstItem;
