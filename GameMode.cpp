@@ -4,6 +4,7 @@
 #include <memory>
 
 using namespace std;
+using namespace gamestructure;
 
 GameMode* GameMode::instance;
 

@@ -3,32 +3,35 @@
 #include <vector>
 #include <memory>
 
-class HorizontalLayout :
-	public Draw
-{
-public:
-	HorizontalLayout();
-	~HorizontalLayout();
-	void Add( Draw *element);
+namespace gamestructure {
+	namespace composite {
+		class HorizontalLayout :
+			public Draw
+		{
+		public:
+			HorizontalLayout();
+			~HorizontalLayout();
+			void Add(Draw *element);
 
-	virtual int GetWidth();
-	virtual int GetHeight();
-	virtual std::string GetRow(int num);
+			virtual int GetWidth();
+			virtual int GetHeight();
+			virtual std::wstring GetRow(int num);
 
-	operator std::string() {
-		std::string draw;
+			operator std::wstring() {
+				std::wstring draw;
 
-		int height = GetHeight();
+				int height = GetHeight();
 
-		for (int row = 0; row < height; row++) {
-			draw += GetRow(row);
-			draw += "\n";
-		}
+				for (int row = 0; row < height; row++) {
+					draw += GetRow(row);
+					draw += L"\n";
+				}
 
-		return draw;
+				return draw;
+			}
+
+		private:
+			std::vector< Draw* > elements;
+		};
 	}
-
-private:
-	std::vector< Draw* > elements;
-};
-
+}

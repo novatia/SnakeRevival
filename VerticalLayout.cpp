@@ -3,6 +3,8 @@
 #include <vector>
 
 using namespace std;
+using namespace gamestructure;
+using namespace composite;
 
 VerticalLayout::VerticalLayout()
 {
@@ -42,11 +44,17 @@ int VerticalLayout::GetHeight()
 }
 
 
-std::string VerticalLayout::GetRow(int num)
+wstring VerticalLayout::GetRow(int num)
 {
-	std::string row ;
+	if (num < top) {
+		return L"";
+	}
+
+	std::wstring row ;
 	int current_row = 0;
 	for (auto it = elements.begin(); it < elements.end(); it++) {
+	
+
 		for (int r = 0; r < (*it)->GetHeight(); r++) {
 			if (num == r + current_row) {
 				
@@ -56,5 +64,5 @@ std::string VerticalLayout::GetRow(int num)
 		current_row += elements.back()->GetHeight();
 	}
 
-	return std::string();
+	return row;
 }

@@ -2,7 +2,10 @@
 #include "Frame.h"
 #include <string>
 
-using namespace std;
+using namespace std; 
+using namespace gamestructure;
+using namespace composite;
+
 
 Frame::Frame()
 {
@@ -13,35 +16,37 @@ Frame::~Frame()
 }
 
 
-string Frame::GetRow(int num)
+wstring Frame::GetRow(int num)
 {
 	switch (num) {
-	case 0: return  "╔═════════════════════════════════════════════════════════════════════════════╗";
-	case 1: return  "║                                                                             ║";
-	case 2: return  "║                                                                             ║";
-	case 3: return  "║                                                                             ║";
-	case 4: return  "║                                                                             ║";
-	case 5: return  "║                                                                             ║";
-	case 6: return  "║                                                                             ║";
-	case 7: return  "║                                                                             ║";
-	case 8: return  "║                                                                             ║";
-	case 9: return  "║                                                                             ║";
-	case 10: return "║                                                                             ║";
-	case 11: return "║                                                                             ║";
-	case 12: return "║                                                                             ║";
-	case 13: return "║                                                                             ║";
-	case 14: return "║                                                                             ║";
-	case 15: return "║                                                                             ║";
-	case 16: return "║                                                                             ║";
-	case 17: return "║                                                                             ║";
-	case 18: return "║                                                                             ║";
-	case 19: return "║                                                                             ║";
-	case 20: return "║                                                                             ║";
-	case 21: return "║                                                                             ║";
-	case 22: return "║                                                                             ║";
-	case 23: return "║                                                                             ║";
-	case 24: return "╚═════════════════════════════════════════════════════════════════════════════╝";
+	case 0: return  L"╔═════════════════════════════════════════════════════════════════════════════╗";
+	case 1: return  L"║                                                                             ║";
+	case 2: return  L"║                                                                             ║";
+	case 3: return  L"║                                                                             ║";
+	case 4: return  L"║                                                                             ║";
+	case 5: return  L"║                                                                             ║";
+	case 6: return  L"║                                                                             ║";
+	case 7: return  L"║                                                                             ║";
+	case 8: return  L"║                                                                             ║";
+	case 9: return  L"║                                                                             ║";
+	case 10: return L"║                                                                             ║";
+	case 11: return L"║                                                                             ║";
+	case 12: return L"║                                                                             ║";
+	case 13: return L"║                                                                             ║";
+	case 14: return L"║                                                                             ║";
+	case 15: return L"║                                                                             ║";
+	case 16: return L"║                                                                             ║";
+	case 17: return L"║                                                                             ║";
+	case 18: return L"║                                                                             ║";
+	case 19: return L"║                                                                             ║";
+	case 20: return L"║                                                                             ║";
+	case 21: return L"║                                                                             ║";
+	case 22: return L"║                                                                             ║";
+	case 23: return L"║                                                                             ║";
+	case 24: return L"╚═════════════════════════════════════════════════════════════════════════════╝";
 	}
+
+	return L"";
 }
 
 int Frame::GetWidth()

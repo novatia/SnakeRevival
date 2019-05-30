@@ -3,6 +3,8 @@
 #include <vector>
 
 using namespace std;
+using namespace gamestructure;
+using namespace composite;
 
 HorizontalLayout::HorizontalLayout()
 {
@@ -40,9 +42,9 @@ int HorizontalLayout::GetHeight()
 
 }
 
-std::string HorizontalLayout::GetRow(int num)
+wstring HorizontalLayout::GetRow(int num)
 {
-	std::string row;
+	wstring row;
 	for (auto it = elements.begin(); it < elements.end(); it++)
 		row += (*it)->GetRow(num);
 

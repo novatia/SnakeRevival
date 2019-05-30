@@ -63,6 +63,72 @@
     <ClInclude Include="LayerLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ILetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ULetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WLetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -111,6 +177,72 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LayerLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ILetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ULetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZLetter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

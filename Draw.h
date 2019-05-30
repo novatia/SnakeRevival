@@ -1,10 +1,14 @@
 #pragma once
 #include <string>
 
-class Draw
-{
-public:
-	virtual int GetWidth()=0;
-	virtual int GetHeight() = 0;
-	virtual std::string GetRow(int num) = 0;
-};
+namespace gamestructure {
+	namespace composite {
+		class Draw
+		{
+		public:
+			virtual int GetWidth() = 0;
+			virtual int GetHeight() = 0;
+			virtual std::wstring GetRow(int num) = 0;
+		};
+	}
+}

@@ -2,6 +2,8 @@
 #include "GameMode.h"
 #include "MainMenu.h"
 
+using namespace gamestructure;
+
 class SnakeRevival
 {
 
@@ -13,4 +15,3 @@ public:
 	~SnakeRevival();
 	void Start();
 };
-

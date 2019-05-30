@@ -3,6 +3,8 @@
 #include <string>
 
 using namespace std;
+using namespace gamestructure;
+using namespace composite;
 
 /*
 string Draw::GetRow(int num)

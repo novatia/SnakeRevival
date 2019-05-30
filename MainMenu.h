@@ -1,12 +1,14 @@
 #pragma once
 #include "Page.h"
-class MainMenu :
-	public Page
-{
-public:
-	MainMenu();
-	~MainMenu();
 
-	std::string GetView();
-};
+namespace gamestructure {
+	class MainMenu :
+		public composite::Page
+	{
+	public:
+		MainMenu();
+		~MainMenu();
 
+		std::wstring GetView();
+	};
+}

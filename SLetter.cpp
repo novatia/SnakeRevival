@@ -3,6 +3,8 @@
 #include <string>
 
 using namespace std;
+using namespace gamestructure;
+using namespace composite;
 
 SLetter::SLetter()
 {
@@ -13,22 +15,26 @@ SLetter::~SLetter()
 {
 }
 
-string SLetter::GetRow(int num)
+wstring SLetter::GetRow(int num)
 {
-	switch (num) {
-	case 0: return "          ";
-	case 1: return " ______   ";
-	case 2: return "/\\  ___\\  ";
-	case 3: return "\\ \\___  \\ ";
-	case 4: return " \\/\\_____\\";
-	case 5: return "  \\/_____/";
-	case 6: return "          ";
+	switch (num) 
+	{
+		case 0: return L"          ";
+		case 1: return L" ______   ";
+		case 2: return L"/\\  ___\\  ";
+		case 3: return L"\\ \\___  \\ ";
+		case 4: return L" \\/\\_____\\";
+		case 5: return L"  \\/_____/";
+		case 6: return L"          ";
 	}
+
+	return L"";
 }
 
 int SLetter::GetWidth()
 {
 	return 10;
+	//return 29;
 }
 
 int SLetter::GetHeight()

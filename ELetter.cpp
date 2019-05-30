@@ -3,6 +3,8 @@
 #include <string>
 
 using namespace std;
+using namespace gamestructure;
+using namespace composite;
 
 ELetter::ELetter()
 {
@@ -13,17 +15,19 @@ ELetter::~ELetter()
 {
 }
 
-string ELetter::GetRow(int num)
+wstring ELetter::GetRow(int num)
 {
 	switch (num) {
-		case 0: return "          ";
-		case 1: return " ______   ";
-		case 2: return "/\\  ___\\  ";
-		case 3: return "\\ \\  __\\  ";
-		case 4: return " \\ \\_____\\";
-		case 5: return "  \\/_____/";
-		case 6: return "          ";
+		case 0: return L"          ";
+		case 1: return L" ______   ";
+		case 2: return L"/\\  ___\\  ";
+		case 3: return L"\\ \\  __\\  ";
+		case 4: return L" \\ \\_____\\";
+		case 5: return L"  \\/_____/";
+		case 6: return L"          ";
 	}
+
+	return L"";
 }
 
 int ELetter::GetWidth()

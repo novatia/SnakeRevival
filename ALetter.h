@@ -2,14 +2,18 @@
 #include "Draw.h"
 #include <string>
 
-class ALetter :
-	public Draw
-{
-public:
-	ALetter();
-	~ALetter();
+namespace gamestructure {
+	namespace composite {
+		class ALetter :
+			public Draw
+		{
+		public:
+			ALetter();
+			~ALetter();
 
-	virtual int GetWidth();
-	virtual int GetHeight();
-	virtual std::string GetRow(int num);
-};
+			virtual int GetWidth();
+			virtual int GetHeight();
+			virtual std::wstring GetRow(int num);
+		};
+	}
+}
