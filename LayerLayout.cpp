@@ -15,7 +15,7 @@ int GetSizeNoColours(wstring string) {
 	return noc_size;
 }
 
-wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, Alignments alignment, int W,Colors parent_color)
+wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, Alignment alignment, int W,Color parent_color)
 {
 	wstring first_string = str;
 	wstring second_string = current_row;
@@ -27,10 +27,10 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 	}
 
 	if (second_string.size() == 0) {
-		if (alignment == Right)
+		if (alignment == Alignment::Right)
 			first_string.insert(0, (W-first_string.size() + position.first),' ');
 
-		if (alignment == Left) {
+		if (alignment == Alignment::Left) {
 			int left_index = (W - first_string.size() + position.first);
 
 			if (left_index < 0)
@@ -38,7 +38,7 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 
 			first_string.append(left_index, ' ');
 		}
-		if (alignment == Center) {
+		if (alignment == Alignment::Center) {
 			int left_index = (W - first_string.size()) / 2 + position.first;
 			if (left_index < 0)
 				left_index = 0;
@@ -59,13 +59,13 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 	//center alignment
 	int start_index = 0;
 
-	if (alignment == Right) {
+	if (alignment == Alignment::Right) {
 		start_index = W;
 		start_index -= position.first;
 	}
 
 	else {
-		if (alignment == Center)
+		if (alignment == Alignment::Center)
 			start_index += first_string.size() / 2 - second_string.size() / 2;
 
 		start_index += position.first;
@@ -143,7 +143,7 @@ wstring  LayerLayout::GetRow(int num)
 	for (rit = m_Elements.begin(); rit != m_Elements.end(); ++rit)
 		for (vector<Draw*>::reverse_iterator i = rit->second.rbegin(); i != rit->second.rend(); ++i) {
 			wstring str = (*i)->GetRow(num);
-			current_row = MergeStrings(current_row, str, (*i)->GetPosition(), (*i)->GetAlignment().first, GetWidth(),None);
+			current_row = MergeStrings(current_row, str, (*i)->GetPosition(), (*i)->GetAlignment().first, GetWidth(),Color::None);
 		}
 
 	return current_row;

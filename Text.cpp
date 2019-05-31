@@ -43,3 +43,8 @@ wstring Text::GetRow(int num)
 
 	return L"";
 }
+
+void Text::AddActionListener(strategy::IActionListener* ActionListener)
+{
+	m_ActionListener = ActionListener;
+}

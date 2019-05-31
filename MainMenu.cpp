@@ -12,11 +12,16 @@
 #include "OLetter.h"
 #include "SLetter.h"
 #include "Text.h"
-
+#include "GotoLevel1Action.h"
+#include "QuitAction.h"
 #include "Frame.h"
+#include "InputManager.h"
+#include "SnakeRevivalGameLoop.h";
 
 using namespace SnakeRevival;
 using namespace composite;
+using namespace strategy;
+using namespace singleton;
 
 MainMenu::MainMenu()
 {
@@ -24,40 +29,40 @@ MainMenu::MainMenu()
 
 	VerticalLayout* vl = new VerticalLayout();
 	vl->SetPosition(0,1);
-	vl->SetAlignment(Center, Center);
+	vl->SetAlignment(Alignment::Center, Alignment::Center);
 
 	HorizontalLayout* dos  = new HorizontalLayout();
-	dos->SetAlignment(Center, Center);
+	dos->SetAlignment(Alignment::Center, Alignment::Center);
 
 	dos->Add(new DLetter());
 	dos->Add(new OLetter());
 	dos->Add(new SLetter());
 
 	HorizontalLayout* snake = new HorizontalLayout();
-	snake->SetAlignment(Center, Center);
+	snake->SetAlignment(Alignment::Center, Alignment::Center);
 
 	Frame *f = new Frame();
 
-	SLetter *s = new SLetter();
-	s->SetColor(Blue);
+	m_S = new SLetter();
+	m_S->SetColor(Color::Blue);
 
-	NLetter *n = new NLetter();
-	n->SetColor(Red);
+	m_N = new NLetter();
+	m_N->SetColor(Color::Red);
 
-	ALetter *a = new ALetter();
-	a->SetColor(Yellow);
+	m_A = new ALetter();
+	m_A->SetColor(Color::Yellow);
 	
-	KLetter *k = new KLetter();
-	k->SetColor(Blue);
+	m_K = new KLetter();
+	m_K->SetColor(Color::Blue);
 	
-	ELetter *e = new ELetter();
-	e->SetColor(Green);
+	m_E = new ELetter();
+	m_E->SetColor(Color::Green);
 
-	snake->Add(s);
-	snake->Add(n);
-	snake->Add(a);
-	snake->Add(k);
-	snake->Add(e);
+	snake->Add(m_S);
+	snake->Add(m_N);
+	snake->Add(m_A);
+	snake->Add(m_K);
+	snake->Add(m_E);
 
 	vl->Add(dos);
 	vl->Add(snake);
@@ -65,20 +70,106 @@ MainMenu::MainMenu()
 	m_RootObject->Add(*f, 0);
 	m_RootObject->Add(*vl,1);
 
-	Text *play = new Text(L"PLAY");
-	play->SetAlignment(Center, Center);
-	play->SetPosition(0,15);
-	play->m_Selected = true;
+	m_PlayButton = new Text(L"PLAY");
+	m_PlayButton->SetAlignment(Alignment::Center, Alignment::Center);
+	m_PlayButton->SetPosition(0,15);
+	m_PlayButton->AddActionListener(new GotoLevel1Action());
+	m_PlayButton->m_Selected = true;
+	m_PlayButton->SetColor(Color::Yellow);
 
-	Text *quit = new Text(L"QUIT");
-	quit->SetAlignment(Center, Center);
-	quit->SetPosition(0, 17);
+	m_QuitButton = new Text(L"QUIT");
+	m_QuitButton->SetAlignment(Alignment::Center, Alignment::Center);
+	m_QuitButton->SetPosition(0, 17);
+	m_QuitButton->AddActionListener(new QuitAction());
 
-	m_RootObject->Add(*play, 1);
-	m_RootObject->Add(*quit, 1);
-
+	m_RootObject->Add(*m_PlayButton, 1);
+	m_RootObject->Add(*m_QuitButton, 1);
 }
 
 MainMenu::~MainMenu()
 {
+
+}
+
+void MainMenu::SelectNext()
+{
+	if (m_PlayButton->m_Selected )
+	{
+		m_QuitButton->m_Selected = true;
+		m_QuitButton->SetColor(Color::Yellow);
+
+		m_PlayButton->m_Selected = false;
+		m_PlayButton->SetColor(Color::White);
+	}
+	else 
+	{
+		m_QuitButton->m_Selected = false;
+		m_QuitButton->SetColor(Color::White);
+
+		m_PlayButton->m_Selected = true;
+		m_PlayButton->SetColor(Color::Yellow);
+	}
+}
+
+void MainMenu::Update() {
+	InputManager *IM = InputManager::GetInstance();
+
+	if (IM->ButtonPressed())
+	{
+		switch (IM->GetButtonPressed())
+		{
+		case Key::Up: case Key::Down:
+		{
+			SelectNext();
+			break;
+		}
+		case Key::Enter : 
+		{
+			if (m_PlayButton->m_Selected)
+				m_PlayButton->m_ActionListener->ActionPerformed();
+			if (m_QuitButton->m_Selected)
+				m_QuitButton->m_ActionListener->ActionPerformed();
+		}
+		};
+	}
+
+	RotateColours();
+}
+
+Color Increase(Color color) {
+	switch (color) {
+	case Color::None: return Color::None;
+	case Color::Red:  return Color::Green;
+	case Color::Green: return Color::Blue;
+	case Color::Blue: return Color::Yellow;
+	case Color::Yellow: return Color::Purple;
+	case Color::Purple: return Color::White;
+	case Color::White: return Color::Red;
+	}
+
+	return Color::None;
+}
+
+void MainMenu::RotateColours()
+{
+	SnakeRevivalGameLoop *SL = SnakeRevivalGameLoop::GetInstance();
+	int time = round(SL->m_TimeElapsed*1000.0f);
+	if (time % 100 == 0) {
+
+		m_S->SetColor(m_ColorCounter);
+		m_ColorCounter = Increase(m_ColorCounter);
+
+		m_N->SetColor(m_ColorCounter);
+		m_ColorCounter = Increase(m_ColorCounter);
+
+		m_A->SetColor(m_ColorCounter);
+		m_ColorCounter = Increase(m_ColorCounter);
+
+		m_K->SetColor(m_ColorCounter);
+		m_ColorCounter = Increase(m_ColorCounter);
+
+		m_E->SetColor(m_ColorCounter);
+		m_ColorCounter = Increase(m_ColorCounter);
+
+	}
 }

@@ -2,11 +2,14 @@
 #include "Page.h"
 
 namespace SnakeRevival {
-	class Level1 :
-		public composite::Page
-	{
-	public:
-		Level1();
-		~Level1();
-	};
+	namespace composite {
+		class Level1 :
+			public Page
+		{
+		public:
+			Level1();
+			~Level1();
+			virtual void execute();
+		};
+	}
 }

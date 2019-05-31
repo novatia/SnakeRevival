@@ -1,6 +1,7 @@
 #pragma once
 #include "IObservable.h"
 #include "gameelements.h"
+
 namespace SnakeRevival {
 	class IObserver
 	{

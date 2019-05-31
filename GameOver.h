@@ -2,11 +2,16 @@
 #include "Page.h"
 
 namespace SnakeRevival {
-	class GameOver :
-		public composite::Page
-	{
-	public:
-		GameOver();
-		~GameOver();
-	};
+	namespace composite {
+
+		class GameOver :
+			public Page
+		{
+		public:
+			GameOver();
+			~GameOver();
+			virtual void execute();
+		};
+
+	}
 }

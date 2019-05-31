@@ -1,32 +1,47 @@
 #pragma once
-#include "GameMode.h"
-#include "MainMenu.h"
+#include <memory>
+
 #include "Display.h"
-#include "Commands.h"
+#include "IEntity.h"
+#include "MainMenu.h"
+#include "GameOver.h"
+#include "Level1.h"
+#include "Page.h"
 
 namespace SnakeRevival {
 	class SnakeRevivalGameLoop
 	{
 
 	private:
-		std::list<IEntity> m_GameEntities;
-		GameMode* m_GameMode;
+		static SnakeRevivalGameLoop* m_Instance;
+		SnakeRevivalGameLoop();
+
+		//Gameplay params
+		
+		int m_Scores;
+
 		Display*  m_GameView;
-		bool f_GameOver;
+
 		bool f_Pause;
+		
 		std::wstring m_UpdatedDisplay;
 
-		commands::MoveRightCommand* m_RightCommand;
-		commands::MoveLeftCommand* m_LeftCommand;
-		commands::MoveUpCommand* m_UpCommand;
-		commands::MoveDownCommand* m_DownCommand;
+		std::list<IEntity> m_GameEntities;
 
 	public:
-		SnakeRevivalGameLoop();
+		float m_TimeElapsed;
+		composite::MainMenu m_Menu;
+		composite::GameOver m_GameOver;
+		composite::Level1 m_Level1;
+
+		//current view
+		composite::Page *m_CurrentView;
+
+		static SnakeRevivalGameLoop *GetInstance();
 		~SnakeRevivalGameLoop();
 		void Start();
 		void Render();
-		void Update();
+		void Update(clock_t ticks_per_frame);
 		void Input();
 		void GameLoop(clock_t ticks_per_frame);
 	};

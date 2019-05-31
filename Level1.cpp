@@ -30,21 +30,26 @@ Level1::Level1()
 	m_RootObject->Add(*f, 0);
 	
 	Text *score = new Text(L"SCORE: ");
-	score->SetColor(Yellow);
-	score->SetAlignment(Center, Center);
+	score->SetColor(Color::Yellow);
+	score->SetAlignment(Alignment::Center, Alignment::Center);
 	m_RootObject->Add(*score, 1);
 
 	Fruit *f1 = new Fruit();
 	f1->SetPosition(18, 2);
-	f1->SetAlignment(Left, Left);
+	f1->SetAlignment(Alignment::Left, Alignment::Left);
 	m_RootObject->Add(*f1, 1);
 
 	Fruit *f2 = new Fruit();
 	f2->SetPosition(40, 6);
-	f2->SetAlignment(Left, Left);
+	f2->SetAlignment(Alignment::Left, Alignment::Left);
 	m_RootObject->Add(*f2, 1);
 }
 
 Level1::~Level1()
 {
+}
+
+void Level1::execute()
+{
+
 }

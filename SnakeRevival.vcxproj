@@ -154,7 +154,6 @@
     <ClInclude Include="ALetter.h" />
     <ClInclude Include="BLetter.h" />
     <ClInclude Include="CLetter.h" />
-    <ClInclude Include="Commands.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="DisplayBuffer.h" />
@@ -164,16 +163,18 @@
     <ClInclude Include="FLetter.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Fruit.h" />
-    <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GLetter.h" />
+    <ClInclude Include="GotoMainMenuAction.h" />
+    <ClInclude Include="GotoLevel1Action.h" />
+    <ClInclude Include="GotoGameOverAction.h" />
+    <ClInclude Include="QuitAction.h" />
     <ClInclude Include="HLetter.h" />
     <ClInclude Include="HorizontalLayout.h" />
+    <ClInclude Include="IActionListener.h" />
     <ClInclude Include="IEntity.h" />
-    <ClInclude Include="gameelements.h" />
-    <ClInclude Include="ICommand.h" />
-    <ClInclude Include="gameloop.h" />
     <ClInclude Include="ILetter.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="IObservable.h" />
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="JLetter.h" />
@@ -206,10 +207,13 @@
     <ClInclude Include="ZLetter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GotoGameOverAction.cpp" />
+    <ClCompile Include="GotoLevel1Action.cpp" />
+    <ClCompile Include="GotoMainMenuAction.cpp" />
+    <ClCompile Include="IActionListener.cpp" />
     <ClCompile Include="ALetter.cpp" />
     <ClCompile Include="BLetter.cpp" />
     <ClCompile Include="CLetter.cpp" />
-    <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="DisplayBuffer.cpp" />
     <ClCompile Include="DLetter.cpp" />
@@ -218,15 +222,13 @@
     <ClCompile Include="FLetter.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Fruit.cpp" />
-    <ClCompile Include="gameelements.cpp" />
-    <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GLetter.cpp" />
     <ClCompile Include="HLetter.cpp" />
     <ClCompile Include="HorizontalLayout.cpp" />
-    <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="IEntity.cpp" />
     <ClCompile Include="ILetter.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="JLetter.cpp" />
     <ClCompile Include="KLetter.cpp" />
     <ClCompile Include="LayerLayout.cpp" />
@@ -246,9 +248,9 @@
     </ClCompile>
     <ClCompile Include="PLetter.cpp" />
     <ClCompile Include="QLetter.cpp" />
+    <ClCompile Include="QuitAction.cpp" />
     <ClCompile Include="RLetter.cpp" />
     <ClCompile Include="SLetter.cpp" />
-    <ClCompile Include="CommandMain.cpp" />
     <ClCompile Include="SnakeRevivalGameLoop.cpp" />
     <ClCompile Include="SPACELetter.cpp" />
     <ClCompile Include="Text.cpp" />

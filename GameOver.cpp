@@ -13,7 +13,6 @@
 #include "VLetter.h"
 #include "RLetter.h"
 #include "Text.h"
-
 #include "Frame.h"
 
 using namespace SnakeRevival;
@@ -27,18 +26,18 @@ GameOver::GameOver()
 
 	VerticalLayout* vl = new VerticalLayout();
 	vl->SetPosition(0, 1);
-	vl->SetAlignment(Center, Center);
+	vl->SetAlignment(Alignment::Center, Alignment::Center);
 	HorizontalLayout* game = new HorizontalLayout();
-	game->SetColor(Blue);
-	game->SetAlignment(Center, Center);
+	game->SetColor(Color::Blue);
+	game->SetAlignment(Alignment::Center, Alignment::Center);
 	game->Add(new GLetter());
 	game->Add(new ALetter());
 	game->Add(new MLetter());
 	game->Add(new ELetter());
 
 	HorizontalLayout* over = new HorizontalLayout();
-	over->SetColor(Blue);
-	over->SetAlignment(Center, Center);
+	over->SetColor(Color::Blue);
+	over->SetAlignment(Alignment::Center, Alignment::Center);
 
 	over->Add(new OLetter());
 	over->Add(new VLetter());
@@ -52,7 +51,7 @@ GameOver::GameOver()
 	m_RootObject->Add(*vl, 1);
 
 	Text *gotomenu = new Text(L"PRESS ANY BUTTON");
-	gotomenu->SetAlignment(Center, Center);
+	gotomenu->SetAlignment(Alignment::Center, Alignment::Center);
 	gotomenu->SetPosition(0, 15);
 	gotomenu->m_Selected = true;
 
@@ -60,5 +59,9 @@ GameOver::GameOver()
 }
 
 GameOver::~GameOver()
+{
+}
+
+void GameOver::execute()
 {
 }

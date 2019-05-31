@@ -1,5 +1,6 @@
 #pragma once
 #include "Draw.h"
+#include "IActionListener.h"
 
 namespace SnakeRevival {
 	namespace composite {
@@ -14,8 +15,11 @@ namespace SnakeRevival {
 			virtual int GetWidth();
 			virtual int GetHeight();
 			virtual std::wstring GetRow(int num);
+			virtual void AddActionListener(strategy::IActionListener *ActionListener);
+			strategy::IActionListener *m_ActionListener;
 		private:
 			std::wstring m_Text;
+			
 		};
 	}
 }

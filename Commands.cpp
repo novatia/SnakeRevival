@@ -4,12 +4,12 @@
 using namespace SnakeRevival;
 using namespace commands;
 
-void MoveRightCommand::execute() 
+void MoveRightCommand::execute()
 {
 	snake->SetCurrentDirection(Direction::Right);
 }
 
-void MoveLeftCommand::execute() 
+void MoveLeftCommand::execute()
 {
 	snake->SetCurrentDirection(Direction::Left);
 }
@@ -19,7 +19,7 @@ void MoveUpCommand::execute()
 	snake->SetCurrentDirection(Direction::Up);
 }
 
-void MoveDownCommand::execute() 
+void MoveDownCommand::execute()
 {
 	snake->SetCurrentDirection(Direction::Down);
 }

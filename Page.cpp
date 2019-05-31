@@ -27,3 +27,17 @@ std::wstring Page::GetView()
 
 		return draw;
 }
+
+void Page::SelectNext()
+{
+
+}
+
+void Page::AddActionListener(strategy::IActionListener * ActionListener)
+{
+	m_ActionListener = ActionListener;
+}
+
+void Page::Update() {
+
+}

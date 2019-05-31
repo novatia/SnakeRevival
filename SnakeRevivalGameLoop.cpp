@@ -2,14 +2,13 @@
 #include "pch.h"
 
 #include "SnakeRevivalGameLoop.h"
-#include "GameMode.h"
+#include "InputManager.h"
 
 using namespace std;
 using namespace SnakeRevival;
-using namespace commands;
+using namespace singleton;
 
 /** FREE FUNC*/
-
 void PrintColorSheet() {
 
 	printf("\n");
@@ -45,6 +44,15 @@ SnakeRevivalGameLoop::SnakeRevivalGameLoop()
 
 }
 
+SnakeRevivalGameLoop* SnakeRevivalGameLoop::m_Instance;
+SnakeRevivalGameLoop * SnakeRevival::SnakeRevivalGameLoop::GetInstance()
+{
+	if (m_Instance == nullptr)
+		m_Instance = new SnakeRevivalGameLoop();
+
+	return m_Instance;
+}
+
 SnakeRevivalGameLoop::~SnakeRevivalGameLoop()
 {
 
@@ -54,24 +62,25 @@ void SnakeRevivalGameLoop::Render()
 {
 	//posso aggiustare il nextDisplay passando anche il valore "ratio_mismatch_ticks" e rendendo più fluido il 
 	//gioco
-	m_UpdatedDisplay = m_GameMode->GetCurrentView();
+	m_UpdatedDisplay = m_CurrentView->GetView();
 	m_GameView->WriteNextDisplay(m_UpdatedDisplay);
 	m_GameView->PresentDisplay();
 }
 
 void SnakeRevivalGameLoop::Start()
 {
-	m_GameMode = GameMode::GetInstance();
 	m_GameView = new Display();
-	
-	//m_RightCommand = new MoveRightCommand(m_Snake);
-	//m_LeftCommand = new MoveLeftCommand(m_Snake);
-	//m_UpCommand = new MoveUpCommand(m_Snake);
-	//m_DownCommand = new MoveDownCommand(m_Snake);
+	m_CurrentView = &m_Menu;
+
 	GameLoop(TICKS_PER_FRAME);
 }
 
-void SnakeRevivalGameLoop::Update() {
+void SnakeRevivalGameLoop::Update(clock_t ticks_per_frame)
+{
+	m_TimeElapsed += TICKS_PER_FRAME;
+
+	m_CurrentView->Update();
+
 	std::list<IEntity>::iterator it;
 	for (it = m_GameEntities.begin(); it != m_GameEntities.end(); it++) {
 		it->Update();
@@ -79,36 +88,23 @@ void SnakeRevivalGameLoop::Update() {
 }
 
 void SnakeRevivalGameLoop::Input() {
-	if (_kbhit()) {
-		unsigned char inputKey = _getch();
-		if (inputKey == 'K') {
-			if (m_LeftCommand!=nullptr)
-				m_LeftCommand->execute();
-		}
-		if (inputKey == 'M') {
-			if (m_RightCommand != nullptr)
-				m_RightCommand->execute();
-		}
-		if (inputKey == 'H') {
-			if (m_UpCommand != nullptr)
-				m_UpCommand->execute();
-		}
-		if (inputKey == 'P') {
-			if (m_DownCommand != nullptr)
-				m_DownCommand->execute();
-		}
-	}
+	
+		InputManager *IM = InputManager::GetInstance();
+
+		IM->Input();
+	
 }
 
 void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 {
 	clock_t elapsed_ticks;
-	while (!f_GameOver && !f_Pause)
+
+	while (!f_Pause)
 	{
 		clock_t start_tick = clock();
 
 		Input();
-		Update();
+		Update(ticks_per_frame);
 		Render();
 
 		elapsed_ticks = clock() - start_tick;
@@ -119,8 +115,8 @@ void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 
 int main()
 {
-	SnakeRevivalGameLoop snake;
-	snake.Start();
+	SnakeRevivalGameLoop *snake = SnakeRevivalGameLoop::GetInstance();
+	snake->Start();
 
 	return 0;
 }

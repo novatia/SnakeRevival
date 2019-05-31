@@ -16,9 +16,6 @@
     <Filter Include="Header Files\composite">
       <UniqueIdentifier>{382c48eb-73f8-4b37-8ad7-ae6ccff56940}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\command">
-      <UniqueIdentifier>{b6c31343-b1b7-48c9-a495-42888cc3972d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\zbuffer">
       <UniqueIdentifier>{b5d1ea05-6548-4900-898b-b2c8a193bc7f}</UniqueIdentifier>
     </Filter>
@@ -34,9 +31,6 @@
     <Filter Include="Source Files\composite">
       <UniqueIdentifier>{8e1e8b80-9e14-4cb6-906f-014512e7ecd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\command">
-      <UniqueIdentifier>{1aaa8d95-043e-4a9c-9773-51245d5272f2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gameloop">
       <UniqueIdentifier>{5a960899-e738-4e49-a53a-ebeb47dcba5c}</UniqueIdentifier>
     </Filter>
@@ -46,6 +40,18 @@
     <Filter Include="Source Files\EMS">
       <UniqueIdentifier>{94bc2adc-a1c0-4d4f-845c-0ca8c6346bf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\strategy">
+      <UniqueIdentifier>{b7056bd5-6b48-43f4-a27e-2543818f6579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\strategy">
+      <UniqueIdentifier>{3cda1d05-00b4-4f25-b056-c91c4f92e920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\singleton">
+      <UniqueIdentifier>{530f1fbc-267c-49c8-b759-7b9791721cf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\singleton">
+      <UniqueIdentifier>{8c988061-150d-422a-adb9-864985118053}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -53,9 +59,6 @@
     </ClInclude>
     <ClInclude Include="ALetter.h">
       <Filter>Header Files\composite</Filter>
-    </ClInclude>
-    <ClInclude Include="Commands.h">
-      <Filter>Header Files\command</Filter>
     </ClInclude>
     <ClInclude Include="Display.h">
       <Filter>Header Files\zbuffer</Filter>
@@ -68,15 +71,6 @@
     </ClInclude>
     <ClInclude Include="IObserver.h">
       <Filter>Header Files\observer</Filter>
-    </ClInclude>
-    <ClInclude Include="gameloop.h">
-      <Filter>Header Files\gameloop</Filter>
-    </ClInclude>
-    <ClInclude Include="ICommand.h">
-      <Filter>Header Files\command</Filter>
-    </ClInclude>
-    <ClInclude Include="gameelements.h">
-      <Filter>Header Files\EMS</Filter>
     </ClInclude>
     <ClInclude Include="IEntity.h">
       <Filter>Header Files\EMS</Filter>
@@ -110,9 +104,6 @@
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>Header Files\composite</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMode.h">
-      <Filter>Header Files\EMS</Filter>
     </ClInclude>
     <ClInclude Include="GLetter.h">
       <Filter>Header Files\composite</Filter>
@@ -207,13 +198,28 @@
     <ClInclude Include="SnakeRevivalGameLoop.h">
       <Filter>Header Files\gameloop</Filter>
     </ClInclude>
+    <ClInclude Include="IActionListener.h">
+      <Filter>Header Files\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitAction.h">
+      <Filter>Header Files\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="GotoMainMenuAction.h">
+      <Filter>Header Files\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="GotoLevel1Action.h">
+      <Filter>Header Files\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="GotoGameOverAction.h">
+      <Filter>Header Files\strategy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Commands.cpp">
-      <Filter>Source Files\command</Filter>
     </ClCompile>
     <ClCompile Include="Display.cpp">
       <Filter>Source Files\zbuffer</Filter>
@@ -239,12 +245,6 @@
     <ClCompile Include="Fruit.cpp">
       <Filter>Source Files\composite</Filter>
     </ClCompile>
-    <ClCompile Include="gameelements.cpp">
-      <Filter>Source Files\EMS</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMode.cpp">
-      <Filter>Source Files\EMS</Filter>
-    </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>Source Files\composite</Filter>
     </ClCompile>
@@ -256,9 +256,6 @@
     </ClCompile>
     <ClCompile Include="HorizontalLayout.cpp">
       <Filter>Source Files\composite</Filter>
-    </ClCompile>
-    <ClCompile Include="ICommand.cpp">
-      <Filter>Source Files\command</Filter>
     </ClCompile>
     <ClCompile Include="ILetter.cpp">
       <Filter>Source Files\composite</Filter>
@@ -350,14 +347,29 @@
     <ClCompile Include="ALetter.cpp">
       <Filter>Source Files\composite</Filter>
     </ClCompile>
-    <ClCompile Include="CommandMain.cpp">
-      <Filter>Source Files\EMS</Filter>
-    </ClCompile>
     <ClCompile Include="SnakeRevivalGameLoop.cpp">
       <Filter>Source Files\gameloop</Filter>
     </ClCompile>
     <ClCompile Include="IEntity.cpp">
       <Filter>Source Files\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="IActionListener.cpp">
+      <Filter>Source Files\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="GotoGameOverAction.cpp">
+      <Filter>Source Files\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="GotoLevel1Action.cpp">
+      <Filter>Source Files\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="GotoMainMenuAction.cpp">
+      <Filter>Source Files\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitAction.cpp">
+      <Filter>Source Files\strategy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
