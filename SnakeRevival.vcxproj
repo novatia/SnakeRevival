@@ -167,6 +167,7 @@
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GLetter.h" />
+    <ClInclude Include="HeadUnit.h" />
     <ClInclude Include="HLetter.h" />
     <ClInclude Include="HorizontalLayout.h" />
     <ClInclude Include="IEntity.h" />
@@ -192,8 +193,10 @@
     <ClInclude Include="QLetter.h" />
     <ClInclude Include="RLetter.h" />
     <ClInclude Include="SLetter.h" />
+    <ClInclude Include="SnakePlayer.h" />
     <ClInclude Include="SnakeRevivalGameLoop.h" />
     <ClInclude Include="SPACELetter.h" />
+    <ClInclude Include="TailUnit.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TLetter.h" />
     <ClInclude Include="ULetter.h" />
@@ -222,6 +225,7 @@
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GLetter.cpp" />
+    <ClCompile Include="HeadUnit.cpp" />
     <ClCompile Include="HLetter.cpp" />
     <ClCompile Include="HorizontalLayout.cpp" />
     <ClCompile Include="ICommand.cpp" />
@@ -249,8 +253,10 @@
     <ClCompile Include="RLetter.cpp" />
     <ClCompile Include="SLetter.cpp" />
     <ClCompile Include="CommandMain.cpp" />
+    <ClCompile Include="SnakePlayer.cpp" />
     <ClCompile Include="SnakeRevivalGameLoop.cpp" />
     <ClCompile Include="SPACELetter.cpp" />
+    <ClCompile Include="TailUnit.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TLetter.cpp" />
     <ClCompile Include="ULetter.cpp" />
