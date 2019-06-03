@@ -5,11 +5,23 @@ using namespace SnakeRevival;
 
 Display::Display(): currentView_(&views[0]), nextView_(&views[1])
 {
+	HANDLE  hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	DWORD dwMode = 0;
 
+	if (!GetConsoleMode(hOut, &dwMode))
+	{
+		 std::cout << GetLastError();
+		 return;
+
+	}
+	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+
+	SetConsoleMode(hOut, dwMode);
 }
 
 Display::~Display()
 {
+	
 
 }
 
