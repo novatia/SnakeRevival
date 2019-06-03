@@ -115,6 +115,7 @@ void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 
 int main()
 {
+
 	SnakeRevivalGameLoop *snake = SnakeRevivalGameLoop::GetInstance();
 	snake->Start();
 

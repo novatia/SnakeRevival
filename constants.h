@@ -16,4 +16,6 @@ namespace SnakeRevival
 	enum class Color { None, Red, Green, Blue, Yellow, Purple, White };
 	enum class Alignment { Left, Right, Center, Top, Bottom };
 	enum class Key { Up, Down, Left, Right, Enter, Any, Error};
+	enum class Direction { Up, Down, Left, Right };
+
 }

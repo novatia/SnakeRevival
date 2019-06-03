@@ -98,23 +98,20 @@ wstring TransparentMergeStrings(wstring current_row, wstring str, pair<int, int>
 	wstring second_string = current_row;
 	wstring ParentColor = Draw::GetColor(parent_color);
 
-
-	int first_size = first_string.size();
-	int second_size = second_string.size();
-
 	if (second_string == L"")
 		return first_string;
 
 	if (first_string == L"")
 		return second_string;
 
+
 	int left_index = 0;
 	   	  
 	if (alignment == Alignment::Right)
-		left_index = (W - first_size + position.first);
+		left_index = (W - first_string.size() + position.first);
 
 	if (alignment == Alignment::Left) {
-			left_index = (W - first_size + position.first);
+			left_index = (W - first_string.size() + position.first);
 
 			if (left_index < 0)
 				left_index = 0;
@@ -123,6 +120,7 @@ wstring TransparentMergeStrings(wstring current_row, wstring str, pair<int, int>
 	}
 
 	if (alignment == Alignment::Center) {
+			int first_size = first_string.size();
 			left_index = (W*10 - first_size) / 2 + position.first;
 
 			if (left_index < 0)

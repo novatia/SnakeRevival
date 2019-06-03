@@ -26,7 +26,7 @@ int Text::GetHeight()
 
 wstring Text::GetRow(int num)
 {
-
+	wstring row = L"";
 	wstring color = GetColor();
 	wstring endcolor = GetEndColor();
 
@@ -36,12 +36,14 @@ wstring Text::GetRow(int num)
 	if (num == m_Top)
 	{
 		if (m_Selected)
-			return color + L"> "+ m_Text +L" <"+ endcolor;
+			row =  L"> "+ m_Text +L" <";
 		else
-			return color + m_Text + endcolor;
+			row =  m_Text;
 	}
+	if (row != L"")
+		row = Draw::Colorify(row, color);
 
-	return L"";
+	return row;
 }
 
 void Text::AddActionListener(strategy::IActionListener* ActionListener)

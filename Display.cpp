@@ -12,7 +12,6 @@ Display::Display(): currentView_(&views[0]), nextView_(&views[1])
 	{
 		 std::cout << GetLastError();
 		 return;
-
 	}
 	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
 

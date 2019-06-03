@@ -44,12 +44,9 @@ int HorizontalLayout::GetHeight()
 
 wstring HorizontalLayout::GetRow(int num)
 {
-	wstring color = GetColor();
-	wstring endcolor = GetEndColor();
-
 	wstring row;
 	for (auto it = m_Elements.begin(); it < m_Elements.end(); it++)
-		row += color + (*it)->GetRow(num) + endcolor;
+		row += (*it)->GetRow(num);
 
 	return row;
 }

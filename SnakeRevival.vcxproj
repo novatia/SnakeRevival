@@ -201,7 +201,7 @@
     <ClInclude Include="VerticalLayout.h" />
     <ClInclude Include="VLetter.h" />
     <ClInclude Include="WLetter.h" />
-    <ClInclude Include="Worm.h" />
+    <ClInclude Include="WormBody.h" />
     <ClInclude Include="XLetter.h" />
     <ClInclude Include="YLetter.h" />
     <ClInclude Include="ZLetter.h" />
@@ -259,7 +259,7 @@
     <ClCompile Include="VerticalLayout.cpp" />
     <ClCompile Include="VLetter.cpp" />
     <ClCompile Include="WLetter.cpp" />
-    <ClCompile Include="Worm.cpp" />
+    <ClCompile Include="WormBody.cpp" />
     <ClCompile Include="XLetter.cpp" />
     <ClCompile Include="YLetter.cpp" />
     <ClCompile Include="ZLetter.cpp" />

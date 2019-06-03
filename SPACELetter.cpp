@@ -18,17 +18,23 @@ SPACELetter::~SPACELetter()
 
 wstring SPACELetter::GetRow(int num)
 {
+	wstring row = L"";
+	wstring color = GetColor();
+
 	switch (num) {
-	case 0: return L"          ";
-	case 1: return L"          ";
-	case 2: return L"          ";
-	case 3: return L"          ";
-	case 4: return L"          ";
-	case 5: return L"          ";
-	case 6: return L"          ";
+	case 0: row = L"          "; break;
+	case 1:  row = L"          "; break;
+	case 2:  row = L"          "; break;
+	case 3:  row = L"          "; break;
+	case 4:  row = L"          "; break;
+	case 5:  row = L"          "; break;
+	case 6:  row = L"          "; break;
 	}
 
-	return L"";
+	if (row != L"")
+		row = Draw::Colorify(row, color);
+
+	return row;
 }
 
 int SPACELetter::GetWidth()

@@ -19,15 +19,19 @@ Fruit::~Fruit()
 
 wstring Fruit::GetRow(int row_num)
 {
+	wstring row = L"";
+	wstring red_color = L"\x1B[31m";
+	wstring green_color = L"\x1B[32m";
+
 	int num = row_num - m_Top;
 	
 	switch (num) {
-	case 0: return L"\x1B[32m ┌" + to_wstring(m_Value) + L"\033[0m";
-	case 1: return L"\x1B[31m███\033[0m";
-	case 2: return L"\x1B[31m ▀ \033[0m";
+	case 0: row = Draw::Colorify(L" ┌" + to_wstring(m_Value), green_color); break;
+	case 1: row = Draw::Colorify(L"███", red_color); break;
+	case 2: row = Draw::Colorify(L" ▀ ", red_color); break;
 	}
 
-	return L"";
+	return row;
 }
 
 int Fruit::GetValue()

@@ -10,7 +10,6 @@ namespace SnakeRevival {
 		public:
 			GameOver();
 			~GameOver();
-			virtual void execute();
 		};
 
 	}

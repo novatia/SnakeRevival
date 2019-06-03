@@ -16,38 +16,42 @@ LevelFrame::~LevelFrame()
 
 wstring LevelFrame::GetRow(int num)
 {
+	wstring row = L"";
 	wstring color = GetColor();
 	wstring endcolor = GetEndColor();
 
 	switch (num) {
-	case 0: return  color + L"                                                                               " + endcolor;
-	case 1: return  color + L"╔═════════════════════════════════════════════════════════════════════════════╗" + endcolor;
-	case 2: return  color + L"║                                                                             ║" + endcolor;
-	case 3: return  color + L"║                                                                             ║" + endcolor;
-	case 4: return  color + L"║                                                                             ║" + endcolor;
-	case 5: return  color + L"║                                                                             ║" + endcolor;
-	case 6: return  color + L"║                                                                             ║" + endcolor;
-	case 7: return  color + L"║                                                                             ║" + endcolor;
-	case 8: return  color + L"║                                                                             ║" + endcolor;
-	case 9: return  color + L"║                                                                             ║" + endcolor;
-	case 10: return color + L"║                                                                             ║" + endcolor;
-	case 11: return color + L"║                                                                             ║" + endcolor;
-	case 12: return color + L"║                                                                             ║" + endcolor;
-	case 13: return color + L"║                                                                             ║" + endcolor;
-	case 14: return color + L"║                                                                             ║" + endcolor;
-	case 15: return color + L"║                                                                             ║" + endcolor;
-	case 16: return color + L"║                                                                             ║" + endcolor;
-	case 17: return color + L"║                                                                             ║" + endcolor;
-	case 18: return color + L"║                                                                             ║" + endcolor;
-	case 19: return color + L"║                                                                             ║" + endcolor;
-	case 20: return color + L"║                                                                             ║" + endcolor;
-	case 21: return color + L"║                                                                             ║" + endcolor;
-	case 22: return color + L"║                                                                             ║" + endcolor;
-	case 23: return color + L"║                                                                             ║" + endcolor;
-	case 24: return color + L"╚═════════════════════════════════════════════════════════════════════════════╝" + endcolor;
+	case 0: row = L"                                                                              "; break;
+	case 1: row = L"╔═════════════════════════════════════════════════════════════════════════════╗"; break;
+	case 2: row = L"║                                                                             ║"; break;
+	case 3: row = L"║                                                                             ║"; break;
+	case 4: row = L"║                                                                             ║"; break;
+	case 5: row = L"║                                                                             ║"; break;
+	case 6: row = L"║                                                                             ║"; break;
+	case 7: row = L"║                                                                             ║"; break;
+	case 8: row = L"║                                                                             ║"; break;
+	case 9: row = L"║                                                                             ║"; break;
+	case 10: row =  L"║                                                                             ║"; break;
+	case 11: row =  L"║                                                                             ║"; break;
+	case 12: row =  L"║                                                                             ║"; break;
+	case 13: row =  L"║                                                                             ║"; break;
+	case 14: row =  L"║                                                                             ║"; break;
+	case 15: row =  L"║                                                                             ║"; break;
+	case 16: row =  L"║                                                                             ║"; break;
+	case 17: row =  L"║                                                                             ║"; break;
+	case 18: row =  L"║                                                                             ║"; break;
+	case 19: row =  L"║                                                                             ║"; break;
+	case 20: row =  L"║                                                                             ║"; break;
+	case 21: row =  L"║                                                                             ║"; break;
+	case 22: row =  L"║                                                                             ║"; break;
+	case 23: row =  L"║                                                                             ║"; break;
+	case 24: row =  L"╚═════════════════════════════════════════════════════════════════════════════╝"; break;
 	}
 
-	return L"";
+	if (row != L"")
+		row = Draw::Colorify(row, color);
+
+	return row;
 }
 
 int LevelFrame::GetWidth()

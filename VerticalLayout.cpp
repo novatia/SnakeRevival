@@ -55,11 +55,8 @@ wstring VerticalLayout::GetRow(int row_num)
 	std::wstring row ;
 	int current_row = 0;
 	for (auto it = m_Elements.begin(); it < m_Elements.end(); it++) {
-	
-
 		for (int r = 0; r < (*it)->GetHeight(); r++) {
 			if (num == r + current_row) {
-				
 				return (*it)->GetRow(r);
 			}
 		}

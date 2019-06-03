@@ -47,10 +47,46 @@ wstring Draw::GetColor()
 	return L"";
 }
 
+wstring Draw::GetColor(Color m_Color)
+{
+	switch (m_Color) {
+	case Color::Blue:return L"\x1B[34m";
+	case Color::Red:return L"\x1B[31m";
+	case Color::Green:return L"\x1B[32m";
+	case Color::Yellow:return L"\x1B[93m";
+	case Color::White:return L"\x1B[37m";
+	case Color::Purple:return L"\x1B[35m";
+	}
+
+	return L"";
+}
+
 wstring Draw::GetEndColor()
 {
 	if (m_Color != Color::None)
 		return L"\033[0m";
 
 	return L"";
+}
+
+
+wstring Draw::Colorify(wstring row, wstring color) {
+	wstring new_row = L"";
+
+	
+	for (int i = 0; i < row.size(); i++)
+	{
+		wchar_t ch = row[i];
+		wstring ws (&ch,1);
+		new_row.append(color);
+		new_row.append(ws);
+		new_row.append(L"\033[0m");
+	}
+
+	/*
+	new_row.append(color);
+	new_row.append(row);
+	new_row.append(L"\033[0m");
+	*/
+	return new_row;
 }

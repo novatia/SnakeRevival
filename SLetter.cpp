@@ -18,22 +18,24 @@ SLetter::~SLetter()
 
 wstring SLetter::GetRow(int num)
 {
-
+	wstring row = L"";
 	wstring color = GetColor();
-	wstring endcolor = GetEndColor();
 
 	switch (num) 
 	{
-		case 0: return color + L"          " + endcolor;
-		case 1: return color + L" ______   " + endcolor;;
-		case 2: return color + L"/\\  ___\\  " + endcolor;;
-		case 3: return color + L"\\ \\___  \\ " + endcolor;;
-		case 4: return color + L" \\/\\_____\\" + endcolor;;
-		case 5: return color + L"  \\/_____/" + endcolor;;
-		case 6: return color + L"          " + endcolor;
+		case 0: row =  L"         "; break;
+		case 1: row =  L" ______  "; break;;
+		case 2: row =  L"/\\  ___\\ "; break;;
+		case 3: row =  L"\\ \\___  \\"; break;;
+		case 4: row =  L" \\/\\_____\\"; break;
+		case 5: row =  L"  \\/_____/"; break;
+		case 6: row =  L"         "; break;
 	}
 
-	return L"";
+	if (row != L"")
+		row = Draw::Colorify(row, color);
+
+	return row;
 }
 
 int SLetter::GetWidth()

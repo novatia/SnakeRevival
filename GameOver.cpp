@@ -61,7 +61,3 @@ GameOver::GameOver()
 GameOver::~GameOver()
 {
 }
-
-void GameOver::execute()
-{
-}

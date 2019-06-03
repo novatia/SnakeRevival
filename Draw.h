@@ -13,7 +13,9 @@ namespace SnakeRevival {
 
 			void SetColor(Color new_color);
 			std::wstring GetColor();
+			static std::wstring GetColor(Color);
 			std::wstring GetEndColor();
+			static std::wstring Colorify(std::wstring, std::wstring);
 
 			void SetPosition(int left,int top);
 			std::pair<int, int> GetPosition();
@@ -21,7 +23,7 @@ namespace SnakeRevival {
 			void SetAlignment(Alignment horizontal, Alignment vertical);
 			std::pair<Alignment, Alignment> GetAlignment();
 		protected:
-			Color m_Color = Color::None;
+			Color m_Color = Color::White;
 			Alignment m_HorizontalAlignment = Alignment::Left;
 			Alignment m_VerticalAlignment = Alignment::Top;
 

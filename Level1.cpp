@@ -16,11 +16,13 @@
 #include "RLetter.h"
 #include "Text.h"
 #include "Fruit.h"
-
+#include "WormBody.h"
 #include "LevelFrame.h"
+#include "InputManager.h"
 
 using namespace SnakeRevival;
 using namespace composite;
+using namespace singleton;
 
 Level1::Level1()
 {
@@ -29,27 +31,101 @@ Level1::Level1()
 	LevelFrame *f = new LevelFrame();
 	m_RootObject->Add(*f, 0);
 	
-	Text *score = new Text(L"SCORE: ");
-	score->SetColor(Color::Yellow);
-	score->SetAlignment(Alignment::Center, Alignment::Center);
-	m_RootObject->Add(*score, 1);
+	m_Score = new Text(L"SCORE: 0000");
+	m_Score->SetColor(Color::Yellow);
+	m_Score->SetAlignment(Alignment::Center, Alignment::Center);
+	m_RootObject->Add(*m_Score, 1);
 
-	Fruit *f1 = new Fruit();
-	f1->SetPosition(18, 2);
-	f1->SetAlignment(Alignment::Left, Alignment::Left);
-	m_RootObject->Add(*f1, 1);
+	m_Fruit = new Fruit();
+	m_Fruit->SetPosition(18, 2);
+	m_Fruit->SetAlignment(Alignment::Left, Alignment::Left);
+	m_RootObject->Add(*m_Fruit, 1);
 
-	Fruit *f2 = new Fruit();
-	f2->SetPosition(40, 6);
-	f2->SetAlignment(Alignment::Left, Alignment::Left);
-	m_RootObject->Add(*f2, 1);
+	m_Snake = new WormBody();
+	m_Snake->SetPosition( m_SnakePosition_X, m_SnakePosition_Y );
+	
+	m_RootObject->Add(*m_Snake, 2);
 }
 
 Level1::~Level1()
 {
 }
 
-void Level1::execute()
-{
 
+void Level1::Update()
+{
+	InputManager *IM = InputManager::GetInstance();
+
+	if (IM->ButtonPressed())
+	{
+		switch (IM->GetButtonPressed())
+		{
+		case Key::Up:
+		{
+			if (m_SnakeDirection == Direction::Down)
+				break;
+
+			m_SnakeDirection = Direction::Up;
+
+			break;
+		}
+		case Key::Down:
+		{
+			if (m_SnakeDirection == Direction::Up)
+				break;
+
+			m_SnakeDirection = Direction::Down;
+
+			break;
+		}
+
+		case Key::Left:
+		{
+			if (m_SnakeDirection == Direction::Right)
+				break;
+
+			m_SnakeDirection = Direction::Left;
+
+			break;
+		}
+
+		case Key::Right:
+		{
+			if (m_SnakeDirection == Direction::Left)
+				break;
+
+			m_SnakeDirection = Direction::Right;
+			break;
+		}
+
+		};
+	}
+
+
+	switch (m_SnakeDirection) {
+	case Direction::Down:
+	{
+		m_SnakePosition_Y += TICKS_PER_FRAME*m_SnakeSpeed;
+		break;
+	}
+	case Direction::Up:
+	{
+		m_SnakePosition_Y-= TICKS_PER_FRAME * m_SnakeSpeed;
+		break;
+	}
+	case Direction::Left :
+	{
+		m_SnakePosition_X-= TICKS_PER_FRAME * m_SnakeSpeed;
+		break;
+	}
+	case Direction::Right:
+	{
+		m_SnakePosition_X+= TICKS_PER_FRAME * m_SnakeSpeed;
+		break;
+	}
+	};
+
+	//set snake position
+
+	m_Snake->SetPosition(m_SnakePosition_X, m_SnakePosition_Y);
 }
