@@ -20,11 +20,21 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 	wstring first_string = str;
 	wstring second_string = current_row;
 
+
+
 	if (GetSizeNoColours(current_row) > GetSizeNoColours(str))
 	{
 		first_string = current_row;
 		second_string = str;
 	}
+
+	if (second_string == L"")
+		return first_string;
+
+	//need to count colours
+	int ct1 = count(first_string.begin(), first_string.end(), '\x1B') / 2 * COLOR_HEADER;
+	int ct2 = count(second_string.begin(), second_string.end(), '\x1B') / 2 * COLOR_HEADER;
+
 
 	if (second_string.size() == 0) {
 		if (alignment == Alignment::Right)
@@ -39,7 +49,8 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 			first_string.append(left_index, ' ');
 		}
 		if (alignment == Alignment::Center) {
-			int left_index = (W - first_string.size()) / 2 + position.first;
+			int first_size = first_string.size();
+			unsigned int left_index = (W - first_size) / 2 + position.first;
 			if (left_index < 0)
 				left_index = 0;
 
@@ -48,9 +59,6 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 		return first_string;
 	}
 
-	//need to count colours
-	int ct1 = count(first_string.begin() ,  first_string.end(), '\x1B') / 2 * COLOR_HEADER;
-	int ct2 = count(second_string.begin(), second_string.end(), '\x1B') / 2 * COLOR_HEADER;
 
 	//adding pad for color tags
 	if ( ct2 != 0 )
