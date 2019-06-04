@@ -1,6 +1,5 @@
 #pragma once
 #include "Draw.h"
-#include <string>
 
 namespace SnakeRevival {
 	namespace composite {

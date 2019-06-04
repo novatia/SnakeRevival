@@ -40,7 +40,7 @@ wstring OLetter::GetRow(int num)
 
 int OLetter::GetWidth()
 {
-	return 11;
+	return 10;
 }
 
 int OLetter::GetHeight()

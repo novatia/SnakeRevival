@@ -20,17 +20,17 @@ namespace SnakeRevival {
 			virtual void Update() override;
 			void RotateColours();
 		private:
-			composite::Text *m_PlayButton;
-			composite::Text *m_QuitButton;
-			composite::Text *m_Performance;
+			Text *m_PlayButton;
+			Text *m_QuitButton;
+			Text *m_Performance;
 
-			composite::SLetter *m_S;
-			composite::NLetter *m_N;
-			composite::ALetter *m_A;
-			composite::KLetter *m_K;
-			composite::ELetter *m_E;
+			SLetter *m_S;
+			NLetter *m_N;
+			ALetter *m_A;
+			KLetter *m_K;
+			ELetter *m_E;
 
-			Color m_ColorCounter = Color::White;
+			Color m_ColorCounter;
 		};
 	}
 }

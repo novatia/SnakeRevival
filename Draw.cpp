@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Draw.h"
-#include <string>
 
 using namespace std;
 using namespace SnakeRevival;

@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include "Fruit.h"
-#include <string>
 
 using namespace std;
 using namespace SnakeRevival;
@@ -8,27 +7,34 @@ using namespace composite;
 
 Fruit::Fruit()
 {
-	m_Value = rand() % 9 + 1;
+	RandomValue();
 }
-
 
 Fruit::~Fruit()
 {
 
 }
 
-wstring Fruit::GetRow(int row_num)
+wstring Fruit::GetRow(int r_num)
 {
+	int num = r_num - m_Top;
+
+	if (num < 0)
+		return L"";
+
 	wstring row = L"";
 	wstring red_color = L"\x1B[31m";
 	wstring green_color = L"\x1B[32m";
 
-	int num = row_num - m_Top;
-	
+	//wstring c = GetColor(Color::White);
+	//wstring leftPad = EmptyColorifiedString(m_Left, c);
+	//row.insert(0, leftPad);
+
+
 	switch (num) {
-	case 0: row = Draw::Colorify(L" ┌" + to_wstring(m_Value), green_color); break;
-	case 1: row = Draw::Colorify(L"███", red_color); break;
-	case 2: row = Draw::Colorify(L" ▀ ", red_color); break;
+	case 0: row.append(Draw::Colorify(L" ┌" + to_wstring(m_Value), green_color)); break;
+	case 1: row.append(Draw::Colorify(L"███", red_color)); break;
+	case 2: row.append(Draw::Colorify(L" ▀ ", red_color)); break;
 	}
 
 	return row;
@@ -47,4 +53,8 @@ int Fruit::GetWidth()
 int Fruit::GetHeight()
 {
 	return 3;
+}
+
+void Fruit::RandomValue() {
+	m_Value = rand() % (10 - 1 + 1) + 1;
 }

@@ -32,7 +32,7 @@ Level1::Level1()
 	f->SetColor(Color::Green);
 	m_RootObject->Add(*f, 0);
 	
-	m_Score = new Text(L"SCORE: 0000");
+	m_Score = new Text(L"SCORE: 0");
 	m_Score->SetColor(Color::Yellow);
 	m_Score->SetAlignment(Alignment::Center, Alignment::Center);
 	m_RootObject->Add(*m_Score, 1);
@@ -46,12 +46,19 @@ Level1::Level1()
 	m_Snake->SetPosition( m_SnakePosition_X, m_SnakePosition_Y );
 	
 	m_RootObject->Add(*m_Snake, 2);
+	m_GameOver = false;
 }
 
 Level1::~Level1()
 {
 }
 
+void Level1::ResetLevel() {
+	m_SnakePosition_X = 15;
+	m_SnakePosition_Y = 15;
+	m_Snake->SetPosition(m_SnakePosition_X, m_SnakePosition_Y);
+	m_GameOver = false;
+}
 
 void Level1::Update()
 {
@@ -106,12 +113,12 @@ void Level1::Update()
 	switch (m_SnakeDirection) {
 	case Direction::Down:
 	{
-		m_SnakePosition_Y += TICKS_PER_FRAME*m_SnakeSpeed;
+		m_SnakePosition_Y += TICKS_PER_FRAME*m_SnakeSpeed / 2;
 		break;
 	}
 	case Direction::Up:
 	{
-		m_SnakePosition_Y-= TICKS_PER_FRAME * m_SnakeSpeed;
+		m_SnakePosition_Y-= TICKS_PER_FRAME * m_SnakeSpeed / 2;
 		break;
 	}
 	case Direction::Left :
@@ -128,5 +135,43 @@ void Level1::Update()
 
 	//set snake position
 
+	if (m_SnakePosition_X <= 1 || m_SnakePosition_X >= (DISPLAY_WIDTH  - 1) ||
+		m_SnakePosition_Y <= 2 || m_SnakePosition_Y >= (DISPLAY_HEIGHT - 1)) {
+
+		//GAME OVER
+		m_GameOver = true;
+	}
+
 	m_Snake->SetPosition(m_SnakePosition_X, m_SnakePosition_Y);
+
+	//check fruit collision
+	std::pair<int, int> s_position = m_Snake->GetPosition();
+	std::pair<int, int> f_position = m_Fruit->GetPosition();
+
+	
+	if (s_position.first >= f_position.first &&
+		s_position.first <= f_position.first + m_Fruit->GetWidth() &&
+		s_position.second >= f_position.second &&
+		s_position.second <= f_position.second + m_Fruit->GetHeight()
+		) {
+		// collided
+		int position_x = rand() % (75 - 1 + 1) + 1;
+		int position_y = rand() % (21 - 2 + 1) + 2;
+		m_Fruit->SetPosition(position_x, position_y);
+		m_ScoreValue += m_Fruit->GetValue();
+		std::wstring scores = L"SCORE: " + std::to_wstring(m_ScoreValue);
+		m_Score->SetText(scores);
+
+		m_Fruit->RandomValue();
+	}
+}
+
+bool SnakeRevival::composite::Level1::IsGameOver()
+{
+	return m_GameOver;
+}
+
+void SnakeRevival::composite::Level1::UnsetGameOver()
+{
+	m_GameOver = false;
 }

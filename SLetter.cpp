@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "SLetter.h"
-#include <string>
 
 using namespace std;
 using namespace SnakeRevival;

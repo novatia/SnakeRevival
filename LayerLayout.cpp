@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "LayerLayout.h"
-#include <vector>
 
 using namespace std;
 using namespace SnakeRevival;
@@ -82,15 +81,6 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 }
 
 
-wstring EmptyColorifiedString(int size, wstring color ) {
-	wstring res_string= L"";
-	for (int i = 0; i < size-1;i++)
-	{
-		res_string += color + L" " + L"\033[0m";
-	}
-
-	return res_string;
-}
 
 wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 {
@@ -104,7 +94,6 @@ wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 
 	int left_offset = 0;
 
-
 	pair<Alignment, Alignment> alignment = draw->GetAlignment();
 	pair<int, int> position = draw->GetPosition();
 
@@ -112,8 +101,8 @@ wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 	if (alignment.first == Alignment::Right)
 		left_offset = (current_row.size()/10 - row.size() / 10 + position.first);
 
-	if (alignment.first == Alignment::Left) 
-		left_offset = (current_row.size() / 10 - row.size() / 10 + position.first);
+	if (alignment.first == Alignment::Left)
+		left_offset = (position.first);
 
 	if (alignment.first == Alignment::Center) 
 		left_offset = (current_row.size() / 10 - row.size() / 10) / 2 + position.first;
@@ -209,7 +198,8 @@ int LayerLayout::GetHeight()
 	{
 		for (vector<Draw*>::iterator vit = it->second.begin(); vit != it->second.end(); ++vit)
 		{
-			if ((*vit)->GetHeight() > max_height)
+			int height = (*vit)->GetHeight();
+			if (height > max_height)
 			{
 				max_height = (*vit)->GetHeight();
 			}

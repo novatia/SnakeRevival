@@ -3,7 +3,6 @@
 #include "HorizontalLayout.h"
 #include "LayerLayout.h"
 #include "IActionListener.h"
-#include <memory.h>
 
 namespace SnakeRevival {
 	namespace composite {

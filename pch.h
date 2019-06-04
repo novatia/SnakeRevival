@@ -20,9 +20,12 @@
 #include <chrono>
 #include <thread>
 #include <memory>
+#include <memory.h>
+#include <map>
 #include <io.h>
 #include <fcntl.h>
 #include <Windows.h>
 
 #include "constants.h"
+
 #endif //PCH_H

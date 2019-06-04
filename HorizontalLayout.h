@@ -1,7 +1,5 @@
 #pragma once
 #include "Draw.h"
-#include <vector>
-#include <memory>
 
 namespace SnakeRevival {
 	namespace composite {

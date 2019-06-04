@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+
 #include "WormBody.h"
 
 using namespace std;
@@ -28,19 +29,14 @@ int WormBody::GetHeight()
 
 wstring WormBody::GetRow(int r_num)
 {
-	wstring color = GetColor();
-	wstring endcolor = GetEndColor();
-
 	int num = r_num - m_Top;
 
 	if (num < 0)
 		return L"";
 
-	//append white spaces on the left
-
-	wstring row;
-
-	row.append(m_Left,' ');
+	wstring row = L"";
+	wstring color = GetColor();
+	wstring endcolor = GetEndColor();
 
 	switch (num) 
 	{

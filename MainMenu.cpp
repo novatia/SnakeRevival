@@ -65,7 +65,7 @@ MainMenu::MainMenu()
 
 	m_Performance = new Text(L"fps");
 	m_Performance->SetAlignment(Alignment::Left, Alignment::None);
-	m_Performance->SetPosition(0, 23);
+	m_Performance->SetPosition(5, 23);
 
 	vl->Add(dos);
 	vl->Add(snake);
@@ -145,7 +145,7 @@ void MainMenu::Update() {
 	RotateColours();
 }
 
-Color Increase(Color color) {
+Color IncreaseBW(Color color) {
 	switch (color) {
 	case Color::Red:  return Color::Green;
 	case Color::Green: return Color::Blue;
@@ -164,20 +164,19 @@ void MainMenu::RotateColours()
 	int time = round(SL->m_TimeElapsed*1000.0f);
 	if (time % 100 == 0) {
 
+		m_ColorCounter = IncreaseBW(m_ColorCounter);
 		m_S->SetColor(m_ColorCounter);
-		m_ColorCounter = Increase(m_ColorCounter);
-
+		
+		m_ColorCounter = IncreaseBW(m_ColorCounter);
 		m_N->SetColor(m_ColorCounter);
-		m_ColorCounter = Increase(m_ColorCounter);
 
+		m_ColorCounter = IncreaseBW(m_ColorCounter);
 		m_A->SetColor(m_ColorCounter);
-		m_ColorCounter = Increase(m_ColorCounter);
 
+		m_ColorCounter = IncreaseBW(m_ColorCounter);
 		m_K->SetColor(m_ColorCounter);
-		m_ColorCounter = Increase(m_ColorCounter);
 
+		m_ColorCounter = IncreaseBW(m_ColorCounter);
 		m_E->SetColor(m_ColorCounter);
-		m_ColorCounter = Increase(m_ColorCounter);
-
 	}
 }

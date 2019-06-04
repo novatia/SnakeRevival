@@ -1,8 +1,7 @@
 #pragma once
-#include <memory>
-
 #include "Display.h"
 #include "IEntity.h"
+#include "Page.h"
 #include "MainMenu.h"
 #include "GameOver.h"
 #include "Level1.h"

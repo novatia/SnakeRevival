@@ -10,7 +10,6 @@ using namespace singleton;
 
 /** FREE FUNC*/
 void PrintColorSheet() {
-
 	printf("\n");
 	printf("\x1B[31mTexting\033[0m\t\t");
 	printf("\x1B[32mTexting\033[0m\t\t");
@@ -81,6 +80,26 @@ void SnakeRevivalGameLoop::Update(clock_t ticks_per_frame)
 
 	m_CurrentView->Update();
 
+	composite::Level1 *level1 = dynamic_cast<composite::Level1*>(m_CurrentView);
+
+	if (level1 != nullptr) {
+		if (level1->IsGameOver()) {
+			m_CurrentView = &m_GameOver;
+			level1->ResetLevel();
+			level1->UnsetGameOver();
+			return;
+		}
+	}
+
+	composite::GameOver *gameover = dynamic_cast<composite::GameOver*>(m_CurrentView);
+	if (gameover != nullptr) {
+		if (gameover->IsDone()) {
+			m_CurrentView = &m_Menu;
+			gameover->UnsetDone();
+			return;
+		}
+	}
+
 	std::list<IEntity>::iterator it;
 	for (it = m_GameEntities.begin(); it != m_GameEntities.end(); it++) {
 		it->Update();
@@ -115,7 +134,6 @@ void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 
 int main()
 {
-
 	SnakeRevivalGameLoop *snake = SnakeRevivalGameLoop::GetInstance();
 	snake->Start();
 

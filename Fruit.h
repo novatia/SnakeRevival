@@ -1,6 +1,5 @@
 #pragma once
 #include "Draw.h"
-#include <string>
 
 namespace SnakeRevival {
 	namespace composite {
@@ -15,6 +14,7 @@ namespace SnakeRevival {
 			virtual int GetHeight();
 			virtual std::wstring GetRow(int num);
 			int GetValue();
+			void RandomValue();
 		private:
 			int m_Value;
 		};

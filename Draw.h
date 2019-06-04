@@ -1,6 +1,5 @@
 #pragma once
 #include "IEntity.h"
-#include <string>
 
 namespace SnakeRevival {
 	namespace composite {
