@@ -194,6 +194,7 @@
     <ClInclude Include="RLetter.h" />
     <ClInclude Include="SLetter.h" />
     <ClInclude Include="SnakeRevivalGameLoop.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SPACELetter.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TLetter.h" />
@@ -252,6 +253,7 @@
     <ClCompile Include="RLetter.cpp" />
     <ClCompile Include="SLetter.cpp" />
     <ClCompile Include="SnakeRevivalGameLoop.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SPACELetter.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TLetter.cpp" />

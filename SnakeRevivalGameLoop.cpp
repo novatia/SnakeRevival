@@ -3,6 +3,7 @@
 
 #include "SnakeRevivalGameLoop.h"
 #include "InputManager.h"
+#include "SoundManager.h"
 
 using namespace std;
 using namespace SnakeRevival;
@@ -72,6 +73,10 @@ void SnakeRevivalGameLoop::Start()
 	m_CurrentView = &m_Menu;
 
 	GameLoop(TICKS_PER_FRAME);
+
+	//Run main menu music
+	SoundManager *SM = SoundManager::GetInstance();
+	SM->PlayIntro();
 }
 
 void SnakeRevivalGameLoop::Update(clock_t ticks_per_frame)

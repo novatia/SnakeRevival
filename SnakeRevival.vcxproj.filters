@@ -216,6 +216,9 @@
     <ClInclude Include="WormBody.h">
       <Filter>Header Files\composite</Filter>
     </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files\singleton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -370,6 +373,9 @@
     </ClCompile>
     <ClCompile Include="WormBody.cpp">
       <Filter>Source Files\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\singleton</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
