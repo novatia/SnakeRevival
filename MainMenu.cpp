@@ -29,19 +29,18 @@ MainMenu::MainMenu()
 
 	VerticalLayout* vl = new VerticalLayout();
 	vl->SetPosition(0,1);
-	vl->SetAlignment(Alignment::Center, Alignment::Center);
+	vl->SetAlignment(Alignment::Center, Alignment::None);
 
 	HorizontalLayout* dos  = new HorizontalLayout();
-	dos->SetAlignment(Alignment::Center, Alignment::Center);
+	dos->SetAlignment(Alignment::Center, Alignment::None);
 
 	dos->Add(new DLetter());
 	dos->Add(new OLetter());
 	dos->Add(new SLetter());
 
 	HorizontalLayout* snake = new HorizontalLayout();
-	snake->SetAlignment(Alignment::Center, Alignment::Center);
+	snake->SetAlignment(Alignment::Center, Alignment::None);
 
-	Frame *f = new Frame();
 
 	m_S = new SLetter();
 	m_S->SetColor(Color::Blue);
@@ -64,26 +63,33 @@ MainMenu::MainMenu()
 	snake->Add(m_K);
 	snake->Add(m_E);
 
+	m_Performance = new Text(L"fps");
+	m_Performance->SetAlignment(Alignment::Left, Alignment::None);
+	m_Performance->SetPosition(0, 23);
+
 	vl->Add(dos);
 	vl->Add(snake);
 
-	m_RootObject->Add(*f, 0);
-	m_RootObject->Add(*vl,1);
+	Frame *f = new Frame();
+	m_RootObject->Add(*f, 0); //LEVEL 0 FRAME
+	m_RootObject->Add(*vl,1); //LEVEL 1  DOS,SNAKE
 
 	m_PlayButton = new Text(L"PLAY");
-	m_PlayButton->SetAlignment(Alignment::Center, Alignment::Center);
+	m_PlayButton->SetAlignment(Alignment::Center, Alignment::None);
 	m_PlayButton->SetPosition(0,15);
 	m_PlayButton->AddActionListener(new GotoLevel1Action());
 	m_PlayButton->m_Selected = true;
 	m_PlayButton->SetColor(Color::Yellow);
 
 	m_QuitButton = new Text(L"QUIT");
-	m_QuitButton->SetAlignment(Alignment::Center, Alignment::Center);
+	m_QuitButton->SetAlignment(Alignment::Center, Alignment::None);
 	m_QuitButton->SetPosition(0, 17);
 	m_QuitButton->AddActionListener(new QuitAction());
 
-	m_RootObject->Add(*m_PlayButton, 1);
-	m_RootObject->Add(*m_QuitButton, 1);
+	m_RootObject->Add(*m_PlayButton, 1);//LEVEL 1 
+	m_RootObject->Add(*m_QuitButton, 1);//LEVEL 1 
+	m_RootObject->Add(*m_Performance,1);
+
 }
 
 MainMenu::~MainMenu()
@@ -132,13 +138,15 @@ void MainMenu::Update() {
 		}
 		};
 	}
+	
+	std::wstring perf = Display::GetPerformance();
+	m_Performance->SetText(perf);
 
 	RotateColours();
 }
 
 Color Increase(Color color) {
 	switch (color) {
-	case Color::None: return Color::None;
 	case Color::Red:  return Color::Green;
 	case Color::Green: return Color::Blue;
 	case Color::Blue: return Color::Yellow;
@@ -147,7 +155,7 @@ Color Increase(Color color) {
 	case Color::White: return Color::Red;
 	}
 
-	return Color::None;
+	return Color::White;
 }
 
 void MainMenu::RotateColours()

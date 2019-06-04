@@ -13,9 +13,18 @@
 
 namespace SnakeRevival 
 {
-	enum class Color { None, Red, Green, Blue, Yellow, Purple, White };
-	enum class Alignment { Left, Right, Center, Top, Bottom };
+	enum class Color { Red, Green, Blue, Yellow, Purple, White };
+	enum class Alignment { Left, Right, Center, Top, Bottom, None };
 	enum class Key { Up, Down, Left, Right, Enter, Any, Error};
 	enum class Direction { Up, Down, Left, Right };
 
+}
+
+template<typename Diff>
+std::wstring log_progress(Diff d)
+{
+	long duration = std::chrono::duration_cast<std::chrono::milliseconds>(d).count();
+	float fps = 1000.0f / duration;
+	std::wstring str = L"" + std::to_wstring(fps)+L"fps";
+	return str;
 }

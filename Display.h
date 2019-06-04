@@ -10,6 +10,7 @@ namespace SnakeRevival {
 
 		void PresentDisplay();
 		void WriteNextDisplay(const std::wstring& input);
+		static std::wstring GetPerformance();
 
 	private:
 		void Swap();
@@ -17,5 +18,6 @@ namespace SnakeRevival {
 		DisplayBuffer views[2];
 		DisplayBuffer* currentView_;
 		DisplayBuffer* nextView_;
+		static std::wstring m_Performance;
 	};
 }

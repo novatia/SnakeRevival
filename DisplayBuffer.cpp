@@ -3,8 +3,8 @@
 
 using namespace SnakeRevival;
 
-void HideCursor() {
-	_setmode(_fileno(stdout), _O_U16TEXT);
+void HideCursor()
+{
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO     cursorInfo;
 	GetConsoleCursorInfo(out, &cursorInfo);
@@ -21,22 +21,26 @@ void SetZero() {
 
 DisplayBuffer::DisplayBuffer()
 {
+	HideCursor();
 }
-
 
 DisplayBuffer::~DisplayBuffer()
 {
+
 }
 
 void DisplayBuffer::printBuffer() {
-	HideCursor();
 	SetZero();
-	std::wcout << buffer;
+
+	DWORD Written;
+	HANDLE 	m_Screen = GetStdHandle(STD_OUTPUT_HANDLE);
+	WriteConsole(m_Screen, buffer.c_str(), buffer.size(), &Written, NULL);
 }
 
 void DisplayBuffer::writeBuffer(const std::wstring& input) {
 	buffer.assign(input);
 }
+
 void DisplayBuffer::clearBuffer() {
 	buffer.clear();
 }

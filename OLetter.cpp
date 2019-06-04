@@ -23,13 +23,13 @@ wstring OLetter::GetRow(int num)
 	wstring color = GetColor();
 
 	switch (num) {
-	case 0: row =  L"         "; break;
-	case 1: row =  L" ______  "; break;
-	case 2: row =  L"/\\  __ \\ "; break;
-	case 3: row =  L"\\ \\ \\/\\ \\"; break;
+	case 0: row =  L"          "; break;
+	case 1: row =  L" ______   "; break;
+	case 2: row =  L"/\\  __ \\  "; break;
+	case 3: row =  L"\\ \\ \\/\\ \\ "; break;
 	case 4: row =  L" \\ \\_____\\"; break;
 	case 5: row =  L"  \\/_____/"; break;
-	case 6: row =  L"         "; break;
+	case 6: row =  L"          "; break;
 	}
 
 	if (row != L"")
@@ -40,7 +40,7 @@ wstring OLetter::GetRow(int num)
 
 int OLetter::GetWidth()
 {
-	return 10;
+	return 11;
 }
 
 int OLetter::GetHeight()

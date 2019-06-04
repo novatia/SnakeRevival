@@ -14,6 +14,7 @@ namespace SnakeRevival {
 
 			virtual int GetWidth();
 			virtual int GetHeight();
+			virtual void SetText(std::wstring text);
 			virtual std::wstring GetRow(int num);
 			virtual void AddActionListener(strategy::IActionListener *ActionListener);
 			strategy::IActionListener *m_ActionListener;

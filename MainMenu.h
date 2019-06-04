@@ -22,6 +22,7 @@ namespace SnakeRevival {
 		private:
 			composite::Text *m_PlayButton;
 			composite::Text *m_QuitButton;
+			composite::Text *m_Performance;
 
 			composite::SLetter *m_S;
 			composite::NLetter *m_N;
@@ -31,6 +32,5 @@ namespace SnakeRevival {
 
 			Color m_ColorCounter = Color::White;
 		};
-
 	}
 }

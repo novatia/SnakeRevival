@@ -8,9 +8,7 @@ using namespace composite;
 
 VerticalLayout::VerticalLayout()
 {
-
 }
-
 
 VerticalLayout::~VerticalLayout()
 {
@@ -42,7 +40,6 @@ int VerticalLayout::GetHeight()
 
 	return height;
 }
-
 
 wstring VerticalLayout::GetRow(int row_num)
 {

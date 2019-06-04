@@ -84,81 +84,77 @@ wstring MergeStrings(wstring current_row, wstring str, pair<int,int> position, A
 
 wstring EmptyColorifiedString(int size, wstring color ) {
 	wstring res_string= L"";
-	for (int i = 0; i < size;i++)
+	for (int i = 0; i < size-1;i++)
 	{
-		res_string = color + L" " + L"\033[0m";
+		res_string += color + L" " + L"\033[0m";
 	}
 
 	return res_string;
 }
 
-wstring TransparentMergeStrings(wstring current_row, wstring str, pair<int, int> position, Alignment alignment, int W, Color parent_color)
+wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 {
-	wstring first_string = str;
-	wstring second_string = current_row;
-	wstring ParentColor = Draw::GetColor(parent_color);
+	wstring row = draw->GetRow(row_num);
+	
+	if (row == L"")
+		return current_row;
+
+	if (current_row == L"")
+		return row;
+
+	int left_offset = 0;
 
 
-	int first_size = first_string.size();
-	int second_size = second_string.size();
+	pair<Alignment, Alignment> alignment = draw->GetAlignment();
+	pair<int, int> position = draw->GetPosition();
 
-	if (second_string == L"")
-		return first_string;
+	//CALCULATE LEFT OFFSET FOR ALIGNMENT
+	if (alignment.first == Alignment::Right)
+		left_offset = (current_row.size()/10 - row.size() / 10 + position.first);
 
-	if (first_string == L"")
-		return second_string;
+	if (alignment.first == Alignment::Left) 
+		left_offset = (current_row.size() / 10 - row.size() / 10 + position.first);
 
-	int left_index = 0;
-	   	  
-	if (alignment == Alignment::Right)
-		left_index = (W - first_size + position.first);
+	if (alignment.first == Alignment::Center) 
+		left_offset = (current_row.size() / 10 - row.size() / 10) / 2 + position.first;
 
-	if (alignment == Alignment::Left) {
-			left_index = (W - first_size + position.first);
+	if (alignment.first == Alignment::None)
+		left_offset = position.first;
 
-			if (left_index < 0)
-				left_index = 0;
+	if (left_offset < 0)
+		left_offset = 0;
 
-			first_string.append(left_index, ' ');
-	}
+	//APPLY LEFT ALIGNMENT
+	if (alignment.first == Alignment::Right )
+		row.append( EmptyColorifiedString(left_offset, draw->GetColor()));
 
-	if (alignment == Alignment::Center) {
-			left_index = (W*10 - first_size) / 2 + position.first;
+	if (alignment.first == Alignment::Left || alignment.first == Alignment::None)
+		row.insert(0, EmptyColorifiedString(left_offset, draw->GetColor()));
 
-			if (left_index < 0)
-				left_index = 0;
-	}
-
-
-	if (GetSizeNoColours(second_string) > GetSizeNoColours(first_string))
-	{
-		if (alignment == Alignment::Right) 
+	if (alignment.first == Alignment::Center)
 		{
-			first_string.append(EmptyColorifiedString(left_index, ParentColor));
-		}
-		
-		if (alignment == Alignment::Left)
-		{
-			first_string.insert(0, EmptyColorifiedString(left_index, ParentColor) );
+			wstring pad = EmptyColorifiedString(left_offset, draw->GetColor());
+			row.insert(0, pad);
+			row.append(pad);
 		}
 
-		if (alignment == Alignment::Center) 
-		{
-			first_string.insert(0, EmptyColorifiedString(left_index, ParentColor));
-			first_string.append(EmptyColorifiedString(left_index, ParentColor));
+	int string_index = 0;
+
+	for (int i = 5; i < current_row.size(); i += 10) {
+		wchar_t ch = current_row[i];
+
+		if (i >= row.size())
+			break; //MERGED
+
+		if (ch == ' ' && row[i] != ' ') {
+			wstring char_block = row.substr(i - 5, 10);
+			//copy color and content
+			current_row.replace(i-5,10, char_block);
 		}
 	}
 
-
-	//per ogni carattere della prima string, se trovo  \x1B salto 4 se trovo \033 salto 3 altrimenti ...
-
-
-
-
-	return first_string;
+	return current_row;
 }
-
-
 
 
 
@@ -226,13 +222,15 @@ int LayerLayout::GetHeight()
 wstring  LayerLayout::GetRow(int num)
 {
 	wstring current_row = L"";
-	map<int, vector<Draw*>>::iterator rit;
-	for (rit = m_Elements.begin(); rit != m_Elements.end(); ++rit)
-		for (vector<Draw*>::reverse_iterator i = rit->second.rbegin(); i != rit->second.rend(); ++i) {
-			wstring str = (*i)->GetRow(num);
+	map<int, vector<Draw*>>::iterator level_It;
+	for (level_It = m_Elements.begin(); level_It != m_Elements.end(); ++level_It)
+	{
+		for (vector<Draw*>::reverse_iterator i = level_It->second.rbegin(); i != level_It->second.rend(); ++i)
+		{
 			//current_row = MergeStrings(current_row, str, (*i)->GetPosition(), (*i)->GetAlignment().first, GetWidth(),Color::None);
-			current_row = TransparentMergeStrings(current_row, str, (*i)->GetPosition(), (*i)->GetAlignment().first, GetWidth(), Color::None);
+			current_row = TransparentMergeStrings(current_row, (*i), num);
 		}
+	}
 
 	return current_row;
 }

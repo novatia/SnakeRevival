@@ -6,6 +6,17 @@ using namespace std;
 using namespace SnakeRevival;
 using namespace composite;
 
+SnakeRevival::composite::Draw::Draw()
+{
+	m_HorizontalAlignment = Alignment::None;
+	m_VerticalAlignment   = Alignment::None;
+
+	m_Top = 0;
+	m_Left = 0;
+
+	m_Color = Color::White;
+}
+
 void Draw::SetColor(Color new_color)
 {
 	m_Color = new_color;
@@ -63,12 +74,8 @@ wstring Draw::GetColor(Color m_Color)
 
 wstring Draw::GetEndColor()
 {
-	if (m_Color != Color::None)
-		return L"\033[0m";
-
-	return L"";
+	return L"\033[0m";
 }
-
 
 wstring Draw::Colorify(wstring row, wstring color) {
 	wstring new_row = L"";
@@ -82,11 +89,6 @@ wstring Draw::Colorify(wstring row, wstring color) {
 		new_row.append(ws);
 		new_row.append(L"\033[0m");
 	}
-
-	/*
-	new_row.append(color);
-	new_row.append(row);
-	new_row.append(L"\033[0m");
-	*/
+	
 	return new_row;
 }

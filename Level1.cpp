@@ -29,6 +29,7 @@ Level1::Level1()
 	m_RootObject = std::make_unique<LayerLayout>();
 
 	LevelFrame *f = new LevelFrame();
+	f->SetColor(Color::Green);
 	m_RootObject->Add(*f, 0);
 	
 	m_Score = new Text(L"SCORE: 0000");

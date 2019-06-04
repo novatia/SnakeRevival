@@ -7,6 +7,7 @@ namespace SnakeRevival {
 		class Draw: public IEntity
 		{
 		public:
+			Draw();
 			virtual int GetWidth() = 0;
 			virtual int GetHeight() = 0;
 			virtual std::wstring GetRow(int num) = 0;
