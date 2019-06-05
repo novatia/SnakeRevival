@@ -15,6 +15,15 @@ namespace SnakeRevival {
 			virtual int GetWidth();
 			virtual int GetHeight();
 			virtual std::wstring GetRow(int num);
+			void SetSnakePosition(int left, int top);
+			bool CollisionCheck(int left, int top);
+			std::pair<int, int> GetSnakeHeadPosition();
+			void Grow(int);
+			void Clear();
+
+		private:
+			int m_MaxLenght;
+			std::vector<std::pair<int, int>> m_WormElements;
 		};
 	}
 }

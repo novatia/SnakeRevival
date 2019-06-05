@@ -16,7 +16,8 @@
 #include "QuitAction.h"
 #include "Frame.h"
 #include "InputManager.h"
-#include "SnakeRevivalGameLoop.h";
+#include "SnakeRevivalGameLoop.h"
+#include "SoundManager.h"
 
 using namespace SnakeRevival;
 using namespace composite;
@@ -90,6 +91,8 @@ MainMenu::MainMenu()
 	m_RootObject->Add(*m_QuitButton, 1);//LEVEL 1 
 	m_RootObject->Add(*m_Performance,1);
 
+	SoundManager *SM = SoundManager::GetInstance();
+	SM->PlayIntro();
 }
 
 MainMenu::~MainMenu()

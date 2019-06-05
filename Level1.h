@@ -2,6 +2,7 @@
 #include "Page.h"
 #include "WormBody.h"
 #include "Fruit.h"
+#include "Spider.h"
 #include "Text.h"
 
 namespace SnakeRevival {
@@ -19,10 +20,11 @@ namespace SnakeRevival {
 		private:
 			WormBody *m_Snake;
 			Fruit *m_Fruit;
+			Spider *m_Spider;
 			Text *m_Score;
 			Direction m_SnakeDirection;
-			float m_SnakePosition_X=15;
-			float m_SnakePosition_Y=15;
+			float m_SnakePosition_X;
+			float m_SnakePosition_Y;
 			
 			int m_ScoreValue;
 			float m_SnakeSpeed = 3;

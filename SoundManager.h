@@ -13,6 +13,9 @@ namespace SnakeRevival {
 		public:
 			static SoundManager* GetInstance();
 			void PlayIntro();
+			void PlayBeepPitchH();
+			void PlayBeepPitchL();
+
 		};
 	}
 }

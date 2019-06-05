@@ -219,6 +219,9 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Header Files\singleton</Filter>
     </ClInclude>
+    <ClInclude Include="Spider.h">
+      <Filter>Header Files\composite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -376,6 +379,9 @@
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>Source Files\singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Spider.cpp">
+      <Filter>Source Files\composite</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ namespace SnakeRevival {
 			std::wstring GetEndColor();
 			static std::wstring Colorify(std::wstring, std::wstring);
 
-			void SetPosition(int left,int top);
+			virtual void SetPosition(int left,int top);
 			std::pair<int, int> GetPosition();
 
 			void SetAlignment(Alignment horizontal, Alignment vertical);

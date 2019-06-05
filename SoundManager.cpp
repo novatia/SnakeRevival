@@ -19,7 +19,20 @@ SoundManager* SoundManager::GetInstance()
 	return m_Instance;
 }
 
+void SoundManager::PlayBeepPitchH() {
+	for (int i = 500; i < 1000; i += 100) {
+		Beep(i, 50);
+	}
+}
+
+void SoundManager::PlayBeepPitchL() {
+	for (int i = 3000; i > 0; i -= 10) {
+		Beep(i, 1);
+	}
+}
+
+
 void SnakeRevival::singleton::SoundManager::PlayIntro()
 {
-
+	PlayBeepPitchH();
 }
