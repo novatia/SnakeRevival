@@ -50,7 +50,10 @@ Level1::Level1()
 
 	m_Spider = new Spider();
 	m_Spider->SetColor(Color::Blue);
-	m_Spider->SetPosition(60, 12);
+	m_SpiderPosition_X = 60;
+	m_SpiderPosition_Y = 12;
+
+	m_Spider->SetPosition(m_SpiderPosition_X, m_SpiderPosition_Y);
 
 	m_RootObject->Add(*m_Spider, 3);
 
@@ -76,6 +79,12 @@ void Level1::ResetLevel()
 	m_Snake->SetSnakePosition(m_SnakePosition_X, m_SnakePosition_Y);
 
 	m_GameOver = false;
+
+	//spider POSITION
+	m_SpiderPosition_X = 60;
+	m_SpiderPosition_Y = 12;
+	m_Spider->SetPosition(m_SpiderPosition_X, m_SpiderPosition_Y);
+	m_SpiderCollideSnake = false;
 }
 
 void Level1::Update()
@@ -163,16 +172,28 @@ void Level1::Update()
 
 	m_Snake->SetSnakePosition(m_SnakePosition_X, m_SnakePosition_Y);
 
+
+	//SET SPIDER POSITION
+	if (m_PatrollingLeft) {
+		m_SpiderPosition_X -= TICKS_PER_FRAME * m_SpiderSpeed;
+		if (m_SpiderPosition_X <= 1) m_PatrollingLeft = false;
+	}
+	else {
+		m_SpiderPosition_X += TICKS_PER_FRAME * m_SpiderSpeed;
+		if (m_SpiderPosition_X >= 70) m_PatrollingLeft = true;
+	}
+		
+	m_Spider->SetPosition(m_SpiderPosition_X,m_SpiderPosition_Y);
 	//check fruit collision
 	std::pair<int, int> s_position = m_Snake->GetSnakeHeadPosition();
 	std::pair<int, int> f_position = m_Fruit->GetPosition();
-
 	
 	if (s_position.first >= f_position.first &&
 		s_position.first <= f_position.first + m_Fruit->GetWidth() &&
 		s_position.second >= f_position.second &&
 		s_position.second <= f_position.second + m_Fruit->GetHeight() 
-		) {
+		) 
+	{
 		// collided
 		int position_x = rand() % (75 - 1 + 1) + 1;
 		int position_y = rand() % (21 - 2 + 1) + 2;
@@ -184,8 +205,24 @@ void Level1::Update()
 		m_Fruit->RandomValue();
 		m_Snake->Grow(m_Fruit->GetValue());
 	}
-	
-	
+
+	//CHECK SPIDER COLLISION
+	for (int y = 0; y < 25; y++) {
+		std::wstring row = m_Spider->GetRow(y);
+
+		for (int x = 5; x < row.size(); x+=10) {
+			if (row[x] != L' ') 
+			{
+				int spider_x = m_Spider->GetPosition().first;
+				int spider_x_position = spider_x + ( (x - 5) / 10) ;
+				bool check  = m_Snake->CollisionCheck(spider_x_position, y);
+				m_SpiderCollideSnake = m_SpiderCollideSnake | check;
+			}
+		}
+	}
+
+	if (m_SpiderCollideSnake)
+		m_GameOver = true;
 
 }
 

@@ -24,10 +24,10 @@ wstring Spider::GetRow(int r_num)
 	wstring row = L"";
 
 	switch (num) {
-	case 0: row.append(Draw::Colorify(L"  //  \\\\  " , GetColor())); break;
-	case 1: row.append(Draw::Colorify(L" _\\\\()//_ " , GetColor())); break;
-	case 2: row.append(Draw::Colorify(L"/ //  \\\\ \\", GetColor())); break;
-	case 3: row.append(Draw::Colorify(L" | \\__/ | ", GetColor())); break;
+		case 0: row.append(Draw::Colorify(L"  //  \\\\  " , GetColor())); break;
+		case 1: row.append(Draw::Colorify(L" _\\\\()//_ " , GetColor())); break;
+		case 2: row.append(Draw::Colorify(L"/ //  \\\\ \\", GetColor())); break;
+		case 3: row.append(Draw::Colorify(L" | \\__/ | ", GetColor())); break;
 	}
 
 	return row;

@@ -26,10 +26,17 @@ namespace SnakeRevival {
 			float m_SnakePosition_X;
 			float m_SnakePosition_Y;
 			
+			float m_SpiderPosition_X;
+			float m_SpiderPosition_Y;
+			bool m_PatrollingLeft;
+			float m_SpiderSpeed = 4;
+
+
+			bool m_SpiderCollideSnake;
+
 			int m_ScoreValue;
 			float m_SnakeSpeed = 3;
 			bool m_GameOver;
-
 		};
 	}
 }
