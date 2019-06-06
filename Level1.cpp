@@ -183,7 +183,8 @@ void Level1::Update()
 		if (m_SpiderPosition_X >= 70) m_PatrollingLeft = true;
 	}
 		
-	m_Spider->SetPosition(m_SpiderPosition_X,m_SpiderPosition_Y);
+	m_Spider->SetPosition(m_SpiderPosition_X,m_SpiderPosition_Y);
+
 	//check fruit collision
 	std::pair<int, int> s_position = m_Snake->GetSnakeHeadPosition();
 	std::pair<int, int> f_position = m_Fruit->GetPosition();
