@@ -34,7 +34,7 @@ Level1::Level1()
 	
 	m_Score = new Text(L"SCORE: 0");
 	m_Score->SetColor(Color::Yellow);
-	m_Score->SetAlignment(Alignment::Center, Alignment::None);
+	m_Score->SetAlignment(Alignment::Right, Alignment::None);
 	m_RootObject->Add(*m_Score, 1);
 
 	m_Fruit = new Fruit();
@@ -70,6 +70,7 @@ void Level1::ResetLevel()
 	int position_y = rand() % (21 - 2 + 1) + 2;
 	m_Fruit->SetPosition(position_x, position_y);
 
+	m_ScoreValue = 0;
 	m_Score->SetText(L"SCORE: 0");
 
 	m_SnakePosition_X = 40;
@@ -90,52 +91,62 @@ void Level1::ResetLevel()
 void Level1::Update()
 {
 	InputManager *IM = InputManager::GetInstance();
+	
+	//obtain the old snake head position
+	m_SnakePositionPreviousUpdate = m_Snake->GetSnakeHeadPosition();
+	//ask for input if it is possible
+	if (m_enableInput) {
 
-	if (IM->ButtonPressed())
-	{
-		switch (IM->GetButtonPressed())
+		if (IM->ButtonPressed())
 		{
-		case Key::Up:
-		{
-			if (m_SnakeDirection == Direction::Down)
+			switch (IM->GetButtonPressed())
+			{
+			case Key::Up:
+			{
+				if (m_SnakeDirection == Direction::Down)
+					break;
+
+				m_SnakeDirection = Direction::Up;
+				m_enableInput = false;
 				break;
+			}
+			case Key::Down:
+			{
+				if (m_SnakeDirection == Direction::Up)
+					break;
 
-			m_SnakeDirection = Direction::Up;
+				m_SnakeDirection = Direction::Down;
+				m_enableInput = false;
 
-			break;
-		}
-		case Key::Down:
-		{
-			if (m_SnakeDirection == Direction::Up)
+
 				break;
+			}
 
-			m_SnakeDirection = Direction::Down;
+			case Key::Left:
+			{
+				if (m_SnakeDirection == Direction::Right)
+					break;
 
-			break;
-		}
+				m_SnakeDirection = Direction::Left;
+				m_enableInput = false;
 
-		case Key::Left:
-		{
-			if (m_SnakeDirection == Direction::Right)
 				break;
+			}
 
-			m_SnakeDirection = Direction::Left;
+			case Key::Right:
+			{
+				if (m_SnakeDirection == Direction::Left)
+					break;
 
-			break;
-		}
+				m_SnakeDirection = Direction::Right;
+				m_enableInput = false;
 
-		case Key::Right:
-		{
-			if (m_SnakeDirection == Direction::Left)
 				break;
+			}
 
-			m_SnakeDirection = Direction::Right;
-			break;
+			};
 		}
-
-		};
 	}
-
 
 	switch (m_SnakeDirection) {
 	case Direction::Down:
@@ -171,7 +182,11 @@ void Level1::Update()
 	}
 
 	m_Snake->SetSnakePosition(m_SnakePosition_X, m_SnakePosition_Y);
-
+	//compare the updated position and the old one to decide if the input must be enabled again
+	if (m_SnakePositionPreviousUpdate != m_Snake->GetSnakeHeadPosition())
+	{
+		m_enableInput = true;
+	}
 
 	//SET SPIDER POSITION
 	if (m_PatrollingLeft) {
@@ -196,15 +211,17 @@ void Level1::Update()
 		) 
 	{
 		// collided
-		int position_x = rand() % (75 - 1 + 1) + 1;
-		int position_y = rand() % (21 - 2 + 1) + 2;
-		m_Fruit->SetPosition(position_x, position_y);
+		//upgrade score value and increase the snake length
 		m_ScoreValue += m_Fruit->GetValue();
 		std::wstring scores = L"SCORE: " + std::to_wstring(m_ScoreValue);
 		m_Score->SetText(scores);
-
-		m_Fruit->RandomValue();
 		m_Snake->Grow(m_Fruit->GetValue());
+
+		//generate new fruit position and value
+		int position_x = rand() % (75 - 1 + 1) + 1;
+		int position_y = rand() % (21 - 2 + 1) + 2;
+		m_Fruit->SetPosition(position_x, position_y);
+		m_Fruit->RandomValue();
 	}
 
 	//CHECK SPIDER COLLISION

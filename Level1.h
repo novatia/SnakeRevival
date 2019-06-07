@@ -37,6 +37,14 @@ namespace SnakeRevival {
 			int m_ScoreValue;
 			float m_SnakeSpeed = 3;
 			bool m_GameOver;
+
+			/*these members are necessary to freeze the input direction acquisition 
+			until the snake head has really changed its position: they decouple the input speed
+			and the game loop speed; furtherly, the input speed doesn't depend on the snake speed
+			which is managed by the multiplied float values 
+			*/
+			bool m_enableInput = true;
+			std::pair<int, int> m_SnakePositionPreviousUpdate;
 		};
 	}
 }
