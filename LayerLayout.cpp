@@ -17,7 +17,7 @@ int GetSizeNoColours(wstring string) {
 wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 {
 	wstring row = draw->GetRow(row_num);
-	
+
 	if (row == L"")
 		return current_row;
 
@@ -31,25 +31,19 @@ wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 
 	//CALCULATE LEFT OFFSET FOR ALIGNMENT
 	if (alignment.first == Alignment::Right)
-		left_offset = (current_row.size()/10 - row.size() / 10 + position.first);
+		left_offset = (current_row.size()/10 - row.size() / 10 - position.first);
 
-	if (alignment.first == Alignment::Left)
+	if (alignment.first == Alignment::Left || alignment.first == Alignment::None)
 		left_offset = (position.first);
 
 	if (alignment.first == Alignment::Center) 
 		left_offset = (current_row.size() / 10 - row.size() / 10) / 2 + position.first;
 
-	if (alignment.first == Alignment::None)
-		left_offset = position.first;
-
 	if (left_offset < 0)
 		left_offset = 0;
 
 	//APPLY LEFT ALIGNMENT
-	if (alignment.first == Alignment::Right )
-		row.append( EmptyColorifiedString(left_offset, draw->GetColor()));
-
-	if (alignment.first == Alignment::Left || alignment.first == Alignment::None)
+	if (alignment.first == Alignment::Right||alignment.first == Alignment::Left || alignment.first == Alignment::None)
 		row.insert(0, EmptyColorifiedString(left_offset, draw->GetColor()));
 
 	if (alignment.first == Alignment::Center)
