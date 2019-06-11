@@ -78,6 +78,7 @@ void Level1::ResetLevel()
 
 	m_Snake->Clear();
 	m_Snake->SetSnakePosition(m_SnakePosition_X, m_SnakePosition_Y);
+	m_Snake->SetSnakeDirection(Direction::Left);
 
 	m_GameOver = false;
 
@@ -99,23 +100,24 @@ void Level1::Update()
 
 		if (IM->ButtonPressed())
 		{
+			m_CurrentSnakeDirection = m_Snake->GetSnakeDirection();
 			switch (IM->GetButtonPressed())
 			{
 			case Key::Up:
 			{
-				if (m_SnakeDirection == Direction::Down)
+				if (m_CurrentSnakeDirection == Direction::Down)
 					break;
 
-				m_SnakeDirection = Direction::Up;
+				m_Snake->SetSnakeDirection(Direction::Up);
 				m_enableInput = false;
 				break;
 			}
 			case Key::Down:
 			{
-				if (m_SnakeDirection == Direction::Up)
+				if (m_CurrentSnakeDirection == Direction::Up)
 					break;
 
-				m_SnakeDirection = Direction::Down;
+				m_Snake->SetSnakeDirection(Direction::Down);
 				m_enableInput = false;
 
 
@@ -124,10 +126,10 @@ void Level1::Update()
 
 			case Key::Left:
 			{
-				if (m_SnakeDirection == Direction::Right)
+				if (m_CurrentSnakeDirection == Direction::Right)
 					break;
 
-				m_SnakeDirection = Direction::Left;
+				m_Snake->SetSnakeDirection(Direction::Left);
 				m_enableInput = false;
 
 				break;
@@ -135,10 +137,10 @@ void Level1::Update()
 
 			case Key::Right:
 			{
-				if (m_SnakeDirection == Direction::Left)
+				if (m_CurrentSnakeDirection == Direction::Left)
 					break;
 
-				m_SnakeDirection = Direction::Right;
+				m_Snake->SetSnakeDirection(Direction::Right);
 				m_enableInput = false;
 
 				break;
@@ -148,7 +150,7 @@ void Level1::Update()
 		}
 	}
 
-	switch (m_SnakeDirection) {
+	switch (m_Snake->GetSnakeDirection()) {
 	case Direction::Down:
 	{
 		m_SnakePosition_Y += TICKS_PER_FRAME*m_SnakeSpeed / 2;
@@ -204,10 +206,10 @@ void Level1::Update()
 	std::pair<int, int> s_position = m_Snake->GetSnakeHeadPosition();
 	std::pair<int, int> f_position = m_Fruit->GetPosition();
 	
-	if (s_position.first >= f_position.first &&
-		s_position.first <= f_position.first + m_Fruit->GetWidth() &&
+	if (s_position.first+1 >= f_position.first &&
+		s_position.first+1 <= f_position.first + m_Fruit->GetWidth()-1 &&
 		s_position.second >= f_position.second &&
-		s_position.second <= f_position.second + m_Fruit->GetHeight() 
+		s_position.second <= f_position.second + m_Fruit->GetHeight()-1
 		) 
 	{
 		// collided

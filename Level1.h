@@ -22,7 +22,8 @@ namespace SnakeRevival {
 			Fruit *m_Fruit;
 			Spider *m_Spider;
 			Text *m_Score;
-			Direction m_SnakeDirection;
+
+			Direction m_CurrentSnakeDirection;
 			float m_SnakePosition_X;
 			float m_SnakePosition_Y;
 			

@@ -28,7 +28,7 @@ Display::Display(): currentView_(&views[0]), nextView_(&views[1])
 	SetConsoleCP(0);
 	SetConsoleOutputCP(0);
 
-	std::wcout.sync_with_stdio(false);
+	//std::wcout.sync_with_stdio(false);
 	std::ios_base::sync_with_stdio(false);
 }
 

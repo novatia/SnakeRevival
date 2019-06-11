@@ -81,6 +81,7 @@ void SnakeRevival::composite::WormBody::SetSnakePosition(int l, int t)
 	}
 }
 
+
 bool SnakeRevival::composite::WormBody::CollisionCheck(int l, int t)
 {
 
@@ -103,6 +104,14 @@ bool SnakeRevival::composite::WormBody::CollisionCheck(int l, int t)
 std::pair<int, int> SnakeRevival::composite::WormBody::GetSnakeHeadPosition()
 {
 	return m_WormElements.back(); 
+}
+void SnakeRevival::composite::WormBody::SetSnakeDirection(Direction nextDirection) 
+{
+	m_SnakeDirection = nextDirection;
+}
+Direction SnakeRevival::composite::WormBody::GetSnakeDirection() 
+{
+	return m_SnakeDirection;
 }
 
 void SnakeRevival::composite::WormBody::Grow(int value)
