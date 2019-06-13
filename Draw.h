@@ -3,7 +3,7 @@
 
 namespace SnakeRevival {
 	namespace composite {
-		class Draw: public IEntity
+		class Draw
 		{
 		public:
 			Draw();

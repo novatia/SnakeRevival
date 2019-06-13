@@ -36,12 +36,7 @@ wstring WormBody::GetRow(int r_num)
 
 	wstring color = GetColor();
 	wstring endcolor = GetEndColor();
-	std::vector<std::pair<int, int>>::iterator previous ;
-	std::vector<std::pair<int, int>>::iterator successor;
 
-	bool is_tail = false;
-	bool is_head = false;
-	bool is_body = false;
 
 	for (std::vector<std::pair<int, int>>::iterator it = m_WormElements.begin(); it != m_WormElements.end(); ++it)
 	{
@@ -86,7 +81,6 @@ bool SnakeRevival::composite::WormBody::CollisionCheck(int l, int t)
 {
 
 	std::pair<int, int> head_position = GetSnakeHeadPosition();
-
 	if (head_position.first == l && head_position.second == t)
 		return false;
 

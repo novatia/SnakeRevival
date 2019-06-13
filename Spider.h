@@ -14,9 +14,7 @@ namespace SnakeRevival {
 			virtual int GetWidth();
 			virtual int GetHeight();
 			virtual std::wstring GetRow(int num);
-			
-		private:
-			int m_Value;
+		
 		};
 	}
 }

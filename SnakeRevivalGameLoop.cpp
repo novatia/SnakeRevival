@@ -104,11 +104,11 @@ void SnakeRevivalGameLoop::Update(clock_t ticks_per_frame)
 			return;
 		}
 	}
-
+	/* inutile.... la lista m_GameEntities è vuota
 	std::list<IEntity>::iterator it;
 	for (it = m_GameEntities.begin(); it != m_GameEntities.end(); it++) {
 		it->Update();
-	}
+	}*/
 }
 
 void SnakeRevivalGameLoop::Input() {

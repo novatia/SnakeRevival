@@ -57,9 +57,9 @@ wstring Draw::GetColor()
 	return L"";
 }
 
-wstring Draw::GetColor(Color m_Color)
+wstring Draw::GetColor(Color color)
 {
-	switch (m_Color) {
+	switch (color) {
 	case Color::Blue:return L"\x1B[34m";
 	case Color::Red:return L"\x1B[31m";
 	case Color::Green:return L"\x1B[32m";
