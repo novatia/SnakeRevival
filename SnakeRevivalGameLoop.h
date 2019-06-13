@@ -25,7 +25,7 @@ namespace SnakeRevival {
 		
 		std::wstring m_UpdatedDisplay;
 
-		std::list<IEntity> m_GameEntities;
+		//std::list<IEntity> m_GameEntities;
 
 	public:
 		float m_TimeElapsed;
@@ -40,7 +40,7 @@ namespace SnakeRevival {
 		~SnakeRevivalGameLoop();
 		void Start();
 		void Render();
-		void Update(clock_t ticks_per_frame);
+		void Update();
 		void Input();
 		void GameLoop(clock_t ticks_per_frame);
 	};

@@ -93,6 +93,7 @@ MainMenu::MainMenu()
 
 	SoundManager *SM = SoundManager::GetInstance();
 	SM->PlayIntro();
+	
 }
 
 MainMenu::~MainMenu()
@@ -166,7 +167,7 @@ void MainMenu::RotateColours()
 	SnakeRevivalGameLoop *SL = SnakeRevivalGameLoop::GetInstance();
 	int time = round(SL->m_TimeElapsed*1000.0f);
 	if (time % 100 == 0) {
-
+		//si blocca perchè m_TimeElapsed, e quindi anche time, diventano più grandi del range consentito per i numeri interi
 		m_ColorCounter = IncreaseBW(m_ColorCounter);
 		m_S->SetColor(m_ColorCounter);
 		

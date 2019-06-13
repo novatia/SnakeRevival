@@ -9,6 +9,7 @@
 #include "RLetter.h"
 #include "VLetter.h"
 
+
 namespace SnakeRevival {
 	namespace composite {
 
@@ -34,6 +35,7 @@ namespace SnakeRevival {
 			VLetter *m_V;
 			ELetter *m_E1;
 			RLetter *m_R;
+
 		};
 
 	}

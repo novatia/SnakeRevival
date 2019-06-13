@@ -79,8 +79,12 @@ void SnakeRevivalGameLoop::Start()
 	SM->PlayIntro();
 }
 
-void SnakeRevivalGameLoop::Update(clock_t ticks_per_frame)
+void SnakeRevivalGameLoop::Update()
 {
+	//il ciclo di Update del game loop non ha bisogno di ricevere ticks_per_frame come argomento
+	//se si prova a sostituire con TICKS_PER_FRAME con ticks_per_frame si ha
+	//l'effetto delle lettere che lampeggiano più velocemente
+	//ciò è dovuto al fatto che l'argomento del metodo GameLoop effettua una conversione implicita da float a clock_t
 	m_TimeElapsed += TICKS_PER_FRAME;
 
 	m_CurrentView->Update();
@@ -128,7 +132,7 @@ void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 		clock_t start_tick = clock();
 
 		Input();
-		Update(ticks_per_frame);
+		Update();
 		Render();
 
 		elapsed_ticks = clock() - start_tick;

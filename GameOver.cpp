@@ -23,7 +23,6 @@ using namespace singleton;
 
 GameOver::GameOver()
 {
-
 	m_RootObject = std::make_unique<LayerLayout>();
 
 	Frame *f = new Frame();
@@ -103,8 +102,8 @@ Color Increase(Color color) {
 
 void GameOver::RotateColours()
 {
-	SnakeRevivalGameLoop *SL = SnakeRevivalGameLoop::GetInstance();
-	int time = round(SL->m_TimeElapsed*1000);
+	//SnakeRevivalGameLoop *SL = SnakeRevivalGameLoop::GetInstance();
+	int time = round(SnakeRevivalGameLoop::GetInstance()->m_TimeElapsed*1000);
 	if (time % 100 == 0) 
 	{
 		m_ColorCounter = Increase(m_ColorCounter);
@@ -145,9 +144,9 @@ void GameOver::UnsetDone()
 }
 
 void GameOver::Update() {
-	InputManager *IM = InputManager::GetInstance();
+	//InputManager *IM = InputManager::GetInstance();
 
-	if (IM->ButtonPressed())
+	if (InputManager::GetInstance()->ButtonPressed())
 	{
 		m_Done = true;
 	}
