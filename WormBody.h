@@ -25,7 +25,7 @@ namespace SnakeRevival {
 			void Clear();
 
 		private:
-			int m_MaxLenght;
+			unsigned int m_MaxLenght;
 			Direction m_SnakeDirection;
 			std::vector<std::pair<int, int>> m_WormElements;
 		};

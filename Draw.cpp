@@ -80,7 +80,7 @@ wstring Draw::Colorify(wstring row, wstring color) {
 	wstring new_row = L"";
 
 	
-	for (int i = 0; i < row.size(); i++)
+	for (unsigned int i = 0; i < row.size(); i++)
 	{
 		wchar_t ch = row[i];
 		wstring ws (&ch,1);

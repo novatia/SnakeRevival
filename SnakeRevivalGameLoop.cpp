@@ -9,6 +9,8 @@ using namespace std;
 using namespace SnakeRevival;
 using namespace singleton;
 
+std::wstring SnakeRevivalGameLoop::m_ElapsedTicksPerformance;
+
 /** FREE FUNC*/
 void PrintColorSheet() {
 	printf("\n");
@@ -125,20 +127,31 @@ void SnakeRevivalGameLoop::Input() {
 
 void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 {
-	clock_t elapsed_ticks;
 
 	while (!f_Pause)
 	{
-		clock_t start_tick = clock();
-
+		m_start_tick = clock();
+		std::chrono::time_point < std::chrono::steady_clock> t1 = std::chrono::high_resolution_clock::now();
 		Input();
 		Update();
 		Render();
-
-		elapsed_ticks = clock() - start_tick;
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(ticks_per_frame - elapsed_ticks));
+		m_end_tick = clock();
+		std::chrono::time_point < std::chrono::steady_clock> t2 = std::chrono::high_resolution_clock::now();
+		
+		m_elapsed_ticks = m_end_tick - m_start_tick;
+		m_elapsed_ms = std::chrono::milliseconds(m_elapsed_ticks);
+		
+		m_sleep_time_interval_ms = std::chrono::milliseconds(ticks_per_frame - m_elapsed_ticks);
+		std::this_thread::sleep_for(m_sleep_time_interval_ms);
+		//m_cycle_duration_test_ms= std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+		
+		m_ElapsedTicksPerformance = log_progress(t2 - t1, m_elapsed_ms, m_sleep_time_interval_ms);
 	}
+}
+
+std::wstring SnakeRevival::SnakeRevivalGameLoop::GetElapsedTicksPerformance()
+{
+	return m_ElapsedTicksPerformance;
 }
 
 int main()

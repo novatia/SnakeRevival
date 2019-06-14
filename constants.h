@@ -2,7 +2,8 @@
 #define DISPLAY_WIDTH 80
 #define DISPLAY_HEIGHT 25
 #define COLOR_HEADER 9
-#define TICKS_PER_FRAME 0.16f
+#define TICKS_PER_FRAME 65
+#define GAMESPEED 0.25f
 
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -17,15 +18,16 @@ namespace SnakeRevival
 	enum class Key { Up, Down, Left, Right, Enter, Any, Error};
 	enum class Direction { Up, Down, Left, Right };
 
-
-	template<typename Diff>
-	std::wstring log_progress(Diff d)
+	template <typename Diff>
+	std::wstring log_progress(Diff duration, std::chrono::milliseconds elapsed_ticks, std::chrono::milliseconds time_interval)
 	{
-		long duration = std::chrono::duration_cast<std::chrono::milliseconds>(d).count();
-		float fps = 1000.0f / duration;
-		std::wstring str = L"" + std::to_wstring(fps)+L"fps";
+		long time_interval_duration = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+		
+		float fps = 1000.0f / time_interval_duration;
+		std::wstring str = L"" + std::to_wstring(fps)+ L"   " + std::to_wstring(elapsed_ticks.count()) + L" ms   " + std::to_wstring(time_interval.count()) + L" ms";
 		return str;
 	}
+
 
 	static std::wstring EmptyColorifiedString(int size, std::wstring color) 
 	{

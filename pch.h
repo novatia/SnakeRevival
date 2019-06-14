@@ -20,7 +20,6 @@
 #include <chrono>
 #include <thread>
 #include <memory>
-#include <memory.h>
 #include <map>
 #include <io.h>
 #include <fcntl.h>

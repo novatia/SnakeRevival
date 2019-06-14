@@ -10,7 +10,6 @@
 #include "ELetter.h"
 #include "DLetter.h"
 #include "OLetter.h"
-#include "SLetter.h"
 #include "Text.h"
 #include "GotoLevel1Action.h"
 #include "QuitAction.h"
@@ -143,7 +142,7 @@ void MainMenu::Update() {
 		};
 	}
 	
-	std::wstring perf = Display::GetPerformance();
+	std::wstring perf = SnakeRevivalGameLoop::GetElapsedTicksPerformance();
 	m_Performance->SetText(perf);
 
 	RotateColours();
@@ -165,7 +164,7 @@ Color IncreaseBW(Color color) {
 void MainMenu::RotateColours()
 {
 	SnakeRevivalGameLoop *SL = SnakeRevivalGameLoop::GetInstance();
-	int time = round(SL->m_TimeElapsed*1000.0f);
+	int time = round(SL->m_TimeElapsed*4);
 	if (time % 100 == 0) {
 		//si blocca perchè m_TimeElapsed, e quindi anche time, diventano più grandi del range consentito per i numeri interi
 		m_ColorCounter = IncreaseBW(m_ColorCounter);

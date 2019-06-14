@@ -55,7 +55,7 @@ wstring TransparentMergeStrings(wstring current_row, Draw* draw, int row_num)
 
 	int string_index = 0;
 
-	for (int i = 5; i < current_row.size(); i += 10) {
+	for (unsigned int i = 5; i < current_row.size(); i += 10) {
 		wchar_t ch = current_row[i];
 
 		if (i >= row.size())

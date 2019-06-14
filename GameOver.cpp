@@ -103,7 +103,7 @@ Color Increase(Color color) {
 void GameOver::RotateColours()
 {
 	//SnakeRevivalGameLoop *SL = SnakeRevivalGameLoop::GetInstance();
-	int time = round(SnakeRevivalGameLoop::GetInstance()->m_TimeElapsed*1000);
+	int time = round(SnakeRevivalGameLoop::GetInstance()->m_TimeElapsed*4);
 	if (time % 100 == 0) 
 	{
 		m_ColorCounter = Increase(m_ColorCounter);

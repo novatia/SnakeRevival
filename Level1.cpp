@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Level1.h"
-#include "pch.h"
 #include "GameOver.h"
 #include "MainMenu.h"
 #include "VerticalLayout.h"
@@ -19,6 +18,8 @@
 #include "WormBody.h"
 #include "LevelFrame.h"
 #include "InputManager.h"
+#include "SnakeRevivalGameLoop.h"
+
 
 using namespace SnakeRevival;
 using namespace composite;
@@ -36,6 +37,11 @@ Level1::Level1()
 	m_Score->SetColor(Color::Yellow);
 	m_Score->SetAlignment(Alignment::Right, Alignment::None);
 	m_RootObject->Add(*m_Score, 1);
+
+	m_Performance = new Text(L"fps");
+	m_Performance->SetAlignment(Alignment::Left, Alignment::None);
+	m_Performance->SetPosition(0, 0);
+	m_RootObject->Add(*m_Performance, 1);
 
 	m_Fruit = new Fruit();
 	m_Fruit->SetAlignment(Alignment::Left, Alignment::None);
@@ -148,27 +154,28 @@ void Level1::Update()
 
 			};
 		}
+		
 	}
 
 	switch (m_Snake->GetSnakeDirection()) {
 	case Direction::Down:
 	{
-		m_SnakePosition_Y += TICKS_PER_FRAME*m_SnakeSpeed / 2;
+		m_SnakePosition_Y += GAMESPEED *m_SnakeSpeed;
 		break;
 	}
 	case Direction::Up:
 	{
-		m_SnakePosition_Y-= TICKS_PER_FRAME * m_SnakeSpeed / 2;
+		m_SnakePosition_Y-= GAMESPEED * m_SnakeSpeed;
 		break;
 	}
 	case Direction::Left :
 	{
-		m_SnakePosition_X-= TICKS_PER_FRAME * m_SnakeSpeed;
+		m_SnakePosition_X-= GAMESPEED * m_SnakeSpeed;
 		break;
 	}
 	case Direction::Right:
 	{
-		m_SnakePosition_X+= TICKS_PER_FRAME * m_SnakeSpeed;
+		m_SnakePosition_X+= GAMESPEED * m_SnakeSpeed;
 		break;
 	}
 	};
@@ -192,11 +199,11 @@ void Level1::Update()
 
 	//SET SPIDER POSITION
 	if (m_PatrollingLeft) {
-		m_SpiderPosition_X -= TICKS_PER_FRAME * m_SpiderSpeed;
+		m_SpiderPosition_X -= GAMESPEED * m_SpiderSpeed;
 		if (m_SpiderPosition_X <= 1) m_PatrollingLeft = false;
 	}
 	else {
-		m_SpiderPosition_X += TICKS_PER_FRAME * m_SpiderSpeed;
+		m_SpiderPosition_X += GAMESPEED * m_SpiderSpeed;
 		if (m_SpiderPosition_X >= 70) m_PatrollingLeft = true;
 	}
 		
@@ -244,6 +251,8 @@ void Level1::Update()
 	if (m_SpiderCollideSnake)
 		m_GameOver = true;
 
+	std::wstring perf = SnakeRevivalGameLoop::GetElapsedTicksPerformance();
+	m_Performance->SetText(perf);
 }
 
 bool SnakeRevival::composite::Level1::IsGameOver()
