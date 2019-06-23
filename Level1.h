@@ -4,6 +4,8 @@
 #include "Fruit.h"
 #include "Spider.h"
 #include "Text.h"
+#include "GotoGameOverAction.h"
+
 
 namespace SnakeRevival {
 	namespace composite {
@@ -47,6 +49,8 @@ namespace SnakeRevival {
 			*/
 			bool m_enableInput = true;
 			std::pair<int, int> m_SnakePositionPreviousUpdate;
+
+			strategy::IActionListener *m_GameOverListener;
 		};
 	}
 }

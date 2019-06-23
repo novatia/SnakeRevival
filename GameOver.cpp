@@ -16,10 +16,13 @@
 #include "Frame.h"
 #include "SnakeRevivalGameLoop.h"
 #include "InputManager.h"
+#include "GotoMainMenuAction.h"
+
 
 using namespace SnakeRevival;
 using namespace composite;
 using namespace singleton;
+using namespace strategy;
 
 GameOver::GameOver()
 {
@@ -76,12 +79,12 @@ GameOver::GameOver()
 	m_RootObject->Add(*f, 0);
 	m_RootObject->Add(*vl, 1);
 
-	Text *gotomenu = new Text(L"PRESS ANY BUTTON");
-	gotomenu->SetAlignment(Alignment::Center, Alignment::Center);
-	gotomenu->SetPosition(0, 15);
-	gotomenu->m_Selected = true;
-
-	m_RootObject->Add(*gotomenu, 1);
+	m_GoToMenu = new Text(L"PRESS ANY BUTTON");
+	m_GoToMenu->SetAlignment(Alignment::Center, Alignment::Center);
+	m_GoToMenu->SetPosition(0, 15);
+	m_GoToMenu->m_Selected = true;
+	m_GoToMenu->AddActionListener(new GotoMainMenuAction());
+	m_RootObject->Add(*m_GoToMenu, 1);
 	
 	m_Done = false;
 }
@@ -149,6 +152,10 @@ void GameOver::Update() {
 	if (InputManager::GetInstance()->ButtonPressed())
 	{
 		m_Done = true;
+	}
+	if (IsDone()) {
+		UnsetDone();
+		m_GoToMenu->m_ActionListener->ActionPerformed();
 	}
 
 	RotateColours();

@@ -5,8 +5,8 @@
 using namespace SnakeRevival;
 
 //std::wstring Display::m_Performance;
-
-Display::Display(): currentView_(&views[0]), nextView_(&views[1])
+//: currentView_(new DisplayBuffer()), nextView_(new DisplayBuffer())
+Display::Display() : currentView_(&views[0]), nextView_(&views[1])
 {
 
 	//ENABLE ANSI ESCAPE CODE

@@ -20,10 +20,10 @@
 #include "InputManager.h"
 #include "SnakeRevivalGameLoop.h"
 
-
 using namespace SnakeRevival;
 using namespace composite;
 using namespace singleton;
+using namespace strategy;
 
 Level1::Level1()
 {
@@ -62,6 +62,8 @@ Level1::Level1()
 	m_Spider->SetPosition(m_SpiderPosition_X, m_SpiderPosition_Y);
 
 	m_RootObject->Add(*m_Spider, 3);
+
+	m_GameOverListener = new GotoGameOverAction();
 
 	ResetLevel();
 }
@@ -160,12 +162,12 @@ void Level1::Update()
 	switch (m_Snake->GetSnakeDirection()) {
 	case Direction::Down:
 	{
-		m_SnakePosition_Y += GAMESPEED *m_SnakeSpeed;
+		m_SnakePosition_Y += GAMESPEED *m_SnakeSpeed/2;
 		break;
 	}
 	case Direction::Up:
 	{
-		m_SnakePosition_Y-= GAMESPEED * m_SnakeSpeed;
+		m_SnakePosition_Y-= GAMESPEED * m_SnakeSpeed/2;
 		break;
 	}
 	case Direction::Left :
@@ -189,8 +191,14 @@ void Level1::Update()
 		//GAME OVER
 		m_GameOver = true;
 	}
+	if (IsGameOver()) {
+		ResetLevel();
+		UnsetGameOver();
+		m_GameOverListener->ActionPerformed();
+		return;
+	}
 
-	m_Snake->SetSnakePosition(m_SnakePosition_X, m_SnakePosition_Y);
+	m_Snake->SetSnakePosition(m_SnakePosition_X, m_SnakePosition_Y); //i float vengono troncati
 	//compare the updated position and the old one to decide if the input must be enabled again
 	if (m_SnakePositionPreviousUpdate != m_Snake->GetSnakeHeadPosition())
 	{
@@ -248,9 +256,16 @@ void Level1::Update()
 		}
 	}
 
-	if (m_SpiderCollideSnake)
+	if (m_SpiderCollideSnake) 
+	{
 		m_GameOver = true;
-
+	}
+	if (IsGameOver()) {
+		ResetLevel();
+		UnsetGameOver();
+		m_GameOverListener->ActionPerformed();
+		return;
+	}
 	std::wstring perf = SnakeRevivalGameLoop::GetElapsedTicksPerformance();
 	m_Performance->SetText(perf);
 }

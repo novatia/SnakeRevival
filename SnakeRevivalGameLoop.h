@@ -21,7 +21,7 @@ namespace SnakeRevival {
 
 		Display*  m_GameView;
 
-		bool f_Pause;
+		bool f_Loop;
 		
 		std::wstring m_UpdatedDisplay;
 

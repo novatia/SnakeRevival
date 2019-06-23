@@ -8,6 +8,7 @@
 #include "OLetter.h"
 #include "RLetter.h"
 #include "VLetter.h"
+#include "Text.h"
 
 
 namespace SnakeRevival {
@@ -35,7 +36,7 @@ namespace SnakeRevival {
 			VLetter *m_V;
 			ELetter *m_E1;
 			RLetter *m_R;
-
+			Text *m_GoToMenu;
 		};
 
 	}

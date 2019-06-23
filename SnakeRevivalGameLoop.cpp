@@ -90,7 +90,7 @@ void SnakeRevivalGameLoop::Update()
 	m_TimeElapsed += TICKS_PER_FRAME;
 
 	m_CurrentView->Update();
-
+	/*
 	composite::Level1 *level1 = dynamic_cast<composite::Level1*>(m_CurrentView);
 
 	if (level1 != nullptr) {
@@ -110,6 +110,7 @@ void SnakeRevivalGameLoop::Update()
 			return;
 		}
 	}
+	*/
 	/* inutile.... la lista m_GameEntities è vuota
 	std::list<IEntity>::iterator it;
 	for (it = m_GameEntities.begin(); it != m_GameEntities.end(); it++) {
@@ -128,7 +129,7 @@ void SnakeRevivalGameLoop::Input() {
 void SnakeRevivalGameLoop::GameLoop(clock_t ticks_per_frame)
 {
 
-	while (!f_Pause)
+	while (!f_Loop)
 	{
 		m_start_tick = clock();
 		std::chrono::time_point < std::chrono::steady_clock> t1 = std::chrono::high_resolution_clock::now();
